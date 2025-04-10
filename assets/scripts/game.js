@@ -1,9 +1,9 @@
 
 // This function will be the first one used when the user opts to start a new game //
 function gameStart() {
-      document.getElementById("image-header").innerHTML = 
+      imageHeader.innerHTML = 
     "<img src='assets/images/fantasy-pub.png' alt='A fantasy pub open with people sat drinking and a barmaid serving.'>";
-      document.getElementById("main-text").innerHTML = "<p>You walk up to a pub and see two tables full of people laughing, sharing stories. One man sits on a stool in front of the bar and watches you wander towards the bar. What do you do?</p>"; 
+      mainText.innerHTML = "<p>You walk up to a pub and see two tables full of people laughing, sharing stories. One man sits on a stool in front of the bar and watches you wander towards the bar. What do you do?</p>"; 
       buttonShow();
 }
 
@@ -19,3 +19,8 @@ function buttonShow() {
 // This section contains the images needed for each kind of level
 
 const combatImageSources = ["assets/images/combat-card-one"];
+
+// Image const
+
+const imageHeader = document.getElementById("image-header");
+const mainText = document.getElementById("main-text");
