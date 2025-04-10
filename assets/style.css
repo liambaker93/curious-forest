@@ -1,0 +1,17 @@
+body {
+    background-color: black;
+}
+
+h1, p {
+    color: whitesmoke;
+}
+
+img {
+    width: 100vh;
+    height: 75vh;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+}

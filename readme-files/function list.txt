@@ -1,0 +1,28 @@
+newGame() function?
+
+What does it need to do.
+
+It needs to :
+
+A) Display the adventure starting image
+B) Display starting text to the user
+C) Offer up 3 options for the user to select
+	i) Each option needs to have a seperate outcome
+		if A then x
+			else if b then y
+			else c then z
+D) Lead into the nextLevel() function.
+
+What does it require?
+
+A) A starting image
+B) A text box
+C) 3 option buttons
+
+nextLevel() function?
+
+It needs to :
+
+A) Display a nw image card 
+B) Display a new text box 
+C) Offer up 3 options for the user to select
