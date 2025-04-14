@@ -1,5 +1,6 @@
 body {
-    background-color: black;
+   /* display: flex;
+*/    background-color: black;
 }
 
 h1, p {
@@ -9,9 +10,14 @@ h1, p {
 img {
     width: 100vh;
     height: 75vh;
-    justify-content: center;
 }
 
 .hidden {
     display: none;
+}
+
+.adventure-start {
+    background-color: black;
+    color: green;
+    border-color: antiquewhite;
 }
