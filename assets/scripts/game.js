@@ -23,16 +23,25 @@ function buttonShow() {
 }
 
 function gameButtonA() {
-    //combatCardOne
+    imageHeader.innerHTML = `${combatImageSources[1]}`;
+    mainText.innerHTML = `${combatTextPrompt[1]}`;
 }
 
 
 
 // This section contains the images needed for each kind of level
 
-const combatImageSources = ["assets/images/combat-card-one.png", "assets/images/combat-card-two.png"];
+const combatImageSources = [
+    "<img src='assets/images/combat-card-one.png' alt='A beast emerging from the hedgeline'>", 
+    "<img src='assets/images/combat-card-two.png' alt='A group of bandits sat around a campfire, their backs to you'>",
+];
 
 
+const combatTextPrompt = [
+    "<p>A beast emerges from the hedges and snarls at you, teeth bared and saliva dripping from it's mouth. What do you do?</p>",
+    "<p>You walk into a monastery that has been long since abandoned. Walking through it you see nothing but ruins and torn tapestry. Out the other end you spy a campfire surrounded by four bandits. What do you do?</p>"
+]
+    
 
 // Image const
 
