@@ -9,6 +9,8 @@ function gameStart() {
       buttonA.innerText = "Accept the drink";
       buttonB.innerText = "Throw the drink in his face";
       buttonC.innerText = "Turn and leave the pub";
+
+      buttonA.addEventListener("click", gameButtonA);
     };
 
 // This element will display a button for the user to select their option on each card //
@@ -20,16 +22,24 @@ function buttonShow() {
     buttonC.classList.remove("hidden");
 }
 
+function gameButtonA() {
+    //combatCardOne
+}
+
+
+
 // This section contains the images needed for each kind of level
 
-const combatImageSources = ["assets/images/combat-card-one"];
+const combatImageSources = ["assets/images/combat-card-one.png", "assets/images/combat-card-two.png"];
+
+
 
 // Image const
 
 const imageHeader = document.getElementById("image-header");
 const mainText = document.getElementById("main-text");
 
-var buttonA = document.getElementById("button-a");
-var buttonB = document.getElementById("button-b");
-var buttonC = document.getElementById("button-c");
+const buttonA = document.getElementById("button-a");
+const buttonB = document.getElementById("button-b");
+const buttonC = document.getElementById("button-c");
 

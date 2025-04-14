@@ -1,4 +1,4 @@
-newGame() function?
+gameStart() function?
 
 What does it need to do.
 
