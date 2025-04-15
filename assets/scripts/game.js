@@ -26,7 +26,16 @@ function gameStart() {
 
     };
 
-// This element will display a button for the user to select their option on each card //
+// Next level function used after all result cards
+
+function nextLevel() {
+    hideContinue();
+    buttonToggle();
+    imageHeader.innerHTML = `${combatImageSources[0]}`;
+    mainText.innerHTML = `${combatTextPrompt[0]}`;
+}
+
+
 // This function removes the hidden class from the selection buttons
 
 function buttonToggle() {
@@ -38,7 +47,7 @@ function buttonToggle() {
 
 function showContinue() {
     buttonContinue.classList.remove("hidden");
-    buttonContinue.addEventListener("click", nextLevel());
+    buttonContinue.addEventListener("click", nextLevel);
 }
 
 function hideContinue() {
@@ -86,10 +95,10 @@ function resultButtonA() {
         imageHeader.innerHTML = `${resultImageSources[0]}`;
         mainText.innerHTML = `${resultTextPrompt[0]}`;
         buttonToggle();
-        showContinue();
     } else {
         console.log("No selection made")
     };
+    showContinue();
 }
 
 
