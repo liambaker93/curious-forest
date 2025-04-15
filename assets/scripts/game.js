@@ -14,7 +14,7 @@ function gameStart() {
     "<img src='assets/images/fantasy-pub.png' alt='A fantasy pub open with people sat drinking and a barmaid serving.'>";
       mainText.innerHTML = "<p>You walk up to a pub and see two tables full of people laughing, sharing stories. One man sits on a stool in front of the bar and watches you wander towards the bar. What do you do?</p>"; 
       
-      buttonShow();
+      buttonToggle();
       
       buttonA.innerText = "Accept the drink";
       buttonB.innerText = "Throw the drink in his face";
@@ -29,17 +29,12 @@ function gameStart() {
 // This element will display a button for the user to select their option on each card //
 // This function removes the hidden class from the selection buttons
 
-function buttonShow() {
-    buttonA.classList.remove("hidden");
-    buttonB.classList.remove("hidden");
-    buttonC.classList.remove("hidden");
+function buttonToggle() {
+    buttonA.classList.toggle("hidden");
+    buttonB.classList.toggle("hidden");
+    buttonC.classList.toggle("hidden");
 }
 
-function buttonHide() {
-    buttonA.classList.add("hidden");
-    buttonB.classList.add("hidden");
-    buttonC.classList.add("hidden");
-}
 
 function showContinue() {
     buttonContinue.classList.remove("hidden");
@@ -90,7 +85,7 @@ function resultButtonA() {
     if (buttonA.textContent.includes("Accept")) {
         imageHeader.innerHTML = `${resultImageSources[0]}`;
         mainText.innerHTML = `${resultTextPrompt[0]}`;
-        buttonHide();
+        buttonToggle();
         showContinue();
     } else {
         console.log("No selection made")
