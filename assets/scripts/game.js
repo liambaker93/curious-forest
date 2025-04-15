@@ -21,8 +21,8 @@ function gameStart() {
       buttonC.innerText = "Turn and leave the pub";
 
       buttonA.addEventListener("click", resultButtonA);
-      buttonB.addEventListener("click", gameButtonB);
-      buttonC.addEventListener("click", gameButtonC);
+      buttonB.addEventListener("click", resultButtonB);
+      buttonC.addEventListener("click", resultButtonC);
 
     };
 
@@ -31,10 +31,18 @@ function gameStart() {
 function nextLevel() {
     hideContinue();
     buttonToggle();
-    x = Math.floor(Math.random() * 3);
+  
     imageHeader.innerHTML = `${combatImageSources[x]}`;
     mainText.innerHTML = `${combatTextPrompt[x]}`;
+   
+    buttonA.innerText = `${combatButtonA[x]}`;
+    buttonB.innerText = `${combatButtonB[x]}`;
+    buttonC.innerText = `${combatButtonC[x]}`;
     console.log(x);
+   
+    buttonA.addEventListener("click", resultButtonA);
+    buttonB.addEventListener("click", resultButtonB);
+    buttonC.addEventListener("click", resultButtonC);
 }
 
 
@@ -94,7 +102,7 @@ function resultButtonA() {
     buttonACounter++;
     console.log(buttonACounter);
     if (buttonA.textContent.includes("Accept")) {
-        imageHeader.innerHTML = `${resultImageSources[x]}`;
+        imageHeader.innerHTML = `${resultImageSources[0]}`;
         mainText.innerHTML = `${resultTextPrompt[0]}`;
         buttonToggle();
     } else {
@@ -103,9 +111,38 @@ function resultButtonA() {
     showContinue();
 }
 
+function resultButtonB() {
+    buttonBCounter++;
+    console.log(buttonBCounter);
+    if (buttonB.textContent.includes("Throw")) {
+        imageHeader.innerHTML = `${resultImageSources[1]}`;
+        mainText.innerHTML = `${resultTextPrompt[1]}`;
+        buttonToggle();
+    } else {
+        console.log("No Selection made");
+    };
+    showContinue();
+}
+
+function resultButtonC() {
+    buttonCCounter++;
+    console.log(buttonCCounter);
+    if (buttonC.textContent.includes("leave")) {
+        imageHeader.innerHTML = `${resultImageSources[2]}`;
+        mainText.innerHTML = `${resultTextPrompt[2]}`;
+        buttonToggle();
+    } else {
+        console.log("No selection made");
+    };
+    showContinue();
+}
+
 
 
 // This section contains the images needed for each kind of level
+
+//const combatCard = [`${combatImageSources}`, `${combatTextPrompt}`];
+//const resultCard = [`${resultImageSources}`, `${resultTextPrompt}`];
 
 // Combat card section
 
@@ -122,17 +159,42 @@ const combatTextPrompt = [
     "<p>You step deeper into the forest and hear a mix of growling and whining and then suddenly a whimper. Upon investigating, you find an aggressive looking fox stood over the body of a dead dog. What do you do?</p>",
 ];
 
+const combatButtonA = [
+    "Draw your sword and take a swing",
+    "Sneak around them",
+    "Take an aggressive stance",
+
+]
+
+const combatButtonB = [
+    "Draw your sword ready to defend",
+    "Run through the group",
+    "Drop to all fours and mimic the fox",
+
+]
+
+const combatButtonC = [
+    "Slowly back away",
+    "Walk back the way you came",
+    "Keep facing it and walk around it to get past",
+
+]
+
 // Encounter Card section
 
 // Result Card section
 
 const resultImageSources = [
     "<img src='assets/images/result-card-one.png' alt='A man standing by a bar is handing you a full pint of beer'>",
+    "<img src='assets/images/result-card-two.png' alt='A man covered in beer, standing ready to fight against a bar'>",
+    "<img src='assets/images/result-card-three.png' alt='The outisde of a pub with the interior and streetlamps on'>",
 
 ];
 
 const resultTextPrompt = [
     "<p>He hands the drink over to you and tells you a tale of an evening where he brawled a bar full of drunkards just to save one newcomer from ending the night thrown out into a haybale. He sways and falls backwards onto his stool, passing out before finishing the story. You drink the beer and feel a spring in your step.<p>",
+    "<p>You pour the beer over him. He quickly turns from intrigued to annoyed at your arrival and bares his fists ready to fight, and swings his arm straight into your jaw, knocking you back on to the ground</p>",
+    "<p>You reject the drink and turn around, leaving the pub. No one pays any attention as you leave and they all get back to their lives. You leave the town and venture into the nearby forest</p>'"
 ];
     
 
@@ -147,6 +209,10 @@ let buttonCCounter = 0;
 // Turn counter to pick which type of card is picked
 
  let turnCounter = 0;
+
+function randomCombat() {   
+    x = Math.floor(Math.random() * 3);
+}
 
 
 /**
