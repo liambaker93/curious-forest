@@ -31,8 +31,10 @@ function gameStart() {
 function nextLevel() {
     hideContinue();
     buttonToggle();
-    imageHeader.innerHTML = `${combatImageSources[0]}`;
-    mainText.innerHTML = `${combatTextPrompt[0]}`;
+    x = Math.floor(Math.random() * 3);
+    imageHeader.innerHTML = `${combatImageSources[x]}`;
+    mainText.innerHTML = `${combatTextPrompt[x]}`;
+    console.log(x);
 }
 
 
@@ -70,8 +72,8 @@ function gameButtonB() {
     buttonBCounter++;
     console.log(buttonBCounter);
     if (buttonBCounter > buttonACounter && buttonBCounter > buttonCCounter) {
-        imageHeader.innerHTML = `${combatImageSources[1]}`;
-        mainText.innerHTML = `${combatTextPrompt[1]}`;
+        imageHeader.innerHTML = `${combatImageSources[x]}`;
+        mainText.innerHTML = `${combatTextPrompt[x]}`;
       };
     buttonBCounter--;
 }
@@ -92,7 +94,7 @@ function resultButtonA() {
     buttonACounter++;
     console.log(buttonACounter);
     if (buttonA.textContent.includes("Accept")) {
-        imageHeader.innerHTML = `${resultImageSources[0]}`;
+        imageHeader.innerHTML = `${resultImageSources[x]}`;
         mainText.innerHTML = `${resultTextPrompt[0]}`;
         buttonToggle();
     } else {
@@ -127,18 +129,31 @@ const combatTextPrompt = [
 const resultImageSources = [
     "<img src='assets/images/result-card-one.png' alt='A man standing by a bar is handing you a full pint of beer'>",
 
-]
+];
 
 const resultTextPrompt = [
     "<p>He hands the drink over to you and tells you a tale of an evening where he brawled a bar full of drunkards just to save one newcomer from ending the night thrown out into a haybale. He sways and falls backwards onto his stool, passing out before finishing the story. You drink the beer and feel a spring in your step.<p>",
-]
+];
     
 
 
 
 // Button counters to use with function if statements
 
-let buttonACounter = 0
-let buttonBCounter = 0
-let buttonCCounter = 0
+let buttonACounter = 0;
+let buttonBCounter = 0;
+let buttonCCounter = 0;
 
+// Turn counter to pick which type of card is picked
+
+ let turnCounter = 0;
+
+
+/**
+ * variables for selecting random cards to view
+ * x is used for combat cards
+ * y is used for encounter cards
+ * z is used for boss cards */  
+var x = 0;
+var y = 0;
+var z = 0;
