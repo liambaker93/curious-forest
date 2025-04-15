@@ -31,6 +31,7 @@ function gameStart() {
 function nextLevel() {
     hideContinue();
     buttonToggle();
+    randomCombat();
   
     imageHeader.innerHTML = `${combatImageSources[x]}`;
     mainText.innerHTML = `${combatTextPrompt[x]}`;
@@ -68,7 +69,6 @@ function hideContinue() {
 
 function gameButtonA() {
     buttonACounter++;
-    console.log(buttonACounter);
     if (buttonACounter > buttonBCounter && buttonACounter > buttonCCounter ) {
         imageHeader.innerHTML = `${combatImageSources[0]}`;
         mainText.innerHTML = `${combatTextPrompt[0]}`;
@@ -78,7 +78,7 @@ function gameButtonA() {
 
 function gameButtonB() {
     buttonBCounter++;
-    console.log(buttonBCounter);
+
     if (buttonBCounter > buttonACounter && buttonBCounter > buttonCCounter) {
         imageHeader.innerHTML = `${combatImageSources[x]}`;
         mainText.innerHTML = `${combatTextPrompt[x]}`;
@@ -88,7 +88,7 @@ function gameButtonB() {
 
 function gameButtonC() {
     buttonCCounter++;
-    console.log(buttonCCounter);
+
     if (buttonCCounter > buttonACounter && buttonCCounter > buttonBCounter) {
         imageHeader.innerHTML = `${combatImageSources[2]}`;
         mainText.innerHTML = `${combatTextPrompt[2]}`;
@@ -100,25 +100,27 @@ function gameButtonC() {
 
 function resultButtonA() {
     buttonACounter++;
-    console.log(buttonACounter);
+
     buttonToggle();
-    if (buttonA.textContent.includes("Accept")) {
-        imageHeader.innerHTML = `${resultImageSources[0]}`;
-        mainText.innerHTML = `${resultTextPrompt[0]}`;
-    } else if (buttonA.textContent.includes("Draw")) {
-        mainText.innerHTML = `${combatResultA[0]}`;
+    if (combatButtonA[usedCombatIndex].order === x) {
+        imageHeader.innerHTML = `${resultImageSources[x]}`;
+        mainText.innerHTML = `${resultTextPrompt[x]}`;
     };
     showContinue();
 }
 
 function resultButtonB() {
     buttonBCounter++;
-    console.log(buttonBCounter);
+
     buttonToggle();
     if (buttonB.textContent.includes("Throw")) {
         imageHeader.innerHTML = `${resultImageSources[1]}`;
         mainText.innerHTML = `${resultTextPrompt[1]}`;
-    } else {
+    } else if (buttonB.textContent.includes("")) {
+
+    }
+    
+    else {
         console.log("No Selection made");
     };
     showContinue();
@@ -126,7 +128,7 @@ function resultButtonB() {
 
 function resultButtonC() {
     buttonCCounter++;
-    console.log(buttonCCounter);
+
     buttonToggle();
     if (buttonC.textContent.includes("leave")) {
         imageHeader.innerHTML = `${resultImageSources[2]}`;
@@ -160,9 +162,9 @@ const combatTextPrompt = [
 ];
 
 const combatButtonA = [
-    "Draw your sword and take a swing",
-    "Sneak around them",
-    "Take an aggressive stance",
+    { order: 1, value: "Draw your sword and take a swing"},
+    { order: 2, value: "Sneak around them"},
+    { order: 3, value: "Take an aggressive stance"},
 
 ]
 
@@ -182,8 +184,22 @@ const combatButtonC = [
 
 const combatResultA = [
     "<p>You swing at the beast and as your arm reaches around it swipes at you with it's claws and cuts your chest. You recoil back and it runs away into the darkness</p>",
-    "They continue sitting and talking around the campfire, none the wiser to your slinking steps beyond them",
-    "The fox stares you up and down and slowly bows it's head, gripping the dog with it's teeth and dragging it away into a nearby foxhole",
+    "<p>They continue sitting and talking around the campfire, none the wiser to your slinking steps beyond them</p>",
+    "<p>The fox stares you up and down and slowly bows it's head, gripping the dog with it's teeth and dragging it away into a nearby foxhole</p>",
+
+]
+
+const combatResultB = [
+    "<p>You make a defensive stance against the beast, it swipes at you but you block it with your hand, and it's palm hits you. You take a swipe at it and cut it's right leg deep, causing it to run away<p>",
+    "<p>You bolt it towards the campfire, they hear you coming and just as you're about to run straight through the fire, one of the nudges you off course. You stumble past the fire, your right foot landing in the burning ash, and you limp away into the darkness</p>",
+    "<p>You drop your hands to the ground and start growling at the fox. The fox yaps back at you and starts to circle you. After completing a full rotation, it bolts underneath you and between your legs causing you to fly up and land on your back, the smell of dead dog in the air</p>",
+
+]
+
+const combatResultC = [
+    "<p>You step backwards gently away from the beast, holding your hands up to show you're no threat. It ducks it's head and backs into the hedgeline, disappearing from view</p>",
+    "<p>You count the number of bandits on your fingers and decide that actually this isn't a fight worth having, and leave the monastery the way you came in</p>",
+    "<p>You tip toe around the fox not dropping eye contact, and once you're on the opposite side to where you started, you begin to slowly back away until it becomes uninterested and continues investigating it's dinner</p>",
 
 ]
 
@@ -230,3 +246,6 @@ function randomCombat() {
 var x = 0;
 var y = 0;
 var z = 0;
+const usedCombatIndex = x;
+const usedEncounterIndex = y;
+const usedBossIndex = z;
