@@ -1,3 +1,13 @@
+// Various game function consts
+
+const imageHeader = document.getElementById("image-header");
+const mainText = document.getElementById("main-text");
+
+const buttonA = document.getElementById("button-a");
+const buttonB = document.getElementById("button-b");
+const buttonC = document.getElementById("button-c");
+const buttonContinue = document.getElementById("button-continue");
+
 // This function will be the first one used when the user opts to start a new game //
 function gameStart() {
       imageHeader.innerHTML = 
@@ -10,7 +20,7 @@ function gameStart() {
       buttonB.innerText = "Throw the drink in his face";
       buttonC.innerText = "Turn and leave the pub";
 
-      buttonA.addEventListener("click", gameButtonA);
+      buttonA.addEventListener("click", resultButtonA);
       buttonB.addEventListener("click", gameButtonB);
       buttonC.addEventListener("click", gameButtonC);
 
@@ -29,6 +39,15 @@ function buttonHide() {
     buttonA.classList.add("hidden");
     buttonB.classList.add("hidden");
     buttonC.classList.add("hidden");
+}
+
+function showContinue() {
+    buttonContinue.classList.remove("hidden");
+    buttonContinue.addEventListener("click", nextLevel());
+}
+
+function hideContinue() {
+    buttonContinue.classList.add("hidden");
 }
 
 // functions for each button press
@@ -63,6 +82,21 @@ function gameButtonC() {
     buttonCCounter--;
 }
 
+// Result functions
+
+function resultButtonA() {
+    buttonACounter++;
+    console.log(buttonACounter);
+    if (buttonA.textContent.includes("Accept")) {
+        imageHeader.innerHTML = `${resultImageSources[0]}`;
+        mainText.innerHTML = `${resultTextPrompt[0]}`;
+        buttonHide();
+        showContinue();
+    } else {
+        console.log("No selection made")
+    };
+}
+
 
 
 // This section contains the images needed for each kind of level
@@ -84,17 +118,19 @@ const combatTextPrompt = [
 
 // Encounter Card section
 
+// Result Card section
 
+const resultImageSources = [
+    "<img src='assets/images/result-card-one.png' alt='A man standing by a bar is handing you a full pint of beer'>",
+
+]
+
+const resultTextPrompt = [
+    "<p>He hands the drink over to you and tells you a tale of an evening where he brawled a bar full of drunkards just to save one newcomer from ending the night thrown out into a haybale. He sways and falls backwards onto his stool, passing out before finishing the story. You drink the beer and feel a spring in your step.<p>",
+]
     
 
-// Various game function consts
 
-const imageHeader = document.getElementById("image-header");
-const mainText = document.getElementById("main-text");
-
-const buttonA = document.getElementById("button-a");
-const buttonB = document.getElementById("button-b");
-const buttonC = document.getElementById("button-c");
 
 // Button counters to use with function if statements
 
