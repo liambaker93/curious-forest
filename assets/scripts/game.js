@@ -101,12 +101,12 @@ function gameButtonC() {
 function resultButtonA() {
     buttonACounter++;
     console.log(buttonACounter);
+    buttonToggle();
     if (buttonA.textContent.includes("Accept")) {
         imageHeader.innerHTML = `${resultImageSources[0]}`;
         mainText.innerHTML = `${resultTextPrompt[0]}`;
-        buttonToggle();
-    } else {
-        console.log("No selection made")
+    } else if (buttonA.textContent.includes("Draw")) {
+        mainText.innerHTML = `${combatResultA[0]}`;
     };
     showContinue();
 }
@@ -114,10 +114,10 @@ function resultButtonA() {
 function resultButtonB() {
     buttonBCounter++;
     console.log(buttonBCounter);
+    buttonToggle();
     if (buttonB.textContent.includes("Throw")) {
         imageHeader.innerHTML = `${resultImageSources[1]}`;
         mainText.innerHTML = `${resultTextPrompt[1]}`;
-        buttonToggle();
     } else {
         console.log("No Selection made");
     };
@@ -127,10 +127,10 @@ function resultButtonB() {
 function resultButtonC() {
     buttonCCounter++;
     console.log(buttonCCounter);
+    buttonToggle();
     if (buttonC.textContent.includes("leave")) {
         imageHeader.innerHTML = `${resultImageSources[2]}`;
         mainText.innerHTML = `${resultTextPrompt[2]}`;
-        buttonToggle();
     } else {
         console.log("No selection made");
     };
@@ -177,6 +177,13 @@ const combatButtonC = [
     "Slowly back away",
     "Walk back the way you came",
     "Keep facing it and walk around it to get past",
+
+]
+
+const combatResultA = [
+    "<p>You swing at the beast and as your arm reaches around it swipes at you with it's claws and cuts your chest. You recoil back and it runs away into the darkness</p>",
+    "They continue sitting and talking around the campfire, none the wiser to your slinking steps beyond them",
+    "The fox stares you up and down and slowly bows it's head, gripping the dog with it's teeth and dragging it away into a nearby foxhole",
 
 ]
 
