@@ -104,9 +104,9 @@ function resultButtonA() {
     buttonACounter++;
     
     buttonToggle();
-    if (combatButtonA[usedCombatIndex].order === x) {
-        imageHeader.innerHTML = `${resultImageSources[x]}`;
-        mainText.innerHTML = `${resultTextPrompt[x]}`;
+    if (buttonA.textContent.includes("Accept")) {
+        imageHeader.innerHTML = `${resultImageSources[0]}`;
+        mainText.innerHTML = `${resultTextPrompt[0]}`;
     };
     showContinue();
     x++;
@@ -150,7 +150,7 @@ function resultButtonC() {
 //const combatCard = [`${combatImageSources}`, `${combatTextPrompt}`];
 //const resultCard = [`${resultImageSources}`, `${resultTextPrompt}`];
 
-// Combat card section
+// Combat card  function section
 
 function combatCardOne() {
     imageHeader.innerHTML = "<img src='assets/images/combat-card-one.png' alt='A beast emerging from the hedgeline'>";
@@ -160,36 +160,21 @@ function combatCardOne() {
     buttonC.innerText = "Slowly back away";
 }
 
-const combatImageSources = [ 
-    "<img src='assets/images/combat-card-two.png' alt='A group of bandits sat around a campfire, their backs to you'>",
-    "<img src='assets/images/combat-card-three.png' alt='An angry fox stands over the corpse of a dog, growling at you'>",
-];
+function combatCardTwo() {
+    imageHeader.innerHTML = "<img src='assets/images/combat-card-two.png' alt='A group of bandits sat around a campfire, their backs to you'></img>";
+    mainText.innerHTML = "<p>You walk into a monastery that has been long since abandoned. Walking through it you see nothing but ruins and torn tapestry. Out the other end you spy a campfire surrounded by four bandits. What do you do?</p>";
+    buttonA.innerText = "Sneak around them";
+    buttonB.innerText = "Run through the group";
+    buttonC.innerText = "Walk back the way you came";
+}
 
-
-const combatTextPrompt = [
-    "<p>You walk into a monastery that has been long since abandoned. Walking through it you see nothing but ruins and torn tapestry. Out the other end you spy a campfire surrounded by four bandits. What do you do?</p>",
-    "<p>You step deeper into the forest and hear a mix of growling and whining and then suddenly a whimper. Upon investigating, you find an aggressive looking fox stood over the body of a dead dog. What do you do?</p>",
-];
-
-const combatButtonA = [
-    { order: 1, value: "Sneak around them"},
-    { order: 2, value: "Take an aggressive stance"},
-
-]
-
-const combatButtonB = [
-    ,
-    "Run through the group",
-    "Drop to all fours and mimic the fox",
-
-]
-
-const combatButtonC = [
-    ,
-    "Walk back the way you came",
-    "Keep facing it and walk around it to get past",
-
-]
+function combatCardThree() {
+    imageHeader.innerHTML = "<img src='assets/images/combat-card-three.png' alt='An angry fox stands over the corpse of a dog, growling at you'>";
+    mainText.innerHTML =  "<p>You step deeper into the forest and hear a mix of growling and whining and then suddenly a whimper. Upon investigating, you find an aggressive looking fox stood over the body of a dead dog. What do you do?</p>";
+    buttonA.innerText = "Take an aggressive stance";
+    buttonB.innerText = "Drop to all fours and mimic the fox";
+    buttonC.innerText = "Keep facing it and walk around it to get past";
+}
 
 const combatResultA = [
     "<p>You swing at the beast and as your arm reaches around it swipes at you with it's claws and cuts your chest. You recoil back and it runs away into the darkness</p>",
@@ -217,9 +202,9 @@ const combatResultC = [
 // Result Card section
 
 const resultImageSources = [
-    { order: 0, value: "<img src='assets/images/result-card-one.png' alt='A man standing by a bar is handing you a full pint of beer'>"},
-    { order: 1, value: "<img src='assets/images/result-card-two.png' alt='A man covered in beer, standing ready to fight against a bar'>"},
-    { order: 2, value: "<img src='assets/images/result-card-three.png' alt='The outisde of a pub with the interior and streetlamps on'>"},
+    "<img src='assets/images/result-card-one.png' alt='A man standing by a bar is handing you a full pint of beer'>",
+    "<img src='assets/images/result-card-two.png' alt='A man covered in beer, standing ready to fight against a bar'>",
+    "<img src='assets/images/result-card-three.png' alt='The outisde of a pub with the interior and streetlamps on'>",
 
 ];
 
