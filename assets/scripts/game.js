@@ -15,6 +15,7 @@ function gameStart() {
       mainText.innerHTML = "<p>You walk up to a pub and see two tables full of people laughing, sharing stories. One man sits on a stool in front of the bar and watches you wander towards the bar. What do you do?</p>"; 
       
       buttonToggle();
+      randomCombatEasy;
       
       buttonA.innerText = "Accept the drink";
       buttonB.innerText = "Throw the drink in his face";
@@ -69,9 +70,10 @@ function hideContinue() {
 
 function gameButtonA() {
     buttonACounter++;
+    randomCombat();
     if (buttonACounter > buttonBCounter && buttonACounter > buttonCCounter ) {
-        imageHeader.innerHTML = `${combatImageSources[0]}`;
-        mainText.innerHTML = `${combatTextPrompt[0]}`;
+        imageHeader.innerHTML = `${combatImageSources[x]}`;
+        mainText.innerHTML = `${combatTextPrompt[x]}`;
       }
     buttonACounter--;
 }
@@ -100,14 +102,16 @@ function gameButtonC() {
 
 function resultButtonA() {
     buttonACounter++;
-
+    
     buttonToggle();
     if (combatButtonA[usedCombatIndex].order === x) {
         imageHeader.innerHTML = `${resultImageSources[x]}`;
         mainText.innerHTML = `${resultTextPrompt[x]}`;
     };
     showContinue();
+    x++;
 }
+
 
 function resultButtonB() {
     buttonBCounter++;
@@ -148,35 +152,40 @@ function resultButtonC() {
 
 // Combat card section
 
-const combatImageSources = [
-    "<img src='assets/images/combat-card-one.png' alt='A beast emerging from the hedgeline'>", 
+function combatCardOne() {
+    imageHeader.innerHTML = "<img src='assets/images/combat-card-one.png' alt='A beast emerging from the hedgeline'>";
+    mainText.innerHTML = "<p>A beast emerges from the hedges and snarls at you, teeth bared and saliva dripping from it's mouth. What do you do?</p>";
+    buttonA.innerText = "Draw your sword and take a swing";
+    buttonB.innerText = "Draw your sword ready to defend";
+    buttonC.innerText = "Slowly back away";
+}
+
+const combatImageSources = [ 
     "<img src='assets/images/combat-card-two.png' alt='A group of bandits sat around a campfire, their backs to you'>",
     "<img src='assets/images/combat-card-three.png' alt='An angry fox stands over the corpse of a dog, growling at you'>",
 ];
 
 
 const combatTextPrompt = [
-    "<p>A beast emerges from the hedges and snarls at you, teeth bared and saliva dripping from it's mouth. What do you do?</p>",
     "<p>You walk into a monastery that has been long since abandoned. Walking through it you see nothing but ruins and torn tapestry. Out the other end you spy a campfire surrounded by four bandits. What do you do?</p>",
     "<p>You step deeper into the forest and hear a mix of growling and whining and then suddenly a whimper. Upon investigating, you find an aggressive looking fox stood over the body of a dead dog. What do you do?</p>",
 ];
 
 const combatButtonA = [
-    { order: 1, value: "Draw your sword and take a swing"},
-    { order: 2, value: "Sneak around them"},
-    { order: 3, value: "Take an aggressive stance"},
+    { order: 1, value: "Sneak around them"},
+    { order: 2, value: "Take an aggressive stance"},
 
 ]
 
 const combatButtonB = [
-    "Draw your sword ready to defend",
+    ,
     "Run through the group",
     "Drop to all fours and mimic the fox",
 
 ]
 
 const combatButtonC = [
-    "Slowly back away",
+    ,
     "Walk back the way you came",
     "Keep facing it and walk around it to get past",
 
@@ -208,9 +217,9 @@ const combatResultC = [
 // Result Card section
 
 const resultImageSources = [
-    "<img src='assets/images/result-card-one.png' alt='A man standing by a bar is handing you a full pint of beer'>",
-    "<img src='assets/images/result-card-two.png' alt='A man covered in beer, standing ready to fight against a bar'>",
-    "<img src='assets/images/result-card-three.png' alt='The outisde of a pub with the interior and streetlamps on'>",
+    { order: 0, value: "<img src='assets/images/result-card-one.png' alt='A man standing by a bar is handing you a full pint of beer'>"},
+    { order: 1, value: "<img src='assets/images/result-card-two.png' alt='A man covered in beer, standing ready to fight against a bar'>"},
+    { order: 2, value: "<img src='assets/images/result-card-three.png' alt='The outisde of a pub with the interior and streetlamps on'>"},
 
 ];
 
@@ -233,9 +242,21 @@ let buttonCCounter = 0;
 
  let turnCounter = 0;
 
-function randomCombat() {   
-    x = Math.floor(Math.random() * 3);
+function randomCombat(length) {   
+  const cardSelect = new Set();
+  while (cardSelect.size < length) {
+    const randomNumber = Math.floor(Math.random() * 3);
+    cardSelect.add(randomNumber);
+  }
+
+  return Array.from(cardSelect).join("");
 }
+
+const randomCombatEasy = randomCombat(3);
+console.log(randomCombatEasy);
+console.log(randomCombatEasy[0]);
+console.log(randomCombatEasy[1]);
+console.log(randomCombatEasy[2]);
 
 
 /**
@@ -243,9 +264,11 @@ function randomCombat() {
  * x is used for combat cards
  * y is used for encounter cards
  * z is used for boss cards */  
-var x = 0;
+var x = randomCombatEasy[0];
 var y = 0;
 var z = 0;
 const usedCombatIndex = x;
 const usedEncounterIndex = y;
 const usedBossIndex = z;
+
+// F
