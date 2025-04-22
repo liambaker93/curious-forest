@@ -255,5 +255,3 @@ var z = 0;
 const usedCombatIndex = x;
 const usedEncounterIndex = y;
 const usedBossIndex = z;
-
-// F
