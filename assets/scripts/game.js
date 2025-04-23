@@ -148,6 +148,7 @@ function combatCardOne() {
     buttonA.innerText = "Draw your sword and take a swing";
     buttonB.innerText = "Draw your sword ready to defend";
     buttonC.innerText = "Slowly back away";
+    
 }
 
 function combatCardTwo() {
@@ -224,12 +225,28 @@ console.log(randomCombatEasy[0]);
 console.log(randomCombatEasy[1]);
 console.log(randomCombatEasy[2]);
 
+function pickRandomCombat(arr) {
+    if (!arr || arr.length === 0) {
+        return undefined;
+    }
+
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+
+}
+
+const combatCards = [combatCardOne, combatCardTwo, combatCardThree];
+
+const randomCard = pickRandomCombat(combatCards);
+
+
+
 /**
  * variables for selecting random cards to view
  * x is used for combat cards
  * y is used for encounter cards
  * z is used for boss cards */  
-var x = randomCombatEasy[0];
+var x = 0;
 var y = 0;
 var z = 0;
 const usedCombatIndex = x;
