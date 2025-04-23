@@ -8,6 +8,12 @@ const buttonB = document.getElementById("button-b");
 const buttonC = document.getElementById("button-c");
 const buttonContinue = document.getElementById("button-continue");
 
+// Button counters to use with function if statements
+
+let buttonACounter = 0;
+let buttonBCounter = 0;
+let buttonCCounter = 0;
+
 // This function will be the first one used when the user opts to start a new game //
 function gameStart() {
       imageHeader.innerHTML = 
@@ -15,7 +21,7 @@ function gameStart() {
       mainText.innerHTML = "<p>You walk up to a pub and see two tables full of people laughing, sharing stories. One man sits on a stool in front of the bar and watches you wander towards the bar. What do you do?</p>"; 
       
       buttonToggle();
-      randomCombatEasy;
+    //  randomCombatEasy;
       
       buttonA.innerText = "Accept the drink";
       buttonB.innerText = "Throw the drink in his face";
@@ -32,14 +38,8 @@ function gameStart() {
 function nextLevel() {
     hideContinue();
     buttonToggle();
-    randomCombat();
-  
-    imageHeader.innerHTML = `${combatImageSources[x]}`;
-    mainText.innerHTML = `${combatTextPrompt[x]}`;
-   
-    buttonA.innerText = `${combatButtonA[x]}`;
-    buttonB.innerText = `${combatButtonB[x]}`;
-    buttonC.innerText = `${combatButtonC[x]}`;
+    randomCombatSelection();
+    
     console.log(x);
    
     buttonA.addEventListener("click", resultButtonA);
@@ -57,57 +57,25 @@ function buttonToggle() {
 
 function showContinue() {
     buttonContinue.classList.remove("hidden");
-    buttonContinue.addEventListener("click", nextLevel);
 }
 
 function hideContinue() {
     buttonContinue.classList.add("hidden");
 }
 
-// functions for each button press
-
-function gameButtonA() {
-    buttonACounter++;
-    randomCombat();
-    if (buttonACounter > buttonBCounter && buttonACounter > buttonCCounter ) {
-        imageHeader.innerHTML = `${combatImageSources[x]}`;
-        mainText.innerHTML = `${combatTextPrompt[x]}`;
-      }
-    buttonACounter--;
-}
-
-function gameButtonB() {
-    buttonBCounter++;
-
-    if (buttonBCounter > buttonACounter && buttonBCounter > buttonCCounter) {
-        imageHeader.innerHTML = `${combatImageSources[x]}`;
-        mainText.innerHTML = `${combatTextPrompt[x]}`;
-      };
-    buttonBCounter--;
-}
-
-function gameButtonC() {
-    buttonCCounter++;
-
-    if (buttonCCounter > buttonACounter && buttonCCounter > buttonBCounter) {
-        imageHeader.innerHTML = `${combatImageSources[2]}`;
-        mainText.innerHTML = `${combatTextPrompt[2]}`;
-    }
-    buttonCCounter--;
-}
-
 // Result functions
 
-function resultButtonA() {
-    buttonACounter++;
-    
+function resultButtonA() {       
     buttonToggle();
     if (buttonA.textContent.includes("Accept")) {
         imageHeader.innerHTML = `${resultImageSources[0]}`;
         mainText.innerHTML = `${resultTextPrompt[0]}`;
+    }; if (buttonA.textContent.includes("Draw")) {
+        mainText.innerHTML = `${combatResultA[0]}`;
     };
     showContinue();
-    x++;
+    buttonContinue.addEventListener("click", pickRandomCombat(combatCards));
+    buttonACounter--;
 }
 
 function resultButtonB() {
@@ -143,15 +111,28 @@ function resultButtonC() {
 // Combat card  function section
 
 function combatCardOne() {
+    buttonToggle();
+    hideContinue();
     imageHeader.innerHTML = "<img src='assets/images/combat-card-one.png' alt='A beast emerging from the hedgeline'>";
     mainText.innerHTML = "<p>A beast emerges from the hedges and snarls at you, teeth bared and saliva dripping from it's mouth. What do you do?</p>";
     buttonA.innerText = "Draw your sword and take a swing";
     buttonB.innerText = "Draw your sword ready to defend";
     buttonC.innerText = "Slowly back away";
+
+    buttonA.addEventListener("click", () => {
+        resultButtonA;
+        buttonACounter;
+    })
+
+    };
+    buttonB.addEventListener("click", resultButtonB);
+    buttonC.addEventListener("click", resultButtonC);
     
-}
+
 
 function combatCardTwo() {
+    buttonToggle();
+    hideContinue();
     imageHeader.innerHTML = "<img src='assets/images/combat-card-two.png' alt='A group of bandits sat around a campfire, their backs to you'></img>";
     mainText.innerHTML = "<p>You walk into a monastery that has been long since abandoned. Walking through it you see nothing but ruins and torn tapestry. Out the other end you spy a campfire surrounded by four bandits. What do you do?</p>";
     buttonA.innerText = "Sneak around them";
@@ -160,11 +141,23 @@ function combatCardTwo() {
 }
 
 function combatCardThree() {
+    buttonToggle();
+    hideContinue();
     imageHeader.innerHTML = "<img src='assets/images/combat-card-three.png' alt='An angry fox stands over the corpse of a dog, growling at you'>";
     mainText.innerHTML =  "<p>You step deeper into the forest and hear a mix of growling and whining and then suddenly a whimper. Upon investigating, you find an aggressive looking fox stood over the body of a dead dog. What do you do?</p>";
     buttonA.innerText = "Take an aggressive stance";
     buttonB.innerText = "Drop to all fours and mimic the fox";
     buttonC.innerText = "Keep facing it and walk around it to get past";
+
+
+}
+
+// Combat card result section
+
+function combatCardOneResult() {
+    if (buttonACounter > 1) {
+
+    }
 }
 
 const combatResultA = [
@@ -199,12 +192,6 @@ const resultTextPrompt = [
     "<p>You reject the drink and turn around, leaving the pub. No one pays any attention as you leave and they all get back to their lives. You leave the town and venture into the nearby forest</p>'"
 ];
 
-// Button counters to use with function if statements
-
-let buttonACounter = 0;
-let buttonBCounter = 0;
-let buttonCCounter = 0;
-
 // Turn counter to pick which type of card is picked
 
  let turnCounter = 0;
@@ -238,6 +225,10 @@ function pickRandomCombat(arr) {
 const combatCards = [combatCardOne, combatCardTwo, combatCardThree];
 
 const randomCard = pickRandomCombat(combatCards);
+
+function randomCombatSelection() {
+    return randomCard;
+}
 
 
 
