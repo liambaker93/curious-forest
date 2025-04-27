@@ -57,55 +57,11 @@ function buttonToggle() {
 
 function showContinue() {
     buttonContinue.classList.remove("hidden");
+    buttonContinue.addEventListener("click", pickRandomCombat);
 }
 
 function hideContinue() {
     buttonContinue.classList.add("hidden");
-}
-
-// Result functions
-
-function resultButtonA() {       
-    buttonToggle();
-    if (buttonA.textContent.includes("Accept")) {
-        imageHeader.innerHTML = `${resultImageSources[0]}`;
-        mainText.innerHTML = `${resultTextPrompt[0]}`;
-    }; if (buttonA.textContent.includes("Draw")) {
-        mainText.innerHTML = `${combatResultA[0]}`;
-    };
-    showContinue();
-    buttonContinue.addEventListener("click", pickRandomCombat(combatCards));
-    buttonACounter--;
-}
-
-function resultButtonB() {
-    buttonBCounter++;
-
-    buttonToggle();
-    if (buttonB.textContent.includes("Throw")) {
-        imageHeader.innerHTML = `${resultImageSources[1]}`;
-        mainText.innerHTML = `${resultTextPrompt[1]}`;
-    } else if (buttonB.textContent.includes("")) {
-
-    }
-    
-    else {
-        console.log("No Selection made");
-    };
-    showContinue();
-}
-
-function resultButtonC() {
-    buttonCCounter++;
-
-    buttonToggle();
-    if (buttonC.textContent.includes("leave")) {
-        imageHeader.innerHTML = `${resultImageSources[2]}`;
-        mainText.innerHTML = `${resultTextPrompt[2]}`;
-    } else {
-        console.log("No selection made");
-    };
-    showContinue();
 }
 
 // Combat card  function section
@@ -119,14 +75,26 @@ function combatCardOne() {
     buttonB.innerText = "Draw your sword ready to defend";
     buttonC.innerText = "Slowly back away";
 
-    buttonA.addEventListener("click", () => {
-        resultButtonA;
-        buttonACounter;
-    })
+    buttonA.addEventListener("click", combatCardOneResultA);
+    buttonB.addEventListener("click", combatCardOneResultB);
+    buttonC.addEventListener("click", combatCardOneResultC);
 
-    };
-    buttonB.addEventListener("click", resultButtonB);
-    buttonC.addEventListener("click", resultButtonC);
+    function combatCardOneResultA() {
+        mainText.innerHTML =  "<p>You swing at the beast and as your arm reaches around it swipes at you with it's claws and cuts your chest. You recoil back and it runs away into the darkness</p>";
+        showContinue();
+    }
+
+    function combatCardOneResultB() {
+        mainText.innerHTML = "<p>You make a defensive stance against the beast, it swipes at you but you block it with your hand, and it's palm hits you. You take a swipe at it and cut it's right leg deep, causing it to run away<p>";
+        showContinue();
+    }
+
+    function combatCardOneResultC() {
+        mainText.innerHTML = "<p>You step backwards gently away from the beast, holding your hands up to show you're no threat. It ducks it's head and backs into the hedgeline, disappearing from view</p>";
+        showContinue();
+    }
+
+}  
     
 
 
@@ -154,26 +122,22 @@ function combatCardThree() {
 
 // Combat card result section
 
-function combatCardOneResult() {
-    if (buttonACounter > 1) {
 
-    }
-}
 
 const combatResultA = [
-    "<p>You swing at the beast and as your arm reaches around it swipes at you with it's claws and cuts your chest. You recoil back and it runs away into the darkness</p>",
+   ,
     "<p>They continue sitting and talking around the campfire, none the wiser to your slinking steps beyond them</p>",
     "<p>The fox stares you up and down and slowly bows it's head, gripping the dog with it's teeth and dragging it away into a nearby foxhole</p>",
 ]
 
 const combatResultB = [
-    "<p>You make a defensive stance against the beast, it swipes at you but you block it with your hand, and it's palm hits you. You take a swipe at it and cut it's right leg deep, causing it to run away<p>",
+    ,
     "<p>You bolt it towards the campfire, they hear you coming and just as you're about to run straight through the fire, one of the nudges you off course. You stumble past the fire, your right foot landing in the burning ash, and you limp away into the darkness</p>",
     "<p>You drop your hands to the ground and start growling at the fox. The fox yaps back at you and starts to circle you. After completing a full rotation, it bolts underneath you and between your legs causing you to fly up and land on your back, the smell of dead dog in the air</p>",
 ]
 
 const combatResultC = [
-    "<p>You step backwards gently away from the beast, holding your hands up to show you're no threat. It ducks it's head and backs into the hedgeline, disappearing from view</p>",
+    ,
     "<p>You count the number of bandits on your fingers and decide that actually this isn't a fight worth having, and leave the monastery the way you came in</p>",
     "<p>You tip toe around the fox not dropping eye contact, and once you're on the opposite side to where you started, you begin to slowly back away until it becomes uninterested and continues investigating it's dinner</p>",
 ]
