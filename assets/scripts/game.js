@@ -21,15 +21,35 @@ function gameStart() {
       mainText.innerHTML = "<p>You walk up to a pub and see two tables full of people laughing, sharing stories. One man sits on a stool in front of the bar and watches you wander towards the bar. What do you do?</p>"; 
       
       buttonToggle();
-    //  randomCombatEasy;
       
       buttonA.innerText = "Accept the drink";
       buttonB.innerText = "Throw the drink in his face";
       buttonC.innerText = "Turn and leave the pub";
 
-      buttonA.addEventListener("click", resultButtonA);
-      buttonB.addEventListener("click", resultButtonB);
-      buttonC.addEventListener("click", resultButtonC);
+      function gameStartResultA() {
+        imageHeader.innerHTML = "<img src='assets/images/result-card-one.png' alt='A man standing by a bar is handing you a full pint of beer'>";
+        mainText.innerHTML =  "<p>He hands the drink over to you and tells you a tale of an evening where he brawled a bar full of drunkards just to save one newcomer from ending the night thrown out into a haybale. He sways and falls backwards onto his stool, passing out before finishing the story. You drink the beer and feel a spring in your step.<p>"
+        buttonToggle();
+        showContinue();
+    }
+
+      function gameStartResultB() {
+        imageHeader.innerHTML = "<img src='assets/images/result-card-two.png' alt='A man covered in beer, standing ready to fight against a bar'>";
+        mainText.innerHTML =  "<p>You pour the beer over him. He quickly turns from intrigued to annoyed at your arrival and bares his fists ready to fight, and swings his arm straight into your jaw, knocking you back on to the ground</p>";
+        buttonToggle();
+        showContinue();
+    }
+
+      function gameStartResultC() {
+        imageHeader.innerHTML =  "<img src='assets/images/result-card-three.png' alt='The outisde of a pub with the interior and streetlamps on'>";
+        mainText.innerHTML =  "<p>You reject the drink and turn around, leaving the pub. No one pays any attention as you leave and they all get back to their lives. You leave the town and venture into the nearby forest</p>'";
+        buttonToggle();
+        showContinue();
+    }
+
+      buttonA.addEventListener("click", gameStartResultA);
+      buttonB.addEventListener("click", gameStartResultB);
+      buttonC.addEventListener("click", gameStartResultC);
 
     };
 
@@ -41,11 +61,7 @@ function nextLevel() {
     randomCombatSelection();
     
     console.log(x);
-   
-    buttonA.addEventListener("click", resultButtonA);
-    buttonB.addEventListener("click", resultButtonB);
-    buttonC.addEventListener("click", resultButtonC);
-}
+};
 
 // This function removes the hidden class from the selection buttons
 
@@ -53,16 +69,16 @@ function buttonToggle() {
     buttonA.classList.toggle("hidden");
     buttonB.classList.toggle("hidden");
     buttonC.classList.toggle("hidden");
-}
+};
 
 function showContinue() {
     buttonContinue.classList.remove("hidden");
-    buttonContinue.addEventListener("click", pickRandomCombat);
-}
+    buttonContinue.addEventListener("click", nextLevel);
+};
 
 function hideContinue() {
     buttonContinue.classList.add("hidden");
-}
+};
 
 // Combat card  function section
 
@@ -94,9 +110,7 @@ function combatCardOne() {
         showContinue();
     }
 
-}  
-    
-
+};
 
 function combatCardTwo() {
     buttonToggle();
@@ -106,7 +120,32 @@ function combatCardTwo() {
     buttonA.innerText = "Sneak around them";
     buttonB.innerText = "Run through the group";
     buttonC.innerText = "Walk back the way you came";
-}
+
+    buttonA.addEventListener("click", combatCardTwoResultA);
+    buttonB.addEventListener("click", combatCardTwoResultB);
+    buttonC.addEventListener("click", combatCardTwoResultC);
+
+    function combatCardTwoResultA() {
+      // New image will be needed =   imageHeader.innerHTML = 
+      mainText.innerHTML = "<p>They continue sitting and talking around the campfire, none the wiser to your slinking steps beyond them</p>";
+      buttonToggle();
+      showContinue();
+    }
+
+    function combatCardTwoResultB() {
+        // new image will be needed = imageHeader.innerHTML = 
+        mainText.innerHTML =  "<p>You bolt it towards the campfire, they hear you coming and just as you're about to run straight through the fire, one of the nudges you off course. You stumble past the fire, your right foot landing in the burning ash, and you limp away into the darkness</p>";
+        buttonToggle();
+        showContinue();
+    }
+
+    function combatCardTwoResultC() {
+        // new image will be needed = imageHeader.innerHTML = 
+        mainText.innerHTML =  "<p>You count the number of bandits on your fingers and decide that actually this isn't a fight worth having, and leave the monastery the way you came in</p>";
+        buttonToggle();
+        showContinue();
+    }
+};
 
 function combatCardThree() {
     buttonToggle();
@@ -117,44 +156,31 @@ function combatCardThree() {
     buttonB.innerText = "Drop to all fours and mimic the fox";
     buttonC.innerText = "Keep facing it and walk around it to get past";
 
+    buttonA.addEventListener("click", combatCardThreeResultA);
+    buttonB.addEventListener("click", combatCardThreeResultB);
+    buttonC.addEventListener("click", combatCardThreeResultC);
 
-}
+    function combatCardThreeResultA() {
+        // new image will be needed = imageHeader.innerHTML = 
+        mainText.innerHTML = "<p>The fox stares you up and down and slowly bows it's head, gripping the dog with it's teeth and dragging it away into a nearby foxhole</p>";
+        buttonToggle();
+        showContinue();
+    }
 
-// Combat card result section
+    function combatCardThreeResultB() {
+        // new image will be needed = imageHeader.innerHTML = 
+        mainText.innerHTML = "<p>You drop your hands to the ground and start growling at the fox. The fox yaps back at you and starts to circle you. After completing a full rotation, it bolts underneath you and between your legs causing you to fly up and land on your back, the smell of dead dog in the air</p>";
+        buttonToggle();
+        showContinue();
+    }
 
-
-
-const combatResultA = [
-   ,
-    "<p>They continue sitting and talking around the campfire, none the wiser to your slinking steps beyond them</p>",
-    "<p>The fox stares you up and down and slowly bows it's head, gripping the dog with it's teeth and dragging it away into a nearby foxhole</p>",
-]
-
-const combatResultB = [
-    ,
-    "<p>You bolt it towards the campfire, they hear you coming and just as you're about to run straight through the fire, one of the nudges you off course. You stumble past the fire, your right foot landing in the burning ash, and you limp away into the darkness</p>",
-    "<p>You drop your hands to the ground and start growling at the fox. The fox yaps back at you and starts to circle you. After completing a full rotation, it bolts underneath you and between your legs causing you to fly up and land on your back, the smell of dead dog in the air</p>",
-]
-
-const combatResultC = [
-    ,
-    "<p>You count the number of bandits on your fingers and decide that actually this isn't a fight worth having, and leave the monastery the way you came in</p>",
-    "<p>You tip toe around the fox not dropping eye contact, and once you're on the opposite side to where you started, you begin to slowly back away until it becomes uninterested and continues investigating it's dinner</p>",
-]
-
-// Result Card section
-
-const resultImageSources = [
-    "<img src='assets/images/result-card-one.png' alt='A man standing by a bar is handing you a full pint of beer'>",
-    "<img src='assets/images/result-card-two.png' alt='A man covered in beer, standing ready to fight against a bar'>",
-    "<img src='assets/images/result-card-three.png' alt='The outisde of a pub with the interior and streetlamps on'>",
-];
-
-const resultTextPrompt = [
-    "<p>He hands the drink over to you and tells you a tale of an evening where he brawled a bar full of drunkards just to save one newcomer from ending the night thrown out into a haybale. He sways and falls backwards onto his stool, passing out before finishing the story. You drink the beer and feel a spring in your step.<p>",
-    "<p>You pour the beer over him. He quickly turns from intrigued to annoyed at your arrival and bares his fists ready to fight, and swings his arm straight into your jaw, knocking you back on to the ground</p>",
-    "<p>You reject the drink and turn around, leaving the pub. No one pays any attention as you leave and they all get back to their lives. You leave the town and venture into the nearby forest</p>'"
-];
+    function combatCardThreeResultC() {
+        // new image will be needed = imageHeader.innerHTML = 
+        mainText.innerHTML = "<p>You tip toe around the fox not dropping eye contact, and once you're on the opposite side to where you started, you begin to slowly back away until it becomes uninterested and continues investigating it's dinner</p>";
+        buttonToggle();
+        showContinue();
+    }
+};
 
 // Turn counter to pick which type of card is picked
 
@@ -193,8 +219,6 @@ const randomCard = pickRandomCombat(combatCards);
 function randomCombatSelection() {
     return randomCard;
 }
-
-
 
 /**
  * variables for selecting random cards to view
