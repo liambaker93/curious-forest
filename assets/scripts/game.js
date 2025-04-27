@@ -56,11 +56,14 @@ function gameStart() {
 // Next level function used after all result cards
 
 function nextLevel() {
+    ++x;
     hideContinue();
-    buttonToggle();
-    randomCombatSelection();
-    
-    console.log(x);
+   // buttonToggle();
+    if (x === 1) {
+        combatCardTwo();
+    } else if (x === 2) {
+        combatCardThree();
+    }
 };
 
 // This function removes the hidden class from the selection buttons
@@ -83,8 +86,8 @@ function hideContinue() {
 // Combat card  function section
 
 function combatCardOne() {
-    buttonToggle();
-    hideContinue();
+    buttonToggle;
+    hideContinue;
     imageHeader.innerHTML = "<img src='assets/images/combat-card-one.png' alt='A beast emerging from the hedgeline'>";
     mainText.innerHTML = "<p>A beast emerges from the hedges and snarls at you, teeth bared and saliva dripping from it's mouth. What do you do?</p>";
     buttonA.innerText = "Draw your sword and take a swing";
@@ -121,29 +124,35 @@ function combatCardTwo() {
     buttonB.innerText = "Run through the group";
     buttonC.innerText = "Walk back the way you came";
 
-    buttonA.addEventListener("click", combatCardTwoResultA);
-    buttonB.addEventListener("click", combatCardTwoResultB);
-    buttonC.addEventListener("click", combatCardTwoResultC);
+    buttonA.addEventListener("click", function() {
+        combatCardTwoResultA();
+        buttonToggle();
+        showContinue();
+    });
+    buttonB.addEventListener("click", function() {
+        combatCardTwoResultB();
+        buttonToggle();
+        showContinue();
+    });
+    buttonC.addEventListener("click", function() {
+        combatCardTwoResultC();
+        buttonToggle();
+        showContinue();
+    });
 
     function combatCardTwoResultA() {
       // New image will be needed =   imageHeader.innerHTML = 
       mainText.innerHTML = "<p>They continue sitting and talking around the campfire, none the wiser to your slinking steps beyond them</p>";
-      buttonToggle();
-      showContinue();
     }
 
     function combatCardTwoResultB() {
         // new image will be needed = imageHeader.innerHTML = 
         mainText.innerHTML =  "<p>You bolt it towards the campfire, they hear you coming and just as you're about to run straight through the fire, one of the nudges you off course. You stumble past the fire, your right foot landing in the burning ash, and you limp away into the darkness</p>";
-        buttonToggle();
-        showContinue();
     }
 
     function combatCardTwoResultC() {
         // new image will be needed = imageHeader.innerHTML = 
         mainText.innerHTML =  "<p>You count the number of bandits on your fingers and decide that actually this isn't a fight worth having, and leave the monastery the way you came in</p>";
-        buttonToggle();
-        showContinue();
     }
 };
 
@@ -194,7 +203,7 @@ function randomCombat(length) {
   }
 
   return Array.from(cardSelect).join("");
-}
+};
 
 const randomCombatEasy = randomCombat(3);
 console.log(randomCombatEasy);
@@ -210,7 +219,7 @@ function pickRandomCombat(arr) {
     const randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];
 
-}
+};
 
 const combatCards = [combatCardOne, combatCardTwo, combatCardThree];
 
@@ -218,7 +227,7 @@ const randomCard = pickRandomCombat(combatCards);
 
 function randomCombatSelection() {
     return randomCard;
-}
+};
 
 /**
  * variables for selecting random cards to view
