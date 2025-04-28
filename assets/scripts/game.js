@@ -60,8 +60,10 @@ function nextLevel() {
     hideContinue();
    // buttonToggle();
     if (x === 1) {
-        combatCardTwo();
+        combatCardOne();
     } else if (x === 2) {
+        combatCardTwo();
+    } else if (x === 3) {
         combatCardThree();
     }
 };
@@ -86,8 +88,8 @@ function hideContinue() {
 // Combat card  function section
 
 function combatCardOne() {
-    buttonToggle;
-    hideContinue;
+    buttonToggle();
+    hideContinue();
     imageHeader.innerHTML = "<img src='assets/images/combat-card-one.png' alt='A beast emerging from the hedgeline'>";
     mainText.innerHTML = "<p>A beast emerges from the hedges and snarls at you, teeth bared and saliva dripping from it's mouth. What do you do?</p>";
     buttonA.innerText = "Draw your sword and take a swing";
@@ -126,22 +128,19 @@ function combatCardTwo() {
 
     buttonA.addEventListener("click", function() {
         combatCardTwoResultA();
-        buttonToggle();
         showContinue();
     });
     buttonB.addEventListener("click", function() {
         combatCardTwoResultB();
-        buttonToggle();
         showContinue();
     });
     buttonC.addEventListener("click", function() {
         combatCardTwoResultC();
-        buttonToggle();
         showContinue();
     });
 
     function combatCardTwoResultA() {
-      // New image will be needed =   imageHeader.innerHTML = 
+      imageHeader.innerHTML = 
       mainText.innerHTML = "<p>They continue sitting and talking around the campfire, none the wiser to your slinking steps beyond them</p>";
     }
 
@@ -172,21 +171,18 @@ function combatCardThree() {
     function combatCardThreeResultA() {
         // new image will be needed = imageHeader.innerHTML = 
         mainText.innerHTML = "<p>The fox stares you up and down and slowly bows it's head, gripping the dog with it's teeth and dragging it away into a nearby foxhole</p>";
-        buttonToggle();
         showContinue();
     }
 
     function combatCardThreeResultB() {
         // new image will be needed = imageHeader.innerHTML = 
         mainText.innerHTML = "<p>You drop your hands to the ground and start growling at the fox. The fox yaps back at you and starts to circle you. After completing a full rotation, it bolts underneath you and between your legs causing you to fly up and land on your back, the smell of dead dog in the air</p>";
-        buttonToggle();
         showContinue();
     }
 
     function combatCardThreeResultC() {
         // new image will be needed = imageHeader.innerHTML = 
         mainText.innerHTML = "<p>You tip toe around the fox not dropping eye contact, and once you're on the opposite side to where you started, you begin to slowly back away until it becomes uninterested and continues investigating it's dinner</p>";
-        buttonToggle();
         showContinue();
     }
 };
