@@ -110,16 +110,19 @@ function combatCardOne() {
     buttonC.addEventListener("click", combatCardOneResultC);
 
     function combatCardOneResultA() {
+        imageHeader.innerHTML = "<img src='assets/images/combat-card-one-result-a.png' alt='The beast angrily charges out from the bush towards you, a paw raised to attack.'>";
         mainText.innerHTML =  "<p>You swing at the beast and as your arm reaches around it swipes at you with it's claws and cuts your chest. You recoil back and it runs away into the darkness</p>";
         showContinue();
     }
 
     function combatCardOneResultB() {
+        imageHeader.innerHTML = "<img src='assets/images/combat-card-one-result-b.png' alt='The beast with a cut leg walking away, turning it's head to look at the viewer'>";
         mainText.innerHTML = "<p>You make a defensive stance against the beast, it swipes at you but you block it with your hand, and it's palm hits you. You take a swipe at it and cut it's right leg deep, causing it to run away<p>";
         showContinue();
     }
 
     function combatCardOneResultC() {
+        imageHeader.innerHTML = "<img src='assets/images/combat-card-one-result-c.png' alt='The beast backs into a bush, staring at the viewer'>";
         mainText.innerHTML = "<p>You step backwards gently away from the beast, holding your hands up to show you're no threat. It ducks it's head and backs into the hedgeline, disappearing from view</p>";
         showContinue();
     }
