@@ -152,17 +152,17 @@ function combatCardTwo() {
     });
 
     function combatCardTwoResultA() {
-      // imageHeader.innerHTML = 
+      imageHeader.innerHTML = "<img src='assets/images/combat-card-two-result-a.png' alt='The bandits sit around a campfire, paying no attention to the viewer.'>";
       mainText.innerHTML = "<p>They continue sitting and talking around the campfire, none the wiser to your slinking steps beyond them</p>";
     }
 
     function combatCardTwoResultB() {
-        // new image will be needed = imageHeader.innerHTML = 
+        imageHeader.innerHTML = "<img src='assets/images/combat-card-two-result-b.png' alt='A bandit holds himself against a pillar with a drawn sword coming towards the viewer'>";
         mainText.innerHTML =  "<p>You bolt it towards the campfire, they hear you coming and just as you're about to run straight through the fire, one of the nudges you off course. You stumble past the fire, your right foot landing in the burning ash, and you limp away into the darkness</p>";
     }
 
     function combatCardTwoResultC() {
-        // new image will be needed = imageHeader.innerHTML = 
+        imageHeader.innerHTML = "<img src='assets/images/combat-card-two-result-c.png' alt='The outside enclave of an abandoned monastary, covered in moss'>";
         mainText.innerHTML =  "<p>You count the number of bandits on your fingers and decide that actually this isn't a fight worth having, and leave the monastery the way you came in</p>";
     }
 };
@@ -181,19 +181,19 @@ function combatCardThree() {
     buttonC.addEventListener("click", combatCardThreeResultC);
 
     function combatCardThreeResultA() {
-        // new image will be needed = imageHeader.innerHTML = 
+        imageHeader.innerHTML = "<img src='assets/images/combat-card-three-result-a.png' alt='A fox staring at the viewer with a dog in it's mouth'>";
         mainText.innerHTML = "<p>The fox stares you up and down and slowly bows it's head, gripping the dog with it's teeth and dragging it away into a nearby foxhole</p>";
         showContinue();
     }
 
     function combatCardThreeResultB() {
-        // new image will be needed = imageHeader.innerHTML = 
+        imageHeader.innerHTML = "<img src='assets/images/combat-card-three-result-b.png' alt='The fox is off in the distance, two dogs laying dead on the forest floor'>";
         mainText.innerHTML = "<p>You drop your hands to the ground and start growling at the fox. The fox yaps back at you and starts to circle you. After completing a full rotation, it bolts underneath you and between your legs causing you to fly up and land on your back, the smell of dead dog in the air</p>";
         showContinue();
     }
 
     function combatCardThreeResultC() {
-        // new image will be needed = imageHeader.innerHTML = 
+        imageHeader.innerHTML = "<img src='assets/images/combat-card-three-result-c.png' alt='The fox looks down at a dead dog on the forest floor'>";
         mainText.innerHTML = "<p>You tip toe around the fox not dropping eye contact, and once you're on the opposite side to where you started, you begin to slowly back away until it becomes uninterested and continues investigating it's dinner</p>";
         showContinue();
     }
