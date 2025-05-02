@@ -74,7 +74,7 @@ function nextLevel() {
         buttonContinue.addEventListener("click", function() {
             window.location.reload();
         });
-    };
+    }; 
 };
 
 // This function removes the hidden class from the selection buttons
