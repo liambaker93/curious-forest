@@ -31,6 +31,7 @@ function gameStart() {
         mainText.innerHTML =  "<p>He hands the drink over to you and tells you a tale of an evening where he brawled a bar full of drunkards just to save one newcomer from ending the night thrown out into a haybale. He sways and falls backwards onto his stool, passing out before finishing the story. You drink the beer and feel a spring in your step.<p>"
         buttonToggle();
         showContinue();
+        healthRemove();
     }
 
       function gameStartResultB() {
@@ -94,6 +95,28 @@ function hideContinue() {
     buttonContinue.classList.add("hidden");
 };
 
+// This function removes health from the player
+
+const healthOne = document.getElementById("heart-one");
+const healthTwo = document.getElementById("heart-two");
+const healthThree = document.getElementById("heart-three");
+
+function healthRemove() {
+    if  (healthThree.classList.contains("full")) {
+        healthThree.classList.remove("fa-heart");
+        healthThree.classList.add("fa-heart-crack");
+        healthThree.classList.remove("full");
+        healthThree.classList.add("half");
+    } else if (healthThree.classList.contains("half")) {
+        healthThree.classList.remove("half");
+        healthThree.classList.add("hidden");
+    } else if (healthThree.classList.contains("hidden")) {
+
+    }
+
+
+}
+
 // Combat card  function section
 
 function combatCardOne() {
@@ -113,6 +136,7 @@ function combatCardOne() {
         imageHeader.innerHTML = "<img src='assets/images/combat-card-one-result-a.png' alt='The beast angrily charges out from the bush towards you, a paw raised to attack.'>";
         mainText.innerHTML =  "<p>You swing at the beast and as your arm reaches around it swipes at you with it's claws and cuts your chest. You recoil back and it runs away into the darkness</p>";
         showContinue();
+        healthRemove();
     }
 
     function combatCardOneResultB() {
