@@ -133,21 +133,15 @@ function combatCardOne() {
    buttonC.addEventListener("click", combatCardOneResultC);
 
     function combatCardOneResultA() {
-        displayText("combatCardOneResultA")
+        displayText("combatCardOneResultA");
     }
 
     function combatCardOneResultB() {
-        displayText("combatCardOneResultB")
-   imageHeader.innerHTML = "<img src='assets/images/combat-card-one-result-b.png' alt='The beast with a cut leg walking away, turning it's head to look at the viewer'>";
-      mainText.innerHTML = "<p>You make a defensive stance against the beast, it swipes at you but you block it with your hand, and it's palm hits you. You take a swipe at it and cut it's right leg deep, causing it to run away<p>";
-        showContinue();
+        displayText("combatCardOneResultB");
     }
 
     function combatCardOneResultC() {
-        displayText("combatCardOneResultCX")
-       imageHeader.innerHTML = "<img src='assets/images/combat-card-one-result-c.png' alt='The beast backs into a bush, staring at the viewer'>";
-       mainText.innerHTML = "<p>You step backwards gently away from the beast, holding your hands up to show you're no threat. It ducks it's head and backs into the hedgeline, disappearing from view</p>";
-       // showContinue();
+        displayText("combatCardOneResultC");
     }
 
 };
@@ -163,30 +157,24 @@ function combatCardTwo() {
 
     buttonA.addEventListener("click", function() {
         combatCardTwoResultA();
-        showContinue();
     });
     buttonB.addEventListener("click", function() {
         combatCardTwoResultB();
-        showContinue();
     });
     buttonC.addEventListener("click", function() {
         combatCardTwoResultC();
-        showContinue();
     });
 
     function combatCardTwoResultA() {
-      imageHeader.innerHTML = "<img src='assets/images/combat-card-two-result-a.png' alt='The bandits sit around a campfire, paying no attention to the viewer.'>";
-      mainText.innerHTML = "<p>They continue sitting and talking around the campfire, none the wiser to your slinking steps beyond them</p>";
+        displayText(combatCardTwoResultA);
     }
 
     function combatCardTwoResultB() {
-        imageHeader.innerHTML = "<img src='assets/images/combat-card-two-result-b.png' alt='A bandit holds himself against a pillar with a drawn sword coming towards the viewer'>";
-        mainText.innerHTML =  "<p>You bolt it towards the campfire, they hear you coming and just as you're about to run straight through the fire, one of the nudges you off course. You stumble past the fire, your right foot landing in the burning ash, and you limp away into the darkness</p>";
+        displayText(combatCardTwoResultB);
     }
 
     function combatCardTwoResultC() {
-        imageHeader.innerHTML = "<img src='assets/images/combat-card-two-result-c.png' alt='The outside enclave of an abandoned monastary, covered in moss'>";
-        mainText.innerHTML =  "<p>You count the number of bandits on your fingers and decide that actually this isn't a fight worth having, and leave the monastery the way you came in</p>";
+        displayText(combatCardTwoResultB);
     }
 };
 
@@ -223,7 +211,7 @@ function combatCardThree() {
 };
 
 // Turn counter to pick which type of card is picked
-
+/**
  let turnCounter = 0;
 
 function randomCombat(length) {   
@@ -260,7 +248,7 @@ function randomCombatSelection() {
     return randomCard;
 };
 
-/**
+
  * variables for selecting random cards to view
  * x is used for combat cards
  * y is used for encounter cards
