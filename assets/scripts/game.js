@@ -65,7 +65,16 @@ function nextLevel() {
         combatCardTwo();
     } else if (x === 3) {
         combatCardThree();
-    }
+    } else {
+        console.log("End of cards");
+        mainText.innerHTML = "<p>Well, it seems like the adventure has closed, rather unceremoniously... Return Adventurer! Maybe you'll get lucky next time...</p>"
+        imageHeader.classList.add("hidden");
+        buttonContinue.classList.remove("hidden");
+        buttonContinue.innerText = "Return to the pub";
+        buttonContinue.addEventListener("click", function() {
+            window.location.reload();
+        });
+    };
 };
 
 // This function removes the hidden class from the selection buttons
@@ -140,7 +149,7 @@ function combatCardTwo() {
     });
 
     function combatCardTwoResultA() {
-      imageHeader.innerHTML = 
+      // imageHeader.innerHTML = 
       mainText.innerHTML = "<p>They continue sitting and talking around the campfire, none the wiser to your slinking steps beyond them</p>";
     }
 
