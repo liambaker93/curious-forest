@@ -8,6 +8,8 @@ const buttonB = document.getElementById("button-b");
 const buttonC = document.getElementById("button-c");
 const buttonContinue = document.getElementById("button-continue");
 
+let health = 6
+
 // Button counters to use with function if statements
 
 let buttonACounter = 0;
@@ -101,20 +103,20 @@ const healthOne = document.getElementById("heart-one");
 const healthTwo = document.getElementById("heart-two");
 const healthThree = document.getElementById("heart-three");
 
+const healthHearts = [healthOne, healthTwo, healthThree];
+
+function fullHealth() {
+    healthHearts.forEach(i => {
+        if (i && i.classList) {
+            i.classList.add("fa-heart");
+            i.classList.remove("fa-heart-crack");
+            console.log("full health");
+        }
+    })
+}
+
 function healthRemove() {
-    if  (healthThree.classList.contains("full")) {
-        healthThree.classList.remove("fa-heart");
-        healthThree.classList.add("fa-heart-crack");
-        healthThree.classList.remove("full");
-        healthThree.classList.add("half");
-    } else if (healthThree.classList.contains("half")) {
-        healthThree.classList.remove("half");
-        healthThree.classList.add("hidden");
-    } else if (healthThree.classList.contains("hidden")) {
-
-    }
-
-
+    
 }
 
 // Combat card  function section
@@ -149,6 +151,7 @@ function combatCardOne() {
 function combatCardTwo() {
     buttonToggle();
     hideContinue();
+    fullHealth();
     imageHeader.innerHTML = "<img src='assets/images/combat-card-two.png' alt='A group of bandits sat around a campfire, their backs to you'></img>";
     mainText.innerHTML = "<p>You walk into a monastery that has been long since abandoned. Walking through it you see nothing but ruins and torn tapestry. Out the other end you spy a campfire surrounded by four bandits. What do you do?</p>";
     buttonA.innerText = "Sneak around them";
