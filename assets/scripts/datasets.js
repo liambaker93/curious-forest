@@ -29,20 +29,35 @@ combatCardTwoData = [
     }
 ]
 
+combatCardThreeData = [
+    {
+        imageHeader: "<img src='assets/images/combat-card-three-result-a.png' alt='A fox staring at the viewer with a dog in it's mouth'>",
+        mainText: "<p>The fox stares you up and down and slowly bows it's head, gripping the dog with it's teeth and dragging it away into a nearby foxhole</p>",
+    },
+    {
+        imageHeader: "<img src='assets/images/combat-card-three-result-b.png' alt='The fox is off in the distance, two dogs laying dead on the forest floor'>",
+        mainText: "<p>You drop your hands to the ground and start growling at the fox. The fox yaps back at you and starts to circle you. After completing a full rotation, it bolts underneath you and between your legs causing you to fly up and land on your back, the smell of dead dog in the air</p>",
+    },
+    {
+        imageHeader: "<img src='assets/images/combat-card-three-result-c.png' alt='The fox looks down at a dead dog on the forest floor'>",
+        mainText: "<p>You tip toe around the fox not dropping eye contact, and once you're on the opposite side to where you started, you begin to slowly back away until it becomes uninterested and continues investigating it's dinner</p>",
+    }
+
+]
+
 
 function displayText(argument){
-        if(argument === "combatCardOneResultA"){
+    if(argument === "combatCardOneResultA"){
         imageHeader.innerHTML = combatCardOneData[0].imageHeader;
         mainText.innerHTML = combatCardOneData[0].mainText;
-        console.log("Shows card number 1")
             } else if(argument === "combatCardOneResultB"){
         imageHeader.innerHTML = combatCardOneData[1].imageHeader;
         mainText.innerHTML = combatCardOneData[1].mainText;
             } else if(argument === "combatCardOneResultC"){
         imageHeader.innerHTML = combatCardOneData[2].imageHeader;
         mainText.innerHTML = combatCardOneData[2].mainText;
-            } 
-         if (argument === "combatCardTwoResultA") {
+            }; 
+    if (argument === "combatCardTwoResultA") {
         imageHeader.innerHTML = combatCardTwoData[0].imageHeader;
         mainText.innerHTML = combatCardTwoData[0].mainText;
     }       else if (argument === "combatCardTwoResultB") {
@@ -51,19 +66,18 @@ function displayText(argument){
     }       else if (argument === "combatCardTwoResultC") {
         imageHeader.innerHTML = combatCardTwoData[2].imageHeader;
         mainText.innerHTML = combatCardTwoData[2].mainText;
-    } ;
+        };  
+    if (argument === "combatCardThreeResultA") {
+        imageHeader.innerHTML = combatCardThreeData[0].imageHeader;
+        mainText.innerHTML = combatCardThreeData[0].mainText;
+    }       else if (argument === "combatCardThreeResultB") {
+        imageHeader.innerHTML = combatCardThreeData[1].imageHeader;
+        mainText.innerHTML = combatCardThreeData[1].mainText;
+    }       else if (argument === "combatCardThreeResultC") {
+        imageHeader.innerHTML = combatCardThreeData[2].imageHeader;
+        mainText.innerHTML = combatCardThreeData[2].mainText;
+        };
     showContinue();
 
-}
-
-    const arrBtns = [
-        {
-            btnA: buttonA,
-            btnB: buttonB,
-            btnC: buttonC,
-        },
-     ]
-
-    //arrBtns.forEach(btn  => btn.addEventListener("click", btn) )
-
+};
 

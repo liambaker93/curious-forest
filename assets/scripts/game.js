@@ -2,6 +2,8 @@
 
 // const { check } = require("yargs");
 
+// const { check } = require("yargs");
+
 const imageHeader = document.getElementById("image-header");
 const mainText = document.getElementById("main-text");
 const adventureStart = document.getElementById("adventure-start");
@@ -11,13 +13,10 @@ const buttonB = document.getElementById("button-b");
 const buttonC = document.getElementById("button-c");
 const buttonContinue = document.getElementById("button-continue");
 
+const arrBtns = [buttonA, buttonB, buttonC];
+
+
 var health = 6
-
-// Button counters to use with function if statements
-
-let buttonACounter = 0;
-let buttonBCounter = 0;
-let buttonCCounter = 0;
 
 // This function will be the first one used when the user opts to start a new game //
 function gameStart() {
@@ -53,11 +52,19 @@ function gameStart() {
         mainText.innerHTML =  "<p>You reject the drink and turn around, leaving the pub. No one pays any attention as you leave and they all get back to their lives. You leave the town and venture into the nearby forest</p>'";
         buttonToggle();
         showContinue();
-    }
-
-      buttonA.addEventListener("click", gameStartResultA);
-      buttonB.addEventListener("click", gameStartResultB);
-      buttonC.addEventListener("click", gameStartResultC);
+    };
+    
+      arrBtns.forEach(button  => {
+        button.addEventListener("click", function() {
+            if (button === buttonA) {
+                gameStartResultA();
+            } else if (button === buttonB) {
+                gameStartResultB();
+            } else if (button === buttonC) {
+                gameStartResultC();
+            };
+        });
+    });
 
     };
 
@@ -227,15 +234,15 @@ function combatCardTwo() {
 
     function combatCardTwoResultA() {
         displayText(combatCardTwoResultA);
-    }
+    };
 
     function combatCardTwoResultB() {
         displayText(combatCardTwoResultB);
-    }
+    };
 
     function combatCardTwoResultC() {
         displayText(combatCardTwoResultB);
-    }
+    };
 };
 
 function combatCardThree() {
@@ -252,22 +259,16 @@ function combatCardThree() {
     buttonC.addEventListener("click", combatCardThreeResultC);
 
     function combatCardThreeResultA() {
-        imageHeader.innerHTML = "<img src='assets/images/combat-card-three-result-a.png' alt='A fox staring at the viewer with a dog in it's mouth'>";
-        mainText.innerHTML = "<p>The fox stares you up and down and slowly bows it's head, gripping the dog with it's teeth and dragging it away into a nearby foxhole</p>";
-        showContinue();
-    }
+        displayText(combatCardThreeResultA);
+    };
 
     function combatCardThreeResultB() {
-        imageHeader.innerHTML = "<img src='assets/images/combat-card-three-result-b.png' alt='The fox is off in the distance, two dogs laying dead on the forest floor'>";
-        mainText.innerHTML = "<p>You drop your hands to the ground and start growling at the fox. The fox yaps back at you and starts to circle you. After completing a full rotation, it bolts underneath you and between your legs causing you to fly up and land on your back, the smell of dead dog in the air</p>";
-        showContinue();
-    }
+        displayText(combatCardThreeResultB)
+    };
 
     function combatCardThreeResultC() {
-        imageHeader.innerHTML = "<img src='assets/images/combat-card-three-result-c.png' alt='The fox looks down at a dead dog on the forest floor'>";
-        mainText.innerHTML = "<p>You tip toe around the fox not dropping eye contact, and once you're on the opposite side to where you started, you begin to slowly back away until it becomes uninterested and continues investigating it's dinner</p>";
-        showContinue();
-    }
+        displayText(combatCardThreeResultC)
+    };
 };
 
 // Turn counter to pick which type of card is picked
