@@ -1,5 +1,7 @@
 // Various game function consts
 
+// const { check } = require("yargs");
+
 const imageHeader = document.getElementById("image-header");
 const mainText = document.getElementById("main-text");
 const adventureStart = document.getElementById("adventure-start");
@@ -19,7 +21,7 @@ let buttonCCounter = 0;
 
 // This function will be the first one used when the user opts to start a new game //
 function gameStart() {
-      checkHealth();
+      checkHealth(health);
       imageHeader.innerHTML = 
     "<img src='assets/images/fantasy-pub.png' alt='A fantasy pub open with people sat drinking and a barmaid serving.'>";
       mainText.innerHTML = "<p>You walk up to a pub and see two tables full of people laughing, sharing stories. One man sits on a stool in front of the bar and watches you wander towards the bar. What do you do?</p>"; 
@@ -40,6 +42,8 @@ function gameStart() {
       function gameStartResultB() {
         imageHeader.innerHTML = "<img src='assets/images/result-card-two.png' alt='A man covered in beer, standing ready to fight against a bar'>";
         mainText.innerHTML =  "<p>You pour the beer over him. He quickly turns from intrigued to annoyed at your arrival and bares his fists ready to fight, and swings his arm straight into your jaw, knocking you back on to the ground</p>";
+        health -= 1;
+        checkHealth();
         buttonToggle();
         showContinue();
     }
