@@ -9,7 +9,7 @@ const buttonB = document.getElementById("button-b");
 const buttonC = document.getElementById("button-c");
 const buttonContinue = document.getElementById("button-continue");
 
-let health = 6
+var health = 6
 
 // Button counters to use with function if statements
 
@@ -19,6 +19,7 @@ let buttonCCounter = 0;
 
 // This function will be the first one used when the user opts to start a new game //
 function gameStart() {
+      checkHealth();
       imageHeader.innerHTML = 
     "<img src='assets/images/fantasy-pub.png' alt='A fantasy pub open with people sat drinking and a barmaid serving.'>";
       mainText.innerHTML = "<p>You walk up to a pub and see two tables full of people laughing, sharing stories. One man sits on a stool in front of the bar and watches you wander towards the bar. What do you do?</p>"; 
@@ -34,7 +35,6 @@ function gameStart() {
         mainText.innerHTML =  "<p>He hands the drink over to you and tells you a tale of an evening where he brawled a bar full of drunkards just to save one newcomer from ending the night thrown out into a haybale. He sways and falls backwards onto his stool, passing out before finishing the story. You drink the beer and feel a spring in your step.<p>"
         buttonToggle();
         showContinue();
-        healthRemove();
     }
 
       function gameStartResultB() {
@@ -80,6 +80,16 @@ function nextLevel() {
         });
     }; 
 };
+// This function runs if your health reaches 0. Currently a copy of the code that runs when there are no more cards to show the player.
+function gameOver() {
+    mainText.innerHTML = "<p>Well, it seems like the adventure has closed, rather unceremoniously... Return Adventurer! Maybe you'll get lucky next time...</p>"
+    imageHeader.classList.add("hidden");
+    buttonContinue.classList.remove("hidden");
+    buttonContinue.innerText = "Return to the pub";
+    buttonContinue.addEventListener("click", function() {
+        window.location.reload();
+});
+}
 
 // This function removes the hidden class from the selection buttons
 
@@ -104,32 +114,64 @@ const healthOne = document.getElementById("heart-one");
 const healthTwo = document.getElementById("heart-two");
 const healthThree = document.getElementById("heart-three");
 
-const healthHearts = [healthOne, healthTwo, healthThree];
+const fullHearts = [healthOne, healthTwo, healthThree];
+const medHearts = [healthOne, healthTwo];
 
-function fullHealth() {
-    healthHearts.forEach(i => {
-        if (i && i.classList) {
-            i.classList.add("fa-heart");
-            i.classList.remove("fa-heart-crack");
-            console.log("full health");
-        }
-    })
-}
+function checkHealth() {
+    if (health === 6) {
+        fullHearts.forEach(i => {
+            if (i && i.classList) {
+                i.classList.remove("hidden");
+            }
+        });
+    } else if (health === 5) {
+        fullHearts.forEach(i => {
+            if (i && i.classList) {
+                i.classList.remove("hidden");
+                healthThree.classList.remove("fa-heart");
+                healthThree.classList.add("fa-heart-crack");
+            }
+        });
+    } else if (health === 4) {
+        medHearts.forEach(i => {
+            if (i && i.classList) {
+                i.classList.remove("hidden");
+            }
+        });
+    } else if (health === 3) {
+        medHearts.forEach(i => {
+            if (i && i.classList) {
+                i.classList.remove("hidden");
+                healthTwo.classList.remove("fa-heart");
+                healthTwo.classList.add("fa-heart-crack");
+            }
+        });
+    } else if (health === 2) {
+        healthOne.classList.remove("hidden");
+    } else if (health === 1) {
+        healthOne.classList.remove("hidden");
+        healthOne.classList.remove("fa-heart");
+        healthOne.classList.add("fa-heart-crack");
+    }  else {
+        gameOver();
+    }
+};
 
-function healthRemove() {
+
     
-}
 
+/*
 function inputName(e) {
+    checkHealth();
     let nameForm = document.getElementById("input-name");
-    e.preventDefault();
-    let inputName = e.target;
+    //e.preventDefault();
+    //let inputName = e.target;
     nameForm.classList.remove("hidden");
     imageHeader.classList.add("hidden");
     adventureStart.classList.add("hidden");
     mainText.innerHTML = "<p>Input your name to get started, and when you click submit, the adventure will begin...</p>";
 }
-
+*/
 // Combat card  function section
 
 function combatCardOne() {
