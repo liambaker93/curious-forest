@@ -19,9 +19,9 @@
   <body>
     <div>
       <h1 class="main-header">Placeholder<span class="health-bar">   | 
-        <i id="heart-one" class="full fa-solid fa-heart"></i>
-        <i id="heart-two" class="full fa-solid fa-heart"></i>
-        <i id="heart-three" class="full fa-solid fa-heart"></i>
+        <i id="heart-one" class="full fa-solid fa-heart hidden"></i>
+        <i id="heart-two" class="full fa-solid fa-heart hidden"></i>
+        <i id="heart-three" class="full fa-solid fa-heart hidden"></i>
       </span></h1>   
     </div>
     <div id="image-header" class="main-image">
@@ -30,10 +30,15 @@
         alt="A fantasy style village with a stone road going through and an open tavern along the pathway."
       />
     </div>
-    <div>
+    <div>        
+    <form id="input-name" class="hidden">
+      <label for="name">Name: </label>
+      <input type="text" name="playerName" id="playerName" required>
+      <button type="submit">Submit</button>
+    </form>
       <div id="main-text" class="text-description">
         <p>Welcome to the Adventure!</p>
-        <button onclick="gameStart()" class="adventure-start">Start Adventure</button>
+        <button onclick="inputName()" id="adventure-start" class="adventure-start">Start Adventure</button>
       </div>
       <div class="buttons">
         <button id="button-a" class="hidden">Button A</button>
