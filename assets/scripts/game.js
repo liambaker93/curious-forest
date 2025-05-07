@@ -2,6 +2,7 @@
 
 const imageHeader = document.getElementById("image-header");
 const mainText = document.getElementById("main-text");
+const adventureStart = document.getElementById("adventure-start");
 
 const buttonA = document.getElementById("button-a");
 const buttonB = document.getElementById("button-b");
@@ -117,6 +118,16 @@ function fullHealth() {
 
 function healthRemove() {
     
+}
+
+function inputName(e) {
+    let nameForm = document.getElementById("input-name");
+    e.preventDefault();
+    let inputName = e.target;
+    nameForm.classList.remove("hidden");
+    imageHeader.classList.add("hidden");
+    adventureStart.classList.add("hidden");
+    mainText.innerHTML = "<p>Input your name to get started, and when you click submit, the adventure will begin...</p>";
 }
 
 // Combat card  function section
