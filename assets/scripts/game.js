@@ -31,37 +31,19 @@ function gameStart() {
       buttonB.innerText = "Throw the drink in his face";
       buttonC.innerText = "Turn and leave the pub";
 
-      function gameStartResultA() {
-        imageHeader.innerHTML = "<img src='assets/images/result-card-one.png' alt='A man standing by a bar is handing you a full pint of beer'>";
-        mainText.innerHTML =  "<p>He hands the drink over to you and tells you a tale of an evening where he brawled a bar full of drunkards just to save one newcomer from ending the night thrown out into a haybale. He sways and falls backwards onto his stool, passing out before finishing the story. You drink the beer and feel a spring in your step.<p>"
-        buttonToggle();
-        showContinue();
-    }
-
-      function gameStartResultB() {
-        imageHeader.innerHTML = "<img src='assets/images/result-card-two.png' alt='A man covered in beer, standing ready to fight against a bar'>";
-        mainText.innerHTML =  "<p>You pour the beer over him. He quickly turns from intrigued to annoyed at your arrival and bares his fists ready to fight, and swings his arm straight into your jaw, knocking you back on to the ground</p>";
-        health -= 1;
-        checkHealth();
-        buttonToggle();
-        showContinue();
-    }
-
-      function gameStartResultC() {
-        imageHeader.innerHTML =  "<img src='assets/images/result-card-three.png' alt='The outisde of a pub with the interior and streetlamps on'>";
-        mainText.innerHTML =  "<p>You reject the drink and turn around, leaving the pub. No one pays any attention as you leave and they all get back to their lives. You leave the town and venture into the nearby forest</p>'";
-        buttonToggle();
-        showContinue();
-    };
-    
       arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
+            buttonToggle();
+            showContinue();
             if (button === buttonA) {
-                gameStartResultA();
+                 imageHeader.innerHTML = gameStartData[0].imageHeader;
+                 mainText.innerHTML =  gameStartData[0].mainText;
             } else if (button === buttonB) {
-                gameStartResultB();
+                imageHeader.innerHTML = gameStartData[1].imageHeader;
+                mainText.innerHTML = gameStartData[1].mainText;
             } else if (button === buttonC) {
-                gameStartResultC();
+                imageHeader.innerHTML = gameStartData[2].imageHeader;
+                mainText.innerHTML = gameStartData[2].mainText;
             };
         });
     });
@@ -270,6 +252,19 @@ function combatCardThree() {
         displayText(combatCardThreeResultC)
     };
 };
+
+// encounter card functions
+
+function encounterCardOne() {
+    buttonToggle();
+    hideContinue();
+    imageHeader.innerHTML = "<img src='assets/images/encounter-card-one.png' alt='A merchant pulling a cart through a forest'>";
+    mainText.innerHTML = "<p>Wandering through the forest, you stumble upon a merchant. He's pulling his wares and stops you, looking you up and down. 'Adventurer, what can I offer you?'</p>";
+    buttonA.innerText = "Have a health potion?";
+    buttonB.innerText = "Carrying any superior health potions?";
+    buttonC.innerText = "I'm alright thank you, I don't need anything.";
+}
+
 
 // Turn counter to pick which type of card is picked
 /**
