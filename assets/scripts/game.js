@@ -176,23 +176,21 @@ function combatCardOne() {
     buttonB.innerText = "Draw your sword ready to defend";
     buttonC.innerText = "Slowly back away";
 
-   buttonA.addEventListener("click", combatCardOneResultA);
-   buttonB.addEventListener("click", combatCardOneResultB);
-   buttonC.addEventListener("click", combatCardOneResultC);
+arrBtns.forEach(button  => {
+    button.addEventListener("click", function() {
+        buttonToggle();
+        showContinue();
+        if (button === buttonA) {
+            displayText(combatCardOneResultA);
+        } else if (button === buttonB) {
+            displayText(combatCardOneResultB);
+        } else if (button === buttonC) {
+            displayText(combatCardOneResultC);
+        };
+    });
+});
 
-    function combatCardOneResultA() {
-        displayText("combatCardOneResultA");
-    }
-
-    function combatCardOneResultB() {
-        displayText("combatCardOneResultB");
-    }
-
-    function combatCardOneResultC() {
-        displayText("combatCardOneResultC");
-    }
-
-};
+}
 
 function combatCardTwo() {
     buttonToggle();
@@ -204,27 +202,19 @@ function combatCardTwo() {
     buttonB.innerText = "Run through the group";
     buttonC.innerText = "Walk back the way you came";
 
-    buttonA.addEventListener("click", function() {
-        combatCardTwoResultA();
+    arrBtns.forEach(button  => {
+        button.addEventListener("click", function() {
+            buttonToggle();
+            showContinue();
+            if (button === buttonA) {
+                displayText(combatCardTwoResultA);
+            } else if (button === buttonB) {
+                displayText(combatCardTwoResultB);
+            } else if (button === buttonC) {
+                displayText(combatCardTwoResultC);
+            };
+        });
     });
-    buttonB.addEventListener("click", function() {
-        combatCardTwoResultB();
-    });
-    buttonC.addEventListener("click", function() {
-        combatCardTwoResultC();
-    });
-
-    function combatCardTwoResultA() {
-        displayText(combatCardTwoResultA);
-    };
-
-    function combatCardTwoResultB() {
-        displayText(combatCardTwoResultB);
-    };
-
-    function combatCardTwoResultC() {
-        displayText(combatCardTwoResultB);
-    };
 };
 
 function combatCardThree() {
@@ -236,21 +226,19 @@ function combatCardThree() {
     buttonB.innerText = "Drop to all fours and mimic the fox";
     buttonC.innerText = "Keep facing it and walk around it to get past";
 
-    buttonA.addEventListener("click", combatCardThreeResultA);
-    buttonB.addEventListener("click", combatCardThreeResultB);
-    buttonC.addEventListener("click", combatCardThreeResultC);
-
-    function combatCardThreeResultA() {
-        displayText(combatCardThreeResultA);
-    };
-
-    function combatCardThreeResultB() {
-        displayText(combatCardThreeResultB)
-    };
-
-    function combatCardThreeResultC() {
-        displayText(combatCardThreeResultC)
-    };
+    arrBtns.forEach(button  => {
+        button.addEventListener("click", function() {
+            buttonToggle();
+            showContinue();
+            if (button === buttonA) {
+                displayText(combatCardThreeResultA);
+            } else if (button === buttonB) {
+                displayText(combatCardThreeResultB);
+            } else if (button === buttonC) {
+                displayText(combatCardThreeResultC);
+            };
+        });
+    });
 };
 
 // encounter card functions
