@@ -1,3 +1,22 @@
+// This file holds the data used in the main game.js script to avoid cluttering there.
+/**
+ * A global function is underneath all of the datasets to pull the data needed per each
+ * game card.
+ */
+gameStartData = [
+    {
+        imageHeader: "<img src='assets/images/result-card-one.png' alt='A man standing by a bar is handing you a full pint of beer'>",
+        mainText: "<p>He hands the drink over to you and tells you a tale of an evening where he brawled a bar full of drunkards just to save one newcomer from ending the night thrown out into a haybale. He sways and falls backwards onto his stool, passing out before finishing the story. You drink the beer and feel a spring in your step.<p>",
+    },
+    {
+        imageHeader: "<img src='assets/images/result-card-two.png' alt='A man covered in beer, standing ready to fight against a bar'>",
+        mainText: "<p>You pour the beer over him. He quickly turns from intrigued to annoyed at your arrival and bares his fists ready to fight, and swings his arm straight into your jaw, knocking you back on to the ground</p>",
+    },
+    {
+        imageHeader: "<img src='assets/images/result-card-three.png' alt='The outisde of a pub with the interior and streetlamps on'>",
+        mainText: "<p>You reject the drink and turn around, leaving the pub. No one pays any attention as you leave and they all get back to their lives. You leave the town and venture into the nearby forest</p>'",
+    },
+]
 
 combatCardOneData = [
 {
@@ -43,6 +62,66 @@ combatCardThreeData = [
         mainText: "<p>You tip toe around the fox not dropping eye contact, and once you're on the opposite side to where you started, you begin to slowly back away until it becomes uninterested and continues investigating it's dinner</p>",
     }
 
+]
+
+combatCardFourData = [
+    {
+        imageHeader:"",
+        mainText: "",
+    },
+    {
+        imageHeader:"",
+        mainText:"",
+    },
+    {
+        imageHeader:"",
+        mainText:"",
+    }
+]
+
+combatCardFiveData = [
+    {
+        imageHeader: "",
+        mainText: "",
+    },
+    {
+        imageHeader:"",
+        mainText:"",
+    },
+    {
+        imageHeader:"",
+        mainText:"",
+    }
+]
+
+encounterCardOneData = [
+    {
+        imageHeader:"",
+        mainText:"",
+    },
+    {
+        imageHeader:"",
+        mainText:"",
+    },
+    {
+        imageHeader:"",
+        mainText:"",
+    }
+]
+
+encounterCardTwoData = [
+    {
+        imageHeader:"",
+        mainText:"",
+    },
+    {
+        imageHeader:"",
+        mainText:"",
+    },
+    {
+        imageHeader:"",
+        mainText:"",
+    }
 ]
 
 
