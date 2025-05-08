@@ -55,7 +55,7 @@ function gameStart() {
 function nextLevel() {
     ++x;
     hideContinue();
-   // buttonToggle();
+    buttonToggle();
     if (x === 1) {
         combatCardOne();
     } else if (x === 2) {
@@ -64,6 +64,7 @@ function nextLevel() {
         combatCardThree();
     } else {
         console.log("End of cards");
+        buttonToggle();
         mainText.innerHTML = "<p>Well, it seems like the adventure has closed, rather unceremoniously... Return Adventurer! Maybe you'll get lucky next time...</p>"
         imageHeader.classList.add("hidden");
         buttonContinue.classList.remove("hidden");
@@ -84,7 +85,7 @@ function gameOver() {
 });
 }
 
-// This function removes the hidden class from the selection buttons
+// These functions removes the hidden class from the selection buttons
 
 function buttonToggle() {
     buttonA.classList.toggle("hidden");
@@ -168,7 +169,6 @@ function inputName(e) {
 // Combat card  function section
 
 function combatCardOne() {
-    buttonToggle();
     hideContinue();
     imageHeader.innerHTML = "<img src='assets/images/combat-card-one.png' alt='A beast emerging from the hedgeline'>";
     mainText.innerHTML = "<p>A beast emerges from the hedges and snarls at you, teeth bared and saliva dripping from it's mouth. What do you do?</p>";
@@ -177,15 +177,14 @@ function combatCardOne() {
     buttonC.innerText = "Slowly back away";
 
 arrBtns.forEach(button  => {
-    button.addEventListener("click", function() {
-        buttonToggle();
-        showContinue();
+    button.addEventListener("click", function() { 
+        buttonToggle();         
         if (button === buttonA) {
-            displayText(combatCardOneResultA);
+            displayText("combatCardOneResultA");
         } else if (button === buttonB) {
-            displayText(combatCardOneResultB);
+            displayText("combatCardOneResultB");
         } else if (button === buttonC) {
-            displayText(combatCardOneResultC);
+            displayText("combatCardOneResultC");
         };
     });
 });
@@ -193,9 +192,7 @@ arrBtns.forEach(button  => {
 }
 
 function combatCardTwo() {
-    buttonToggle();
     hideContinue();
-    fullHealth();
     imageHeader.innerHTML = "<img src='assets/images/combat-card-two.png' alt='A group of bandits sat around a campfire, their backs to you'></img>";
     mainText.innerHTML = "<p>You walk into a monastery that has been long since abandoned. Walking through it you see nothing but ruins and torn tapestry. Out the other end you spy a campfire surrounded by four bandits. What do you do?</p>";
     buttonA.innerText = "Sneak around them";
@@ -205,20 +202,18 @@ function combatCardTwo() {
     arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             buttonToggle();
-            showContinue();
             if (button === buttonA) {
-                displayText(combatCardTwoResultA);
+                displayText("combatCardTwoResultA");
             } else if (button === buttonB) {
-                displayText(combatCardTwoResultB);
+                displayText("combatCardTwoResultB");
             } else if (button === buttonC) {
-                displayText(combatCardTwoResultC);
+                displayText("combatCardTwoResultC");
             };
         });
     });
 };
 
 function combatCardThree() {
-    buttonToggle();
     hideContinue();
     imageHeader.innerHTML = "<img src='assets/images/combat-card-three.png' alt='An angry fox stands over the corpse of a dog, growling at you'>";
     mainText.innerHTML =  "<p>You step deeper into the forest and hear a mix of growling and whining and then suddenly a whimper. Upon investigating, you find an aggressive looking fox stood over the body of a dead dog. What do you do?</p>";
@@ -229,13 +224,12 @@ function combatCardThree() {
     arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             buttonToggle();
-            showContinue();
             if (button === buttonA) {
-                displayText(combatCardThreeResultA);
+                displayText("combatCardThreeResultA");
             } else if (button === buttonB) {
-                displayText(combatCardThreeResultB);
+                displayText("combatCardThreeResultB");
             } else if (button === buttonC) {
-                displayText(combatCardThreeResultC);
+                displayText("combatCardThreeResultC");
             };
         });
     });

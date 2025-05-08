@@ -156,7 +156,7 @@ function displayText(argument){
         imageHeader.innerHTML = combatCardThreeData[2].imageHeader;
         mainText.innerHTML = combatCardThreeData[2].mainText;
         };
+    buttonToggle();
     showContinue();
-
 };
 
