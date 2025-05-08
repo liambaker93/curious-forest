@@ -96,16 +96,16 @@ combatCardFiveData = [
 
 encounterCardOneData = [
     {
-        imageHeader:"",
-        mainText:"",
+        imageHeader:"<img src='assets/images/encounter-card-one-result-a.png' alt='Mechant handing over a small potion vial'",
+        mainText:"<p>'Yes I do!' He hands over a small vial 'This will provide you a slight boost to your vitality'</p>",
     },
     {
-        imageHeader:"",
-        mainText:"",
+        imageHeader:"<img src='assets/images/encounter-card-one-result-b.png' alt='Merchant handing a big, heavy vial over to the player'>",
+        mainText:"<p>'Oh that I have!' He reaches into the cart and pulls out a big vial full of a glowing potion. 'If you drink this you will feel as amazing as you ever have!'</p>",
     },
     {
-        imageHeader:"",
-        mainText:"",
+        imageHeader:"<img src='assets/images/encounter-card-one-result-c.png' alt='Merchant pushing a cart through a forest'>",
+        mainText:"<p>'That's a shame. Good luck with your adventure.' He walks into the distance, pulling his cart behind him.</p>",
     }
 ]
 
@@ -156,6 +156,16 @@ function displayText(argument){
         imageHeader.innerHTML = combatCardThreeData[2].imageHeader;
         mainText.innerHTML = combatCardThreeData[2].mainText;
         };
+    if (argument === "encounterCardOneResultA") {
+        imageHeader.innerHTML = encounterCardOneData[0].imageHeader;
+        mainText.innerHTML = encounterCardOneData[0].mainText;
+    }   else if (argument === "encounterCardOneResultB") {
+        imageHeader.innerHTML = encounterCardOneData[1].imageHeader;
+        mainText.innerHTML = encounterCardOneData[1].mainText;
+    }   else if (arguement === "encounterCardOneResultC") {
+        imageHeader.innerHTML = encounterCardOneData[2].imageHeader;
+        mainText.innerHTML = encounterCardOneData[2].mainText;
+    }
     buttonToggle();
     showContinue();
 };
