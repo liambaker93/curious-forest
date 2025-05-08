@@ -15,6 +15,8 @@ const buttonContinue = document.getElementById("button-continue");
 
 const arrBtns = [buttonA, buttonB, buttonC];
 
+const gameCards = [combatCardOne, combatCardTwo, combatCardThree, encounterCardOne];
+
 
 var health = 6
 
@@ -245,49 +247,23 @@ function encounterCardOne() {
     buttonA.innerText = "Have a health potion?";
     buttonB.innerText = "Carrying any superior health potions?";
     buttonC.innerText = "I'm alright thank you, I don't need anything.";
-}
 
-
-// Turn counter to pick which type of card is picked
-/**
- let turnCounter = 0;
-
-function randomCombat(length) {   
-  const cardSelect = new Set();
-  while (cardSelect.size < length) {
-    const randomNumber = Math.floor(Math.random() * 3);
-    cardSelect.add(randomNumber);
-  }
-
-  return Array.from(cardSelect).join("");
-};
-
-const randomCombatEasy = randomCombat(3);
-console.log(randomCombatEasy);
-console.log(randomCombatEasy[0]);
-console.log(randomCombatEasy[1]);
-console.log(randomCombatEasy[2]);
-
-function pickRandomCombat(arr) {
-    if (!arr || arr.length === 0) {
-        return undefined;
-    }
-
-    const randomIndex = Math.floor(Math.random() * arr.length);
-    return arr[randomIndex];
-
-};
-
-const combatCards = [combatCardOne, combatCardTwo, combatCardThree];
-
-const randomCard = pickRandomCombat(combatCards);
-
-function randomCombatSelection() {
-    return randomCard;
+    arrBtns.forEach(button  => {
+        button.addEventListener("click", function() {
+            buttonToggle();
+            if (button === buttonA) {
+                displayText("encounterCardOneResultA");
+            } else if (button === buttonB) {
+                displayText("encounterCardOneResultB");
+            } else if (button === buttonC) {
+                displayText("encounterCardOneResultC");
+            };
+        });
+    });
 };
 
 
- * variables for selecting random cards to view
+/* * variables for selecting random cards to view
  * x is used for combat cards
  * y is used for encounter cards
  * z is used for boss cards */  
