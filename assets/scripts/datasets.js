@@ -162,7 +162,7 @@ function displayText(argument){
     }   else if (argument === "encounterCardOneResultB") {
         imageHeader.innerHTML = encounterCardOneData[1].imageHeader;
         mainText.innerHTML = encounterCardOneData[1].mainText;
-    }   else if (arguement === "encounterCardOneResultC") {
+    }   else if (argument === "encounterCardOneResultC") {
         imageHeader.innerHTML = encounterCardOneData[2].imageHeader;
         mainText.innerHTML = encounterCardOneData[2].mainText;
     }
