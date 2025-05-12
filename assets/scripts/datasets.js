@@ -96,7 +96,7 @@ combatCardFiveData = [
 
 encounterCardOneData = [
     {
-        imageHeader:"<img src='assets/images/encounter-card-one-result-a.png' alt='Mechant handing over a small potion vial'",
+        imageHeader:"<img src='assets/images/encounter-card-one-result-a.png' alt='Mechant handing over a small potion vial'>",
         mainText:"<p>'Yes I do!' He hands over a small vial 'This will provide you a slight boost to your vitality'</p>",
     },
     {
@@ -120,7 +120,7 @@ encounterCardTwoData = [
     },
     {
         imageHeader:"<img src='assets/images/encounter-card-two-result-c.png' alt='The gnome waves goodbye'>",
-        mainText:"'<p>Goodbye traveller, see you soon!' You past the gnome, and he spins around on the mushroom to face you and wave, before leaping back underneath it</p>'",
+        mainText:"<p>'Goodbye traveller, see you soon!' You past the gnome, and he spins around on the mushroom to face you and wave, before leaping back underneath it</p>'",
     }
 ]
 
