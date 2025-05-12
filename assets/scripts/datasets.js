@@ -120,7 +120,7 @@ encounterCardTwoData = [
     },
     {
         imageHeader:"<img src='assets/images/encounter-card-two-result-c.png' alt='The gnome waves goodbye'>",
-        mainText:"'Goodbye traveller, see you soon!' You past the gnome, and he spins around on the mushroom to face you and wave, before leaping back underneath it</p>'",
+        mainText:"'<p>Goodbye traveller, see you soon!' You past the gnome, and he spins around on the mushroom to face you and wave, before leaping back underneath it</p>'",
     }
 ]
 
