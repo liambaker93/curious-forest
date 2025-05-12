@@ -1,10 +1,5 @@
 // Various game function consts
 
-// const { check } = require("yargs");
-
-// const { check } = require("yargs");
-
-// const { check } = require("yargs");
 
 const imageHeader = document.getElementById("image-header");
 const mainText = document.getElementById("main-text");
@@ -21,19 +16,21 @@ const gameCards = [combatCardOne, combatCardTwo, combatCardThree];
 shuffleCards(gameCards);
 let gameCardIndex = 0;
 
-var health = 6
+var health = 6;
+let maxHealth = 6;
+let minHealth = 0;
 
-function increaseHealth(amount) {
-    health = Math.min(health + amount, 6);
-}
+function healthAdjust(adjust) {
+    health += adjust;
 
-function decreaseHealth(amount) {
-    health -= amount;
+    health = Math.min(health, maxHealth); //Stops the health going over the maximum health points selected
+    health = Math.max(health, minHealth); // Stops the health going below 0
+
 }
 
 // This function will be the first one used when the user opts to start a new game //
 function gameStart() {
-      checkHealth(health);
+    checkHealth();
       imageHeader.innerHTML = 
     "<img src='assets/images/fantasy-pub.png' alt='A fantasy pub open with people sat drinking and a barmaid serving.'>";
       mainText.innerHTML = "<p>You walk up to a pub and see two tables full of people laughing, sharing stories. One man sits on a stool in front of the bar and watches you wander towards the bar. What do you do?</p>"; 
@@ -54,7 +51,7 @@ function gameStart() {
             } else if (button === buttonB) {
                 imageHeader.innerHTML = gameStartData[1].imageHeader;
                 mainText.innerHTML = gameStartData[1].mainText;
-                decreaseHealth(2);
+                healthAdjust(-2);
             } else if (button === buttonC) {
                 imageHeader.innerHTML = gameStartData[2].imageHeader;
                 mainText.innerHTML = gameStartData[2].mainText;
@@ -85,6 +82,7 @@ function nextLevel() {
     if (x === 1 && gameCardIndex < gameCards.length) {
         gameCards[gameCardIndex]();
         gameCardIndex++;
+        checkHealth();
     } else if (health < 4 && !encounterCardOneRun) {
         encounterCardOne();
         encounterCardOneRun = true;
@@ -94,9 +92,11 @@ function nextLevel() {
     } else if (x === 2 && gameCardIndex < gameCards.length) {
         gameCards[gameCardIndex]();
         gameCardIndex++;
+        checkHealth();
     } else if (x === 3 && gameCardIndex < gameCards.length) {
         gameCards[gameCardIndex]();
         gameCardIndex++;
+        checkHealth();
     } else {
         console.log("End of cards");
         buttonToggle();
@@ -211,7 +211,6 @@ function inputName(e) {
 // Combat card  function section
 
 function combatCardOne() {
-    checkHealth();
     hideContinue();
     imageHeader.innerHTML = "<img src='assets/images/combat-card-one.png' alt='A beast emerging from the hedgeline'>";
     mainText.innerHTML = "<p>A beast emerges from the hedges and snarls at you, teeth bared and saliva dripping from it's mouth. What do you do?</p>";
@@ -223,12 +222,12 @@ arrBtns.forEach(button  => {
     button.addEventListener("click", function() {                
         if (button === buttonA) {
             displayText("combatCardOneResultA");
-            decreaseHealth(2);
+            healthAdjust(-2);
             buttonToggle(); 
         } else if (button === buttonB) {
             displayText("combatCardOneResultB");
             buttonToggle();
-            decreaseHealth(1);
+            healthAdjust(-1);
         } else if (button === buttonC) {
             displayText("combatCardOneResultC");
             buttonToggle(); 
@@ -239,7 +238,6 @@ arrBtns.forEach(button  => {
 }
 
 function combatCardTwo() {
-    checkHealth();
     hideContinue();
     imageHeader.innerHTML = "<img src='assets/images/combat-card-two.png' alt='A group of bandits sat around a campfire, their backs to you'></img>";
     mainText.innerHTML = "<p>You walk into a monastery that has been long since abandoned. Walking through it you see nothing but ruins and torn tapestry. Out the other end you spy a campfire surrounded by four bandits. What do you do?</p>";
@@ -254,7 +252,7 @@ function combatCardTwo() {
                 buttonToggle(); 
             } else if (button === buttonB) {
                 displayText("combatCardTwoResultB");
-                decreaseHealth(2);
+                healthAdjust(-1);
                 buttonToggle(); 
             } else if (button === buttonC) {
                 displayText("combatCardTwoResultC");
@@ -265,7 +263,6 @@ function combatCardTwo() {
 };
 
 function combatCardThree() {
-    checkHealth();
     hideContinue();
     imageHeader.innerHTML = "<img src='assets/images/combat-card-three.png' alt='An angry fox stands over the corpse of a dog, growling at you'>";
     mainText.innerHTML =  "<p>You step deeper into the forest and hear a mix of growling and whining and then suddenly a whimper. Upon investigating, you find an aggressive looking fox stood over the body of a dead dog. What do you do?</p>";
@@ -280,6 +277,7 @@ function combatCardThree() {
                 buttonToggle(); 
             } else if (button === buttonB) {
                 displayText("combatCardThreeResultB");
+                healthAdjust(-1);
                 buttonToggle(); 
             } else if (button === buttonC) {
                 displayText("combatCardThreeResultC");
@@ -292,7 +290,6 @@ function combatCardThree() {
 // encounter card functions
 
 function encounterCardOne() {
-    checkHealth();
     hideContinue();
     imageHeader.innerHTML = "<img src='assets/images/encounter-card-one.png' alt='A merchant pulling a cart through a forest'>";
     mainText.innerHTML = "<p>Wandering through the forest, you stumble upon a merchant. He's pulling his wares and stops you, looking you up and down. 'Adventurer, what can I offer you?'</p>";
@@ -304,11 +301,12 @@ function encounterCardOne() {
         button.addEventListener("click", function() {
             if (button === buttonA) {
                 displayText("encounterCardOneResultA");
-                increaseHealth(1);
+                healthAdjust(1);
                 buttonToggle();
             } else if (button === buttonB) {
                 displayText("encounterCardOneResultB");
-                increaseHealth(3);
+                healthAdjust(3);
+                console.log(health);
                 buttonToggle();
             } else if (button === buttonC) {
                 displayText("encounterCardOneResultC");
@@ -319,7 +317,6 @@ function encounterCardOne() {
 };
 
 function encounterCardTwo() {
-    checkHealth();
     hideContinue();
     imageHeader.innerHTML = "<img src='assets/images/encounter-card-two.png' alt='A gnome sat on a mushroom'>";
     mainText.innerHTML = "<p>You walk over a log and step into a field of mushrooms, all glowing different colours. You hear a snigger as a gnome reaches up and leaps up atop one. 'You look weary. One of these mushrooms will help you with that, I'm afraid I just can't remember which one...'What do you do?</p>";
@@ -331,11 +328,11 @@ function encounterCardTwo() {
         button.addEventListener("click", function() {
             if (button === buttonA) {
                 displayText("encounterCardTwoResultA");
-                increaseHealth(1);
+                healthAdjust(2);
                 buttonToggle();
             } else if (button === buttonB) {
                 displayText("encounterCardTwoResultB");
-                increaseHealth(3);
+                healthAdjust(-2);
                 buttonToggle();
             } else if (button === buttonC) {
                 displayText("encounterCardTwoResultC");
