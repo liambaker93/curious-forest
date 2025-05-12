@@ -111,16 +111,16 @@ encounterCardOneData = [
 
 encounterCardTwoData = [
     {
-        imageHeader:"",
-        mainText:"",
+        imageHeader:"<img src='assets/images/encounter-card-two-result-a.png' alt='Purple mushroom shrivelled on the ground in front of the gnome'>",
+        mainText:"<p>'Ah! I thought the purple one would mean good news, you're looking healthier already!' You eat the mushroom and feel revitalised.</p>",
     },
     {
-        imageHeader:"",
-        mainText:"",
+        imageHeader:"<img src='assets/images/encounter-card-two-result-b.png' alt='A gnome crying sat underneath a rotting mushroom'>",
+        mainText:"<p>'Oh dear, the mushrooms...The rot is spreading between them! This is no good...' You eat the wrong mushroom, and feel it wreak havoc with your insides</p>",
     },
     {
-        imageHeader:"",
-        mainText:"",
+        imageHeader:"<img src='assets/images/encounter-card-two-result-c.png' alt='The gnome waves goodbye'>",
+        mainText:"'Goodbye traveller, see you soon!' You past the gnome, and he spins around on the mushroom to face you and wave, before leaping back underneath it</p>'",
     }
 ]
 
@@ -165,7 +165,17 @@ function displayText(argument){
     }   else if (argument === "encounterCardOneResultC") {
         imageHeader.innerHTML = encounterCardOneData[2].imageHeader;
         mainText.innerHTML = encounterCardOneData[2].mainText;
-    }
+    };
+    if (argument === "encounterCardTwoResultA") {
+        imageHeader.innerHTML = encounterCardTwoData[0].imageHeader;
+        mainText.innerHTML = encounterCardTwoData[0].mainText;
+    }   else if (argument === "encounterCardTwoResultB") {
+        imageHeader.innerHTML = encounterCardTwoData[1].imageHeader;
+        mainText.innerHTML = encounterCardTwoData[1].mainText;
+    }   else if (argument === "encounterCardTwoResultC") {
+        imageHeader.innerHTML = encounterCardTwoData[2].imageHeader;
+        mainText.innerHTML = encounterCardTwoData[2].mainText;
+    };
     buttonToggle();
     showContinue();
 };

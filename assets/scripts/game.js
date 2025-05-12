@@ -17,7 +17,7 @@ const buttonContinue = document.getElementById("button-continue");
 
 const arrBtns = [buttonA, buttonB, buttonC];
 
-const gameCards = [combatCardOne, combatCardTwo, combatCardThree, encounterCardOne];
+const gameCards = [combatCardOne, combatCardTwo, combatCardThree, encounterCardOne, encounterCardTwo];
 
 
 var health = 6
@@ -27,7 +27,7 @@ function increaseHealth(amount) {
 }
 
 function decreaseHealth(amount) {
-    health = Math.max(health - amount, 0);
+    health -= amount;
 }
 
 // This function will be the first one used when the user opts to start a new game //
@@ -301,6 +301,33 @@ function encounterCardOne() {
     });
 };
 
+function encounterCardTwo() {
+    checkHealth();
+    hideContinue();
+    imageHeader.innerHTML = "<img src='assets/images/encounter-card-two.png' alt='A gnome sat on a mushroom'>";
+    mainText.innerHTML = "<p>You walk over a log and step into a field of mushrooms, all glowing different colours. You hear a snigger as a gnome reaches up and leaps up atop one. 'You look weary. One of these mushrooms will help you with that, I'm afraid I just can't remember which one...'What do you do?</p>";
+    buttonA.innerText = "Try a purple mushroom";
+    buttonB.innerText = "Try the red mushroom";
+    buttonC.innerText = "Decline the offer";
+    
+    arrBtns.forEach(button  => {
+        button.addEventListener("click", function() {
+            if (button === buttonA) {
+                displayText("encounterCardTwoResultA");
+                increaseHealth(1);
+                buttonToggle();
+            } else if (button === buttonB) {
+                displayText("encounterCardTwoResultB");
+                increaseHealth(3);
+                buttonToggle();
+            } else if (button === buttonC) {
+                displayText("encounterCardTwoResultC");
+                buttonToggle(); 
+            };
+        });
+    });
+};
+   
 
 /* * variables for selecting random cards to view
  * x is used for combat cards
