@@ -1,6 +1,5 @@
 // Various game function consts
 
-
 const imageHeader = document.getElementById("image-header");
 const mainText = document.getElementById("main-text");
 const adventureStart = document.getElementById("adventure-start");
@@ -21,10 +20,10 @@ let maxHealth = 6;
 let minHealth = 0;
 
 function healthAdjust(adjust) {
-    health += adjust;
+    health = health + adjust;
 
-    health = Math.min(health, maxHealth); //Stops the health going over the maximum health points selected
-    health = Math.max(health, minHealth); // Stops the health going below 0
+    //health = Math.min(health, maxHealth); //Stops the health going over the maximum health points selected
+    //health = Math.max(health, minHealth); // Stops the health going below 0
 
 }
 
@@ -64,39 +63,37 @@ function gameStart() {
 // Shuffle function for combat cards
 
 function shuffleCards(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+    for (let n = array.length - 1; n > 0; n--) {
+        const j = Math.floor(Math.random() * (n + 1));
+        [array[n], array[j]] = [array[j], array[n]];
     }
 }
 
 // Next level function used after all result cards
 
-let encounterCardOneRun = false;
-let encounterCardTwoRun = false;
+// let encounterCardOneRun = false;
+// let encounterCardTwoRun = false;
 
 function nextLevel() {
     ++x;
+    checkHealth();
     hideContinue();
     buttonToggle();
     if (x === 1 && gameCardIndex < gameCards.length) {
         gameCards[gameCardIndex]();
         gameCardIndex++;
-        checkHealth();
-    } else if (health < 4 && !encounterCardOneRun) {
+    } else if (x === 2) {
         encounterCardOne();
-        encounterCardOneRun = true;
-    } else if (health < 4 && !encounterCardTwoRun) {
-        encounterCardTwo();
-        encounterCardTwoRun = true;
-    } else if (x === 2 && gameCardIndex < gameCards.length) {
-        gameCards[gameCardIndex]();
-        gameCardIndex++;
-        checkHealth();
+       // encounterCardOneRun = true;
     } else if (x === 3 && gameCardIndex < gameCards.length) {
         gameCards[gameCardIndex]();
         gameCardIndex++;
-        checkHealth();
+    } else if (x === 4) {
+        encounterCardTwo();
+       // encounterCardTwoRun = true; 
+    } else if (x === 5 && gameCardIndex < gameCards.length) {
+        gameCards[gameCardIndex]();
+        gameCardIndex++;
     } else {
         console.log("End of cards");
         buttonToggle();
@@ -299,18 +296,15 @@ function encounterCardOne() {
 
     arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
+            buttonToggle();
             if (button === buttonA) {
                 displayText("encounterCardOneResultA");
                 healthAdjust(1);
-                buttonToggle();
             } else if (button === buttonB) {
                 displayText("encounterCardOneResultB");
-                healthAdjust(3);
-                console.log(health);
-                buttonToggle();
+                healthAdjust(2);
             } else if (button === buttonC) {
                 displayText("encounterCardOneResultC");
-                buttonToggle(); 
             };
         });
     });
