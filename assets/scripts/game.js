@@ -17,8 +17,9 @@ const buttonContinue = document.getElementById("button-continue");
 
 const arrBtns = [buttonA, buttonB, buttonC];
 
-const gameCards = [combatCardOne, combatCardTwo, combatCardThree, encounterCardOne, encounterCardTwo];
-
+const gameCards = [combatCardOne, combatCardTwo, combatCardThree];
+shuffleCards(gameCards);
+let gameCardIndex = 0;
 
 var health = 6
 
@@ -63,23 +64,39 @@ function gameStart() {
 
     };
 
+// Shuffle function for combat cards
+
+function shuffleCards(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 // Next level function used after all result cards
 
 let encounterCardOneRun = false;
+let encounterCardTwoRun = false;
 
 function nextLevel() {
     ++x;
     hideContinue();
     buttonToggle();
-    if (x === 1) {
-        combatCardOne();
+    if (x === 1 && gameCardIndex < gameCards.length) {
+        gameCards[gameCardIndex]();
+        gameCardIndex++;
     } else if (health < 4 && !encounterCardOneRun) {
         encounterCardOne();
         encounterCardOneRun = true;
-    } else if (x === 2) {
-        combatCardTwo();
-    } else if (x === 3) {
-        combatCardThree();
+    } else if (health < 4 && !encounterCardTwoRun) {
+        encounterCardTwo();
+        encounterCardTwoRun = true;
+    } else if (x === 2 && gameCardIndex < gameCards.length) {
+        gameCards[gameCardIndex]();
+        gameCardIndex++;
+    } else if (x === 3 && gameCardIndex < gameCards.length) {
+        gameCards[gameCardIndex]();
+        gameCardIndex++;
     } else {
         console.log("End of cards");
         buttonToggle();
