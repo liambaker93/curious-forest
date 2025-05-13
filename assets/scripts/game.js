@@ -15,6 +15,9 @@ const gameCards = [combatCardOne, combatCardTwo, combatCardThree];
 shuffleCards(gameCards);
 let gameCardIndex = 0;
 
+const bossCards = [bossCardOne,];
+shuffleCards(bossCards);
+
 var health = 6;
 let maxHealth = 6;
 let minHealth = 0;
@@ -96,8 +99,12 @@ function nextLevel() {
     } else if (x === 5 && gameCardIndex < gameCards.length) {
         gameCards[gameCardIndex]();
         gameCardIndex++;
+    } else if (x > 5) {
+        bossCards[0]();
     } else if (bossCardRun = true) {
+        if (mainText.textContent.contains("balrog")) {
         bossCardOneSecondary();
+        }
     } else {
         console.log("End of cards");
         buttonToggle();
