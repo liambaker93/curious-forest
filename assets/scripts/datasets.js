@@ -231,7 +231,7 @@ function displayText(argument){
 // Boss cards section. These ifs provide the data for each bossCard function
     if (argument === "bossCardOneResultA") {
         imageHeader.innerHTML = bossCardOneData[0].imageHeader;
-        mainText.innerHTML = bossCardOneData[0].imageHeader;
+        mainText.innerHTML = bossCardOneData[0].mainText;
     } else if (argument === "bossCardOneResultB") {
         imageHeader.innerHTML = bossCardOneData[1].imageHeader;
         mainText.innerHTML = bossCardOneData[1].mainText;
@@ -254,7 +254,7 @@ function bossDisplayText(argument) {
         imageHeader.innerHTML = bossCardOneSecondaryData[2].imageHeader;
         mainText.innerHTML = bossCardOneSecondaryData[2].mainText;
     };
-    buttonToggle();
-    showContinue(gameWin);
+    
+    
 }
 
