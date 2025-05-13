@@ -1,7 +1,5 @@
 // Various game function consts
 
-const { hide } = require("yargs");
-
 const imageHeader = document.getElementById("image-header");
 const mainText = document.getElementById("main-text");
 const adventureStart = document.getElementById("adventure-start");
@@ -127,6 +125,21 @@ function gameOver() {
         };
     });
     mainText.innerHTML = "<p>Well, it seems like the adventure has closed, rather unceremoniously... Return Adventurer! Maybe you'll get lucky next time...</p>"
+    imageHeader.classList.add("hidden");
+    buttonContinue.classList.remove("hidden");
+    buttonContinue.innerText = "Return to the pub";
+    buttonContinue.addEventListener("click", function() {
+        window.location.reload();
+});
+}
+
+function gameWin() {
+    arrBtns.forEach(button => { //This if will run through the buttons to check if they need to be hidden or not
+        if (!button.classList.contains("hidden")) {
+            button.classList.add("hidden")
+        };
+    });
+    mainText.innerHTML = "<p>Well done! You beat the adventure, and scored a prize. Dare you try your luck again?</p>"
     imageHeader.classList.add("hidden");
     buttonContinue.classList.remove("hidden");
     buttonContinue.innerText = "Return to the pub";
@@ -445,14 +458,14 @@ function bossCardOneSecondary() {
             arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             if (button === buttonA) {
-                displayText("bossCardOneSecondaryResultA");
+                bossDisplayText("bossCardOneSecondaryResultA");
                 healthAdjust(-4);
                 buttonToggle();
             } else if (button === buttonB) {
-                displayText("bossCardOneSecondaryResultB");
+                bossDisplayText("bossCardOneSecondaryResultB");
                 buttonToggle();
             } else if (button === buttonC) {
-                displayText("bossCardOneSecondaryResultC");
+                bossDisplayText("bossCardOneSecondaryResultC");
                 healthAdjust(-4);
                 buttonToggle(); 
             };

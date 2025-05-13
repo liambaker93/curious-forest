@@ -239,6 +239,11 @@ function displayText(argument){
         imageHeader.innerHTML = bossCardOneData[2].imageHeader;
         mainText.innerHTML = bossCardOneData[2].mainText;
     };
+    buttonToggle();
+    showContinue();
+};
+// Use this function for the second boss card, to set up the end of the game.
+function bossDisplayText(argument) {
     if (argument === "bossCardOneSecondaryResultA") {
         imageHeader.innerHTML = bossCardOneSecondaryData[0].imageHeader;
         mainText.innerHTML = bossCardOneSecondaryData[0].mainText;
@@ -250,6 +255,6 @@ function displayText(argument){
         mainText.innerHTML = bossCardOneSecondaryData[2].mainText;
     };
     buttonToggle();
-    showContinue();
-};
+    showContinue(gameWin);
+}
 
