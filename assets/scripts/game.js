@@ -1,5 +1,7 @@
 // Various game function consts
 
+const { hide } = require("yargs");
+
 const imageHeader = document.getElementById("image-header");
 const mainText = document.getElementById("main-text");
 const adventureStart = document.getElementById("adventure-start");
@@ -11,11 +13,11 @@ const buttonContinue = document.getElementById("button-continue");
 
 const arrBtns = [buttonA, buttonB, buttonC];
 
-const gameCards = [combatCardOne, combatCardTwo, combatCardThree, combatCardFour];
+const gameCards = [combatCardOne, combatCardTwo, combatCardThree, combatCardFour, combatCardFive];
 shuffleCards(gameCards);
 let gameCardIndex = 0;
 
-const bossCards = [bossCardOne,];
+const bossCards = [bossCardOne];
 shuffleCards(bossCards);
 
 var health = 6;
@@ -27,8 +29,8 @@ let bossCardRun = false;
 function healthAdjust(adjust) {
     health = health + adjust;
 
-    //health = Math.min(health, maxHealth); //Stops the health going over the maximum health points selected
-    //health = Math.max(health, minHealth); // Stops the health going below 0
+    health = Math.min(health, maxHealth); //Stops the health going over the maximum health points selected
+    health = Math.max(health, minHealth); // Stops the health going below 0
 
 }
 
@@ -99,10 +101,10 @@ function nextLevel() {
     } else if (x === 5 && gameCardIndex < gameCards.length) {
         gameCards[gameCardIndex]();
         gameCardIndex++;
-    } else if (x > 5) {
+    } else if (x > 5 && bossCardRun === false) {
         bossCards[0]();
-    } else if (bossCardRun = true) {
-        if (mainText.textContent.contains("balrog")) {
+    } else if (x > 5 && bossCardRun === true) {
+        if (mainText.textContent.includes("balrog")) {
         bossCardOneSecondary();
         }
     } else {
@@ -119,6 +121,11 @@ function nextLevel() {
 };
 // This function runs if your health reaches 0. Currently a copy of the code that runs when there are no more cards to show the player.
 function gameOver() {
+    arrBtns.forEach(button => { //This if will run through the buttons to check if they need to be hidden or not
+        if (!button.classList.contains("hidden")) {
+            button.classList.add("hidden")
+        };
+    });
     mainText.innerHTML = "<p>Well, it seems like the adventure has closed, rather unceremoniously... Return Adventurer! Maybe you'll get lucky next time...</p>"
     imageHeader.classList.add("hidden");
     buttonContinue.classList.remove("hidden");
@@ -315,6 +322,32 @@ function combatCardFour() {
             } else if (button === buttonC) {
                 displayText("combatCardFourResultC");
                 healthAdjust(-2);
+                buttonToggle(); 
+            };
+        });
+    });
+};
+
+function combatCardFive() {
+    hideContinue();
+    imageHeader.innerHTML = "<img src='assets/images/combat-card-five.png' alt='A bear standing in a lake'>";
+    mainText.innerHTML = "<p>You follow the sound of a lake and find a bear calmly drinking from it. You break a tree branch on the ground and it darts it's head around to stare directly at you. What do you do?</p>";
+    buttonA.innerText = "Draw your sword and threaten it";
+    buttonB.innerText = "Stare at it and stand your ground";
+    buttonC.innerText = "Pet the bear";
+
+    arrBtns.forEach(button  => {
+        button.addEventListener("click", function() {
+            if (button === buttonA) {
+                displayText("combatCardFiveResultA");
+                healthAdjust(-1); 
+                buttonToggle(); 
+            } else if (button === buttonB) {
+                displayText("combatCardFiveResultB");
+                buttonToggle(); 
+            } else if (button === buttonC) {
+                displayText("combatCardFiveResultC");
+                healthAdjust(1);
                 buttonToggle(); 
             };
         });
