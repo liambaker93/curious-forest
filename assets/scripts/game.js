@@ -19,6 +19,8 @@ var health = 6;
 let maxHealth = 6;
 let minHealth = 0;
 
+let bossCardRun = false;
+
 function healthAdjust(adjust) {
     health = health + adjust;
 
@@ -94,6 +96,8 @@ function nextLevel() {
     } else if (x === 5 && gameCardIndex < gameCards.length) {
         gameCards[gameCardIndex]();
         gameCardIndex++;
+    } else if (bossCardRun = true) {
+        bossCardOneSecondary();
     } else {
         console.log("End of cards");
         buttonToggle();
@@ -335,6 +339,60 @@ function encounterCardTwo() {
         });
     });
 };
+
+// Boss card functions. These functions act differently, using two levels within themselves
+
+function bossCardOne() {
+    bossCardRun = true;
+    hideContinue();
+    imageHeader.innerHTML = "<img src='assets/images/boss-card-one.png' alt='A balrog stands behind a large rock in a cave'>";
+    mainText.innerHTML = "<p>You walk down through the cave, and feel warmth striking it's way down the stone corridors. You see streaks of fire erupt from behind a rock, and see a Balrog sneaking around it towards you. What do you do?</p>";
+    buttonA.innerText = "Slowly walk towards it and draw your sword ready to attack";
+    buttonB.innerText = "Rush towards it, sword drawn, right underneath it's foot";
+    buttonC.innerText = "Stop where you stand"
+
+        arrBtns.forEach(button  => {
+        button.addEventListener("click", function() {
+            if (button === buttonA) {
+                displayText("bossCardOneResultA");
+                healthAdjust(-3);
+                buttonToggle();
+            } else if (button === buttonB) {
+                displayText("bossCardOneResultB");
+                buttonToggle();
+            } else if (button === buttonC) {
+                displayText("bossCardOneResultC");
+                buttonToggle(); 
+            };
+        });
+    });
+}
+
+function bossCardOneSecondary() {
+    hideContinue();
+    imageHeader.innerHTML = "<img src='assets/images/boss-card-one-second.png' alt='The balrog stands firm surrounded by ruins'>";
+    mainText.innerHTML = "<p>The balrog prepares to fight again, smacking itself against the walls of the cave, causing stone to crack and fall to the ground</p>";
+    buttonA.innerText = "Attempt to climb it's leg";
+    buttonB.innerText = "Wait for it to step a little closer to you";
+    buttonC.innerText = "Hold by the rock, drawing it's fire breath";
+
+            arrBtns.forEach(button  => {
+        button.addEventListener("click", function() {
+            if (button === buttonA) {
+                displayText("bossCardOneSecondaryResultA");
+                healthAdjust(-4);
+                buttonToggle();
+            } else if (button === buttonB) {
+                displayText("bossCardOneSecondaryResultB");
+                buttonToggle();
+            } else if (button === buttonC) {
+                displayText("bossCardOneSecondaryResultC");
+                healthAdjust(-4);
+                buttonToggle(); 
+            };
+        });
+    });
+}
    
 
 /* * variables for selecting random cards to view
