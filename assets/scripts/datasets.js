@@ -81,16 +81,16 @@ combatCardFourData = [
 
 combatCardFiveData = [
     {
-        imageHeader: "",
-        mainText: "",
+        imageHeader: "<img src='assets/images/combat-card-five-result-a.png' alt='A bear charging towards the viewer'>",
+        mainText: "<p>The bear meets your challenge and charges out of the river towards you. You hold your sword forward and it darts aside from it to bite into your arm. You manage to slice it's neck, and cut an artery, dropping it to the ground.</p>",
     },
     {
-        imageHeader:"",
-        mainText:"",
+        imageHeader:"<img src='assets/images/combat-card-five-result-b.png' alt='A bear walking away from the viewer'>",
+        mainText:"<p>You stamp your feet into the ground, one after the other. The bear sees this, and respects your presence, deciding not to engage and leaves you to enjoy the river alone.</p>",
     },
     {
-        imageHeader:"",
-        mainText:"",
+        imageHeader:"<img src='assets/images/combat-card-five-result-c.png' alt='A bear sleeping by a river'>",
+        mainText:"<p>You step slowly towards the bear, taking a gamble on it's temperament. You stroke the bear behind it's ear, and it slowly starts to drop to the ground, falling asleep. You step past it and take a sip from the river, feeling it affect your vitality.</p>",
     }
 ];
 
@@ -193,9 +193,19 @@ function displayText(argument){
     } else if (argument === "combatCardFourResultB") {
         imageHeader.innerHTML = combatCardFourData[1].imageHeader;
         mainText.innerHTML = combatCardFourData[1].mainText;
-    } else if (argument === "combatCardFourResultB") {
+    } else if (argument === "combatCardFourResultC") {
         imageHeader.innerHTML = combatCardFourData[2].imageHeader;
         mainText.innerHTML = combatCardFourData[2].mainText;
+    };
+        if (argument === "combatCardFiveResultA") {
+        imageHeader.innerHTML = combatCardFiveData[0].imageHeader;
+        mainText.innerHTML = combatCardFiveData[0].mainText
+    } else if (argument === "combatCardFiveResultB") {
+        imageHeader.innerHTML = combatCardFiveData[1].imageHeader;
+        mainText.innerHTML = combatCardFiveData[1].mainText;
+    } else if (argument === "combatCardFiveResultC") {
+        imageHeader.innerHTML = combatCardFiveData[2].imageHeader;
+        mainText.innerHTML = combatCardFiveData[2].mainText;
     };
 // Encounter cards section. These ifs provide the data for each encounterCard function
     if (argument === "encounterCardOneResultA") {
@@ -227,7 +237,7 @@ function displayText(argument){
         mainText.innerHTML = bossCardOneData[1].mainText;
     } else if (argument === "bossCardOneResultC") {
         imageHeader.innerHTML = bossCardOneData[2].imageHeader;
-        mainText.innerText = bossCardOneData[2].mainText;
+        mainText.innerHTML = bossCardOneData[2].mainText;
     };
     if (argument === "bossCardOneSecondaryResultA") {
         imageHeader.innerHTML = bossCardOneSecondaryData[0].imageHeader;
