@@ -18,7 +18,7 @@ let gameCardIndex = 0;
 const bossCards = [bossCardOne];
 shuffleCards(bossCards);
 
-var health = 6;
+let health = 6;
 let maxHealth = 6;
 let minHealth = 0;
 
@@ -165,7 +165,7 @@ function hideContinue() {
     buttonContinue.classList.add("hidden");
 };
 
-// This function removes health from the player
+// This section handles the health of the player.
 
 const healthOne = document.getElementById("heart-one");
 const healthTwo = document.getElementById("heart-two");
@@ -173,8 +173,9 @@ const healthThree = document.getElementById("heart-three");
 
 const fullHearts = [healthOne, healthTwo, healthThree];
 const medHearts = [healthOne, healthTwo];
+const lowHearts = [healthOne];
 
-
+// This function checks the health of the player and then visually displays that.
 
 function checkHealth() {
     if (health === 6) {
@@ -195,7 +196,7 @@ function checkHealth() {
         medHearts.forEach(i => {
             if (i && i.classList) {
                 i.classList.remove("hidden");
-                healthThree.classList.add("hidden");
+                healthThree.classList.add("health-change");
             }
         });
     } else if (health === 3) {
@@ -216,7 +217,7 @@ function checkHealth() {
         healthOne.classList.remove("fa-heart");
         healthOne.classList.add("fa-heart-crack");
     }  else {
-        gameOver();
+        buttonContinue.addEventListener("click", gameOver);
     }
     console.log(health);
 };
@@ -250,12 +251,10 @@ arrBtns.forEach(button  => {
     button.addEventListener("click", function() {                
         if (button === buttonA) {
             displayText("combatCardOneResultA");
-            healthAdjust(-2);
             buttonToggle(); 
         } else if (button === buttonB) {
             displayText("combatCardOneResultB");
             buttonToggle();
-            healthAdjust(-1);
         } else if (button === buttonC) {
             displayText("combatCardOneResultC");
             buttonToggle(); 
@@ -280,7 +279,6 @@ function combatCardTwo() {
                 buttonToggle(); 
             } else if (button === buttonB) {
                 displayText("combatCardTwoResultB");
-                healthAdjust(-1);
                 buttonToggle(); 
             } else if (button === buttonC) {
                 displayText("combatCardTwoResultC");
@@ -305,7 +303,6 @@ function combatCardThree() {
                 buttonToggle(); 
             } else if (button === buttonB) {
                 displayText("combatCardThreeResultB");
-                healthAdjust(-1);
                 buttonToggle(); 
             } else if (button === buttonC) {
                 displayText("combatCardThreeResultC");
@@ -327,14 +324,12 @@ function combatCardFour() {
         button.addEventListener("click", function() {
             if (button === buttonA) {
                 displayText("combatCardFourResultA");
-                healthAdjust(2);
                 buttonToggle(); 
             } else if (button === buttonB) {
                 displayText("combatCardFourResultB");
                 buttonToggle(); 
             } else if (button === buttonC) {
                 displayText("combatCardFourResultC");
-                healthAdjust(-2);
                 buttonToggle(); 
             };
         });
@@ -353,14 +348,12 @@ function combatCardFive() {
         button.addEventListener("click", function() {
             if (button === buttonA) {
                 displayText("combatCardFiveResultA");
-                healthAdjust(-1); 
                 buttonToggle(); 
             } else if (button === buttonB) {
                 displayText("combatCardFiveResultB");
                 buttonToggle(); 
             } else if (button === buttonC) {
                 displayText("combatCardFiveResultC");
-                healthAdjust(1);
                 buttonToggle(); 
             };
         });
@@ -379,15 +372,15 @@ function encounterCardOne() {
 
     arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
-            buttonToggle();
             if (button === buttonA) {
                 displayText("encounterCardOneResultA");
-                healthAdjust(1);
+                buttonToggle();
             } else if (button === buttonB) {
                 displayText("encounterCardOneResultB");
-                healthAdjust(2);
+                buttonToggle();
             } else if (button === buttonC) {
                 displayText("encounterCardOneResultC");
+                buttonToggle();
             };
         });
     });
@@ -405,11 +398,9 @@ function encounterCardTwo() {
         button.addEventListener("click", function() {
             if (button === buttonA) {
                 displayText("encounterCardTwoResultA");
-                healthAdjust(2);
                 buttonToggle();
             } else if (button === buttonB) {
                 displayText("encounterCardTwoResultB");
-                healthAdjust(-2);
                 buttonToggle();
             } else if (button === buttonC) {
                 displayText("encounterCardTwoResultC");
@@ -434,7 +425,6 @@ function bossCardOne() {
         button.addEventListener("click", function() {
             if (button === buttonA) {
                 displayText("bossCardOneResultA");
-                healthAdjust(-3);
                 buttonToggle();
             } else if (button === buttonB) {
                 displayText("bossCardOneResultB");
@@ -459,12 +449,10 @@ function bossCardOneSecondary() {
         button.addEventListener("click", function() {
             if (button === buttonA) {
                 bossDisplayText("bossCardOneSecondaryResultA");
-                healthAdjust(-4);
             } else if (button === buttonB) {
                 bossDisplayText("bossCardOneSecondaryResultB");
             } else if (button === buttonC) {
                 bossDisplayText("bossCardOneSecondaryResultC");
-                healthAdjust(-6);
             };
         });
     });
