@@ -29,3 +29,7 @@ img {
 #input-name {
     color: whitesmoke;
 }
+
+.health-change {
+    opacity: 0.5;
+}
