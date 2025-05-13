@@ -16,7 +16,7 @@ gameStartData = [
         imageHeader: "<img src='assets/images/result-card-three.png' alt='The outisde of a pub with the interior and streetlamps on'>",
         mainText: "<p>You reject the drink and turn around, leaving the pub. No one pays any attention as you leave and they all get back to their lives. You leave the town and venture into the nearby forest</p>'",
     },
-]
+];
 
 combatCardOneData = [
 {
@@ -31,7 +31,7 @@ combatCardOneData = [
     imageHeader: "<img src='assets/images/combat-card-one-result-c.png' alt='The beast backs into a bush, staring at the viewer'>",
     mainText: "<p>You step backwards gently away from the beast, holding your hands up to show you're no threat. It ducks it's head and backs into the hedgeline, disappearing from view</p>",
 }
-]
+];
 
 combatCardTwoData = [
     {
@@ -46,7 +46,7 @@ combatCardTwoData = [
         imageHeader: "<img src='assets/images/combat-card-two-result-c.png' alt='The outside enclave of an abandoned monastary, covered in moss'>",
         mainText: "<p>You count the number of bandits on your fingers and decide that actually this isn't a fight worth having, and leave the monastery the way you came in</p>",
     }
-]
+];
 
 combatCardThreeData = [
     {
@@ -62,7 +62,7 @@ combatCardThreeData = [
         mainText: "<p>You tip toe around the fox not dropping eye contact, and once you're on the opposite side to where you started, you begin to slowly back away until it becomes uninterested and continues investigating it's dinner</p>",
     }
 
-]
+];
 
 combatCardFourData = [
     {
@@ -77,7 +77,7 @@ combatCardFourData = [
         imageHeader:"",
         mainText:"",
     }
-]
+];
 
 combatCardFiveData = [
     {
@@ -92,7 +92,7 @@ combatCardFiveData = [
         imageHeader:"",
         mainText:"",
     }
-]
+];
 
 encounterCardOneData = [
     {
@@ -107,7 +107,7 @@ encounterCardOneData = [
         imageHeader:"<img src='assets/images/encounter-card-one-result-c.png' alt='Merchant pushing a cart through a forest'>",
         mainText:"<p>'That's a shame. Good luck with your adventure.' He walks into the distance, pulling his cart behind him.</p>",
     }
-]
+];
 
 encounterCardTwoData = [
     {
@@ -122,10 +122,41 @@ encounterCardTwoData = [
         imageHeader:"<img src='assets/images/encounter-card-two-result-c.png' alt='The gnome waves goodbye'>",
         mainText:"<p>'Goodbye traveller, see you soon!' You past the gnome, and he spins around on the mushroom to face you and wave, before leaping back underneath it</p>'",
     }
+];
+
+bossCardOneData = [
+    {
+        imageHeader:"<img src='assets/images/boss-card-one-result-a.png' alt='Balrog shoots fire over a tall rock'>",
+        mainText:"<p>The balrog breathes fire towards you, swirling it around the central rock of the cave, leading it towards your feet. You manage to avoid it mostly, but reacting too slowly, the end traces of the fire catch to your leg and burns through your armour.</p>",
+    },
+    {
+        imageHeader:"<img src='assets/images/boss-card-one-result-b.png' alt='The viewer standing below a burning foot'>",
+        mainText: "<p>You speed towards the balrog, showing no fear, and take a swipe at it's foot as it attempts to stamp down on you. It tries to steady itself, and you roll out of the way of it's falling sole</p>",
+    },
+    {
+        imageHeader:"<img src='assets/images/boss-card-one-result-c.png' alt='The balrog's mouth wide open, swirling with flames'>",
+        mainText:"<p>The balrog leans down to greet you entering it's cave, swirling fire around it's mouth preparing for whatever attack you may have planned</p>",
+    }
+];
+
+bossCardOneSecondaryData = [
+    {
+        imageHeader:"<img src='assets/images/boss-card-one-result-d.png' alt='The player hanging off the horn of the Balrog'>",
+        mainText:"<p>You try to climb the leg of the balrog, but don't expect it to be as difficult as you thought. The balrog reaches it's hand over to you and grabs you, forcing you onto it's left horn. You hand there as a prize for the Balrog to retreat with.<p>",
+    },
+    {
+        imageHeader:"<img src='assets/images/boss-card-one-result-e.png' alt='The balrog's face on the ground, mouth open.'>",
+        mainText:"<p>You swipe at both it's legs, cutting tendons in the ankles, dropping it to it's knees. The balrog drops it's head and you drive your sword through the roof of it's mouth slaying the beast.</p>",
+    },
+    {
+        imageHeader:"<img src='assets/images/boss-card-one-result-f.png' alt='The player and balrog lay on the ground'>",
+        mainText:"<p>You stand by the rock in the middle of the cave, and wait for it to breathe fire at you, running around the rock as it leads it's fire behind you. You trick it to keep the flames going, and they reach it's back, burning it's scales off. The flames reach you but you manage to stab your sword through to it's flesh, drawing blood as it collapses to the ground. You stagger forward and collapse with it, dying a hero.</p>",
+    }
 ]
 
 
 function displayText(argument){
+// Combat card section. These ifs provide the data for each combatCard function
     if(argument === "combatCardOneResultA"){
         imageHeader.innerHTML = combatCardOneData[0].imageHeader;
         mainText.innerHTML = combatCardOneData[0].mainText;
@@ -156,6 +187,7 @@ function displayText(argument){
         imageHeader.innerHTML = combatCardThreeData[2].imageHeader;
         mainText.innerHTML = combatCardThreeData[2].mainText;
         };
+// Encounter cards section. These ifs provide the data for each encounterCard function
     if (argument === "encounterCardOneResultA") {
         imageHeader.innerHTML = encounterCardOneData[0].imageHeader;
         mainText.innerHTML = encounterCardOneData[0].mainText;
@@ -175,6 +207,27 @@ function displayText(argument){
     }   else if (argument === "encounterCardTwoResultC") {
         imageHeader.innerHTML = encounterCardTwoData[2].imageHeader;
         mainText.innerHTML = encounterCardTwoData[2].mainText;
+    };
+// Boss cards section. These ifs provide the data for each bossCard function
+    if (argument === "bossCardOneResultA") {
+        imageHeader.innerHTML = bossCardOneData[0].imageHeader;
+        mainText.innerHTML = bossCardOneData[0].imageHeader;
+    } else if (argument === "bossCardOneResultB") {
+        imageHeader.innerHTML = bossCardOneData[1].imageHeader;
+        mainText.innerHTML = bossCardOneData[1].mainText;
+    } else if (argument === "bossCardOneResultC") {
+        imageHeader.innerHTML = bossCardOneData[2].imageHeader;
+        mainText.innerText = bossCardOneData[2].mainText;
+    };
+    if (argument === "bossCardOneSecondaryResultA") {
+        imageHeader.innerHTML = bossCardOneSecondaryData[0].imageHeader;
+        mainText.innerHTML = bossCardOneSecondaryData[0].mainText;
+    } else if (argument === "bossCardOneSecondaryResultB") {
+        imageHeader.innerHTML = bossCardOneSecondaryData[1].imageHeader;
+        mainText.innerHTML = bossCardOneSecondaryData[1].mainText;
+    } else if (argument === "bossCardOneSecondaryResultC") {
+        imageHeader.innerHTML = bossCardOneSecondaryData[2].imageHeader;
+        mainText.innerHTML = bossCardOneSecondaryData[2].mainText;
     };
     buttonToggle();
     showContinue();
