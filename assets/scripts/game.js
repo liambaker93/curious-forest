@@ -11,7 +11,7 @@ const buttonContinue = document.getElementById("button-continue");
 
 const arrBtns = [buttonA, buttonB, buttonC];
 
-const gameCards = [combatCardOne, combatCardTwo, combatCardThree];
+const gameCards = [combatCardOne, combatCardTwo, combatCardThree, combatCardFour];
 shuffleCards(gameCards);
 let gameCardIndex = 0;
 
@@ -294,6 +294,32 @@ function combatCardThree() {
         });
     });
 };
+
+function combatCardFour() {
+    hideContinue();
+    imageHeader.innerHTML = "<img src='assets/images/combat-card-four.png' alt='An archer standing in a tree holding a bow and arrow'>";
+    mainText.innerHTML = "<p>Walking through the forest, you walk upon an archer hiding in a treetop, pointing his arrow straight at you.</p>";
+    buttonA.innerText = "You ask him for directions";
+    buttonB.innerText = "Threaten him";
+    buttonC.innerText = "Declare yourself powerful";
+
+        arrBtns.forEach(button  => {
+        button.addEventListener("click", function() {
+            if (button === buttonA) {
+                displayText("combatCardFourResultA");
+                healthAdjust(2);
+                buttonToggle(); 
+            } else if (button === buttonB) {
+                displayText("combatCardFourResultB");
+                buttonToggle(); 
+            } else if (button === buttonC) {
+                displayText("combatCardFourResultC");
+                healthAdjust(-2);
+                buttonToggle(); 
+            };
+        });
+    });
+}
 
 // encounter card functions
 
