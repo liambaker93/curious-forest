@@ -66,16 +66,16 @@ combatCardThreeData = [
 
 combatCardFourData = [
     {
-        imageHeader:"",
-        mainText: "",
+        imageHeader:"<img src='assets/images/combat-card-four-result-a.png' alt='Archer holding on to a tree branch'>",
+        mainText: "<p>You see the archer and ask for directions around the forest. 'Ah! An adventurer, here's a health potion if you need it. North takes you out of the forest the quickest, east will take you to the river Cairm. West will lead you to an old cave, and south takes you to an enclosure mainly used by bears. Tread carefully'</p>",
     },
     {
-        imageHeader:"",
-        mainText:"",
+        imageHeader:"<img src='assets/images/combat-card-four-result-b.png' alt='Archer hanging from a branch above the ground'>",
+        mainText:"<p>'Don't worry, I trust your prowess, I can see the battle scarred look in your eye. Tread carefully in these woods.' He hangs from a branch of the tree, and swings himself up further the treeline and disappears from sight.</p>",
     },
     {
-        imageHeader:"",
-        mainText:"",
+        imageHeader:"<img src='assets/images/combat-card-four-result-c.png' alt='Archer drawing his bow'>",
+        mainText:"<p>'You think yourself the terror of these woods? Be gone with you adventurer!' He shoots an arrow towards you, piercing the armour around your shoulder blade, then flees into the trees.</p>",
     }
 ];
 
@@ -187,6 +187,16 @@ function displayText(argument){
         imageHeader.innerHTML = combatCardThreeData[2].imageHeader;
         mainText.innerHTML = combatCardThreeData[2].mainText;
         };
+    if (argument === "combatCardFourResultA") {
+        imageHeader.innerHTML = combatCardFourData[0].imageHeader;
+        mainText.innerHTML = combatCardFourData[0].mainText
+    } else if (argument === "combatCardFourResultB") {
+        imageHeader.innerHTML = combatCardFourData[1].imageHeader;
+        mainText.innerHTML = combatCardFourData[1].mainText;
+    } else if (argument === "combatCardFourResultB") {
+        imageHeader.innerHTML = combatCardFourData[2].imageHeader;
+        mainText.innerHTML = combatCardFourData[2].mainText;
+    };
 // Encounter cards section. These ifs provide the data for each encounterCard function
     if (argument === "encounterCardOneResultA") {
         imageHeader.innerHTML = encounterCardOneData[0].imageHeader;
