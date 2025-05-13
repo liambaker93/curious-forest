@@ -227,7 +227,6 @@ function displayText(argument){
     }   else if (argument === "encounterCardOneResultC") {
         imageHeader.innerHTML = encounterCardOneData[2].imageHeader;
         mainText.innerHTML = encounterCardOneData[2].mainText;
-        healthAdjust(3);
     };
     if (argument === "encounterCardTwoResultA") {
         imageHeader.innerHTML = encounterCardTwoData[0].imageHeader;
