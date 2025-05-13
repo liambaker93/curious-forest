@@ -460,14 +460,11 @@ function bossCardOneSecondary() {
             if (button === buttonA) {
                 bossDisplayText("bossCardOneSecondaryResultA");
                 healthAdjust(-4);
-                buttonToggle();
             } else if (button === buttonB) {
                 bossDisplayText("bossCardOneSecondaryResultB");
-                buttonToggle();
             } else if (button === buttonC) {
                 bossDisplayText("bossCardOneSecondaryResultC");
-                healthAdjust(-4);
-                buttonToggle(); 
+                healthAdjust(-6);
             };
         });
     });
