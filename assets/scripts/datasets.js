@@ -124,6 +124,21 @@ encounterCardTwoData = [
     }
 ];
 
+encounterCardThreeData = [
+    {
+        imageHeader:"<img src='assets/images/encounter-card-three-result-a.png' alt='Squirrel floating holding a glowing acorn'>",
+        mainText:"<p>You step slowly towards the squirrel, and it believes you to be a friendly presence. It offers up the acorn as a gift, revitalising you.</p>",
+    },
+    {
+        imageHeader:"<img src='assets/images/encounter-card-three-result-b.png' alt='Squirrel running through a forest holding an acorn'>",
+        mainText:"<p>You observe the squirrel, but jump when it walks towards you. It observes you in turn, and decides you are of no consequence, turns around and runs the opposite direction through the forest.</p>",
+    },
+    {
+        imageHeader:"<img src='assets/images/encounter-card-three-result-c.png' alt='Squirrel burying an acorn'>",
+        mainText:"<p>You walk towards the squirrel and it jumps at the rumble from your feet, and hastily buries the acorn in the ground, before scurrying up the tree.</p>",
+    },
+];
+
 bossCardOneData = [
     {
         imageHeader:"<img src='assets/images/boss-card-one-result-a.png' alt='Balrog shoots fire over a tall rock'>",
@@ -152,7 +167,38 @@ bossCardOneSecondaryData = [
         imageHeader:"<img src='assets/images/boss-card-one-result-f.png' alt='The player and balrog lay on the ground'>",
         mainText:"<p>You stand by the rock in the middle of the cave, and wait for it to breathe fire at you, running around the rock as it leads it's fire behind you. You trick it to keep the flames going, and they reach it's back, burning it's scales off. The flames reach you but you manage to stab your sword through to it's flesh, drawing blood as it collapses to the ground. You stagger forward and collapse with it, dying a hero.</p>",
     }
-]
+];
+
+bossCardTwoData = [
+    {
+        imageHeader:"<img src='assets/images/boss-card-two-result-a.png' alt='Man hiding from a wizard floating in the air'>",
+        mainText:"<p>You presume the trajectory of the wizard's attack, and dart towards the cliff edge where you see a small enclave to hide in. The blast flies past you and you avoid damage</p>",
+    },
+    {
+        imageHeader:"<img src='assets/images/boss-card-two-result-b.png' alt='Man holding a sword reflecting a wizard's spell'>",
+        mainText:"<p>You see the wizard prepare his spell and think that you and your sword were built for this moment. You ready your sword across your chest and manage to absorb some of the blast. It reflects back and scars his shoulder</p>",
+    },
+    {
+        imageHeader:"<img src='assets/images/boss-card-two-result-c.png' alt='Wizard's spell hits a man in the arm'>",
+        mainText:"<p>You debate how to handle the wizard, and decide to pull out your sword. However you took too long, and the Wizard's electric shock hits your arm and engulfs your arm</p>",
+    }
+
+];
+
+bossCardTwoSecondaryData = [
+    {
+        imageHeader:"<img src='assets/images/boss-card-two-result-d.png' alt='Wizard dead on a broken tree'>",
+        mainText:"<p>You run towards the wizard, when you get close you drag your hand through the dirt and throw the rocky dust at his hands and interrupt the spell. He's distracted and the spell back fires, exploding between his hands and throwing him up in the air. He lands on a fallen tree and is impaled on one of the stuck up branches</p>",
+    },
+    {
+        imageHeader:"<img src='assets/images/boss-card-two-result-e.png' alt='The wizard standing above a dead body'>",
+        mainText:"<p>You drop your sword and try to hide from the spell. The wizard causes a volcanic earthquake beneath your feet. He pulls you down into the cracking earth, throwing you up and slamming you back down to the ground</p>",
+    },
+    {
+        imageHeader:"<img src='assets/images/boss-card-two-result-f.png' alt='A wizard and a man falling down a cavern'>",
+        mainText:"<p>You drop your sword and charge at the wizard. He notices you rushing towards him and works to hurry his magik. When you reach him, you grapple his hands and the power he has built up implodes between both sets of hands and throws you both in the air, cutting into both of you. The power throws you back to the cliff edge and you both fly over and down to a ravine below.</p>",
+    },
+];
 
 
 function displayText(argument){
@@ -240,6 +286,16 @@ function displayText(argument){
         imageHeader.innerHTML = encounterCardTwoData[2].imageHeader;
         mainText.innerHTML = encounterCardTwoData[2].mainText;
     };
+    if (argument === "encounterCardThreeResultA") {
+        imageHeader.innerHTML = encounterCardThreeData[0].imageHeader;
+        mainText.innerHTML = encounterCardThreeData[0].mainText;
+    } else if (argument === "encounterCardThreeResultB") {
+        imageHeader.innerHTML = encounterCardThreeData[1].imageHeader;
+        mainText.innerHTML = encounterCardThreeData[1].mainText;
+    } else if ( argument === "encounterCardThreeResultC") {
+        imageHeader.innerHTML = encounterCardThreeData[2].imageHeader;
+        mainText.innerHTML = encounterCardThreeData[2].mainText;
+    };
 // Boss cards section. These ifs provide the data for each bossCard function
     if (argument === "bossCardOneResultA") {
         imageHeader.innerHTML = bossCardOneData[0].imageHeader;
@@ -251,6 +307,16 @@ function displayText(argument){
     } else if (argument === "bossCardOneResultC") {
         imageHeader.innerHTML = bossCardOneData[2].imageHeader;
         mainText.innerHTML = bossCardOneData[2].mainText;
+    };
+    if (argument === "bossCardTwoResultA") {
+        imageHeader.innerHTML = bossCardTwoData[0].imageHeader;
+        mainText.innerHTML = bossCardTwoData[0].mainText;
+    } else if (argument === "bossCardTwoResultB") {
+        imageHeader.innerHTML = bossCardTwoData[1].imageHeader;
+        mainText.innerHTML = bossCardTwoData[1].mainText;
+    } else if (argument === "bossCardTwoResultC") {
+        imageHeader.innerHTML = bossCardTwoData[2].imageHeader;
+        mainText.innerHTML = bossCardTwoData[2].mainText;
     };
     buttonToggle();
     showContinue();
@@ -269,7 +335,18 @@ function bossDisplayText(argument) {
         mainText.innerHTML = bossCardOneSecondaryData[2].mainText;
         healthAdjust(-6);
     };
-    
-    
+    if (argument === "bossCardTwoSecondaryResultA") {
+        imageHeader.innerHTML = bossCardTwoSecondaryData[0].imageHeader;
+        mainText.innerHTML = bossCardTwoSecondaryData[0].mainText;
+    } else if (argument === "bossCardTwoSecondaryResultB") {
+        imageHeader.innerHTML = bossCardTwoSecondaryData[1].imageHeader;
+        mainText.innerHTML = bossCardTwoSecondaryData[1].mainText;
+    } else if (argument === "bossCardTwoSecondaryResultC") {
+        imageHeader.innerHTML = bossCardTwoSecondaryData[2].imageHeader;
+        mainText.innerHTML = bossCardTwoSecondaryData[2].mainText;
+    };
+    arrBtns.forEach(button => {
+        button.addEventListener("click", gameWin())
+    });
 }
 
