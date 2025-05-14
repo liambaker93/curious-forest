@@ -15,8 +15,13 @@ const gameCards = [combatCardOne, combatCardTwo, combatCardThree, combatCardFour
 shuffleCards(gameCards);
 let gameCardIndex = 0;
 
-const bossCards = [bossCardOne];
+const bossCards = [bossCardOne, bossCardTwo];
 shuffleCards(bossCards);
+let bossCardIndex = 0;
+
+const encounterCards = [encounterCardOne, encounterCardTwo, encounterCardThree];
+shuffleCards(encounterCards);
+let encounterCardIndex = 0;
 
 let health = 6;
 let maxHealth = 6;
@@ -76,9 +81,6 @@ function shuffleCards(array) {
 
 // Next level function used after all result cards
 
-// let encounterCardOneRun = false;
-// let encounterCardTwoRun = false;
-
 function nextLevel() {
     ++x;
     checkHealth();
@@ -87,23 +89,27 @@ function nextLevel() {
     if (x === 1 && gameCardIndex < gameCards.length) {
         gameCards[gameCardIndex]();
         gameCardIndex++;
-    } else if (x === 2) {
-        encounterCardOne();
-       // encounterCardOneRun = true;
+    } else if (x === 2 && encounterCardIndex < encounterCards.length) {
+       encounterCards[encounterCardIndex]();
+       encounterCardIndex++;
     } else if (x === 3 && gameCardIndex < gameCards.length) {
         gameCards[gameCardIndex]();
         gameCardIndex++;
-    } else if (x === 4) {
-        encounterCardTwo();
-       // encounterCardTwoRun = true; 
+    } else if (x === 4 && encounterCardIndex < encounterCards.length) {
+        encounterCards[encounterCardIndex]();
+        encounterCardIndex++;
     } else if (x === 5 && gameCardIndex < gameCards.length) {
         gameCards[gameCardIndex]();
         gameCardIndex++;
-    } else if (x > 5 && bossCardRun === false) {
-        bossCards[0]();
+    } else if (x > 5 && bossCardRun === false && bossCardIndex < bossCards.length) {
+        bossCards[bossCardIndex]();
     } else if (x > 5 && bossCardRun === true) {
         if (mainText.textContent.includes("balrog")) {
         bossCardOneSecondary();
+        }
+    } else if (x > 5 && bossCardRun === true) {
+        if (mainText.textContent.includes("wizard")) {
+        bossCardTwoSecondary();
         }
     } else {
         console.log("End of cards");
@@ -220,10 +226,7 @@ function checkHealth() {
         buttonContinue.addEventListener("click", gameOver);
     }
     console.log(health);
-};
-
-
-    
+};  
 
 /*
 function inputName(e) {
@@ -410,6 +413,30 @@ function encounterCardTwo() {
     });
 };
 
+function encounterCardThree() {
+    hideContinue();
+    imageHeader.innerHTML = "<img src='assets/images/encounter-card-three.png' alt='A squirrel sitting on a branch holding an acorn'>";
+    mainText.innerHTML = "<p>You walk underneath a set of trees with perfect, interlocking branches. On top of the one of the branches is a squirrel, holding an acorn tightly. Slowly it scampers down the tree to the trunk. What do you do?</p>";
+    buttonA.innerText = "Reach out to the squirrel";
+    buttonB.innerText = "Watch and wait";
+    buttonC.innerText = "Step towards the squirrel";
+    
+    arrBtns.forEach(button  => {
+        button.addEventListener("click", function() {
+            if (button === buttonA) {
+                displayText("encounterCardThreeResultA");
+                buttonToggle();
+            } else if (button === buttonB) {
+                displayText("encounterCardThreeResultB");
+                buttonToggle();
+            } else if (button === buttonC) {
+                displayText("encounterCardThreeResultC");
+                buttonToggle(); 
+            };
+        });
+    });
+}
+
 // Boss card functions. These functions act differently, using two levels within themselves
 
 function bossCardOne() {
@@ -453,6 +480,52 @@ function bossCardOneSecondary() {
                 bossDisplayText("bossCardOneSecondaryResultB");
             } else if (button === buttonC) {
                 bossDisplayText("bossCardOneSecondaryResultC");
+            };
+        });
+    });
+}
+
+function bossCardTwo() {
+    hideContinue();
+    bossCardRun = true;
+    imageHeader.innerHTML = "<img src='assets/images/boss-card-two.png' alt='A wizard floats above a clifftop'>";
+    mainText.innerHTML = "<p>You follow the sun and walk out of the forest to the edge of a cliff, and there waiting for you is a wizard, preparing a spell. 'So you're the one who's been messing around with MY forest? This should teach you..'</p>";
+    buttonA.innerText = "Hide from the blast";
+    buttonB.innerText = "Parry the spell";
+    buttonC.innerText = "Stand your ground";
+
+    arrBtns.forEach(button  => {
+        button.addEventListener("click", function() {
+            if (button === buttonA) {
+                displayText("bossCardTwoResultA");
+                buttonToggle();
+            } else if (button === buttonB) {
+                displayText("bossCardTwoResultB");
+                buttonToggle();
+            } else if (button === buttonC) {
+                displayText("bossCardTwoResultC");
+                buttonToggle();
+            };
+        });
+    });
+};
+
+function bossCardTwoSecondary() {
+    hideContinue();
+    imageHeader.innerHTML = "<img src='assets/images/boss-card-two-secondary.png' alt='A wizard knelt on the ground, preparing a spell'>";
+    mainText.innerHTML = "<p>The wizard takes a moment to recover on the ground, closing his eyes slowly and preparing a spell between his hands. You see magik swirling around his palms and you feel a power emanate from him</p>";
+    buttonA.innerText = "Interrupt the spell";
+    buttonB.innerText = "Hide from the spell";
+    buttonC.innerText = "Charge the wizard";
+
+    arrBtns.forEach(button  => {
+        button.addEventListener("click", function() {
+            if (button === buttonA) {
+                bossDisplayText("bossCardTwoSecondaryResultA");
+            } else if (button === buttonB) {
+                bossDisplayText("bossCardTwoSecondaryResultB");
+            } else if (button === buttonC) {
+                bossDisplayText("bossCardTwoSecondaryResultC");
             };
         });
     });
