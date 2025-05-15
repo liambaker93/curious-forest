@@ -4,7 +4,7 @@ body {
 }
 
 h1, p, h3 {
-    color: whitesmoke;
+    color: white !important;
 }
 
 img {
@@ -32,4 +32,10 @@ img {
 
 .health-change {
     opacity: 0.5;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    box-sizing: content-box;
 }
