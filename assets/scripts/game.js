@@ -183,14 +183,19 @@ const lowHearts = [healthOne];
 
 // This function checks the health of the player and then visually displays that.
 
+function resetHealth() {
+    [healthOne, healthTwo, healthThree].forEach(i => {
+        if (i && i.classList) {
+            i.classList.remove("hidden", "fa-heart-crack", "health-change");
+            i.classList.add("fa-heart");
+        }
+    });
+};
+
 function checkHealth() {
+    resetHealth();
     if (health === 6) {
-        fullHearts.forEach(i => {
-            if (i && i.classList) {
-                i.classList.remove("hidden");
-            }
-        });
-    } else if (health === 5) {
+        } else if (health === 5) {
         fullHearts.forEach(i => {
             if (i && i.classList) {
                 i.classList.remove("hidden");
@@ -211,22 +216,28 @@ function checkHealth() {
                 i.classList.remove("hidden");
                 healthTwo.classList.remove("fa-heart");
                 healthTwo.classList.add("fa-heart-crack");
-                healthThree.classList.add("hidden");
+                healthThree.classList.add("health-change");
             }
         });
     } else if (health === 2) {
         healthOne.classList.remove("hidden");
-        healthTwo.classList.add("hidden");
+        healthTwo.classList.add("health-change");
+        healthThree.classList.add("health-change");
     } else if (health === 1) {
-        healthTwo.classList.add("hidden");
+        healthThree.classList.add("health-change");
+        healthTwo.classList.add("health-change");
         healthOne.classList.remove("hidden");
         healthOne.classList.remove("fa-heart");
         healthOne.classList.add("fa-heart-crack");
     }  else {
+        fullHearts.forEach(i => {
+            i.classList.remove("hidden");
+            i.classList.add("health-change");
+        });
         buttonContinue.addEventListener("click", gameOver);
     }
     console.log(health);
-};  
+};
 
 /*
 function inputName(e) {
