@@ -58,9 +58,10 @@ function gameStart() {
                  imageHeader.innerHTML = gameStartData[0].imageHeader;
                  mainText.innerHTML =  gameStartData[0].mainText;
             } else if (button === buttonB) {
+                healthAdjust(-2);
+                checkHealth();
                 imageHeader.innerHTML = gameStartData[1].imageHeader;
                 mainText.innerHTML = gameStartData[1].mainText;
-                healthAdjust(-2);
             } else if (button === buttonC) {
                 imageHeader.innerHTML = gameStartData[2].imageHeader;
                 mainText.innerHTML = gameStartData[2].mainText;
@@ -106,10 +107,8 @@ function nextLevel() {
     } else if (x > 5 && bossCardRun === true) {
         if (mainText.textContent.includes("balrog")) {
         bossCardOneSecondary();
-        }
-    } else if (x > 5 && bossCardRun === true) {
-        if (mainText.textContent.includes("wizard")) {
-        bossCardTwoSecondary();
+        } else if (mainText.textContent.includes("wizard")) {
+            bossCardTwoSecondary();
         }
     } else {
         console.log("End of cards");
@@ -163,6 +162,7 @@ function buttonToggle() {
 };
 
 function showContinue() {
+    checkHealth();
     buttonContinue.classList.remove("hidden");
     buttonContinue.addEventListener("click", nextLevel);
 };
@@ -497,8 +497,8 @@ function bossCardOneSecondary() {
 }
 
 function bossCardTwo() {
-    hideContinue();
     bossCardRun = true;
+    hideContinue();
     imageHeader.innerHTML = "<img src='assets/images/boss-card-two.png' alt='A wizard floats above a clifftop'>";
     mainText.innerHTML = "<p>You follow the sun and walk out of the forest to the edge of a cliff, and there waiting for you is a wizard, preparing a spell. 'So you're the one who's been messing around with MY forest? This should teach you..'</p>";
     buttonA.innerText = "Hide from the blast";
