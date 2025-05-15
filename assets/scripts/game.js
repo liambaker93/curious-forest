@@ -11,6 +11,8 @@ const buttonContinue = document.getElementById("button-continue");
 
 const arrBtns = [buttonA, buttonB, buttonC];
 
+// These arrays are used to shuffle which cards will be displayed creating a randomness to the game everytime the player clicks start.
+
 const gameCards = [combatCardOne, combatCardTwo, combatCardThree, combatCardFour, combatCardFive];
 shuffleCards(gameCards);
 let gameCardIndex = 0;
@@ -23,11 +25,21 @@ const encounterCards = [encounterCardOne, encounterCardTwo, encounterCardThree];
 shuffleCards(encounterCards);
 let encounterCardIndex = 0;
 
+// max and min health points can be used to vary difficulty in later development, assigning them now means that they have been worked into the code already.
+
 let health = 6;
 let maxHealth = 6;
 let minHealth = 0;
 
+// bossCardRun is used to show the player is in the boss stage, as the boss stage carries two seperate 'levels', the game needs to know that the boss has been activated.
+
 let bossCardRun = false;
+
+// x is used to cycle through levels, the above randomisers are used to pick which level is displayed to the player.
+
+var x = 0;
+
+// healthAdjust is used throughout the levels to adjust the health of the player depending on their actions.
 
 function healthAdjust(adjust) {
     health = health + adjust;
@@ -71,7 +83,7 @@ function gameStart() {
 
     };
 
-// Shuffle function for combat cards
+// Shuffle function for picking which cards will be used
 
 function shuffleCards(array) {
     for (let n = array.length - 1; n > 0; n--) {
@@ -260,23 +272,22 @@ function combatCardOne() {
     buttonA.innerText = "Draw your sword and take a swing";
     buttonB.innerText = "Draw your sword ready to defend";
     buttonC.innerText = "Slowly back away";
-
-arrBtns.forEach(button  => {
+    arrBtns.forEach(button  => {
     button.addEventListener("click", function() {                
         if (button === buttonA) {
             displayText("combatCardOneResultA");
-            buttonToggle(); 
+            buttonToggle();
         } else if (button === buttonB) {
             displayText("combatCardOneResultB");
             buttonToggle();
         } else if (button === buttonC) {
             displayText("combatCardOneResultC");
-            buttonToggle(); 
+            buttonToggle();
         };
     });
 });
 
-}
+};
 
 function combatCardTwo() {
     hideContinue();
@@ -285,18 +296,17 @@ function combatCardTwo() {
     buttonA.innerText = "Sneak around them";
     buttonB.innerText = "Run through the group";
     buttonC.innerText = "Walk back the way you came";
-
     arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             if (button === buttonA) {
                 displayText("combatCardTwoResultA");
-                buttonToggle(); 
+                buttonToggle();
             } else if (button === buttonB) {
                 displayText("combatCardTwoResultB");
-                buttonToggle(); 
+                buttonToggle();
             } else if (button === buttonC) {
                 displayText("combatCardTwoResultC");
-                buttonToggle(); 
+                buttonToggle();
             };
         });
     });
@@ -309,18 +319,17 @@ function combatCardThree() {
     buttonA.innerText = "Take an aggressive stance";
     buttonB.innerText = "Drop to all fours and mimic the fox";
     buttonC.innerText = "Keep facing it and walk around it to get past";
-
     arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             if (button === buttonA) {
                 displayText("combatCardThreeResultA");
-                buttonToggle(); 
+                buttonToggle();
             } else if (button === buttonB) {
                 displayText("combatCardThreeResultB");
-                buttonToggle(); 
+                buttonToggle();
             } else if (button === buttonC) {
                 displayText("combatCardThreeResultC");
-                buttonToggle(); 
+                buttonToggle();
             };
         });
     });
@@ -333,18 +342,17 @@ function combatCardFour() {
     buttonA.innerText = "You ask him for directions";
     buttonB.innerText = "Threaten him";
     buttonC.innerText = "Declare yourself powerful";
-
-        arrBtns.forEach(button  => {
+    arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             if (button === buttonA) {
                 displayText("combatCardFourResultA");
-                buttonToggle(); 
+                buttonToggle();
             } else if (button === buttonB) {
                 displayText("combatCardFourResultB");
-                buttonToggle(); 
+                buttonToggle();
             } else if (button === buttonC) {
                 displayText("combatCardFourResultC");
-                buttonToggle(); 
+                buttonToggle();
             };
         });
     });
@@ -357,18 +365,17 @@ function combatCardFive() {
     buttonA.innerText = "Draw your sword and threaten it";
     buttonB.innerText = "Stare at it and stand your ground";
     buttonC.innerText = "Pet the bear";
-
     arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             if (button === buttonA) {
                 displayText("combatCardFiveResultA");
-                buttonToggle(); 
+                buttonToggle();
             } else if (button === buttonB) {
                 displayText("combatCardFiveResultB");
-                buttonToggle(); 
+                buttonToggle();
             } else if (button === buttonC) {
                 displayText("combatCardFiveResultC");
-                buttonToggle(); 
+                buttonToggle();
             };
         });
     });
@@ -383,7 +390,6 @@ function encounterCardOne() {
     buttonA.innerText = "Have a health potion?";
     buttonB.innerText = "Carrying any superior health potions?";
     buttonC.innerText = "I'm alright thank you, I don't need anything.";
-
     arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             if (button === buttonA) {
@@ -407,7 +413,6 @@ function encounterCardTwo() {
     buttonA.innerText = "Try a purple mushroom";
     buttonB.innerText = "Try the red mushroom";
     buttonC.innerText = "Decline the offer";
-    
     arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             if (button === buttonA) {
@@ -418,7 +423,7 @@ function encounterCardTwo() {
                 buttonToggle();
             } else if (button === buttonC) {
                 displayText("encounterCardTwoResultC");
-                buttonToggle(); 
+                buttonToggle();
             };
         });
     });
@@ -431,7 +436,6 @@ function encounterCardThree() {
     buttonA.innerText = "Reach out to the squirrel";
     buttonB.innerText = "Watch and wait";
     buttonC.innerText = "Step towards the squirrel";
-    
     arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             if (button === buttonA) {
@@ -442,7 +446,7 @@ function encounterCardThree() {
                 buttonToggle();
             } else if (button === buttonC) {
                 displayText("encounterCardThreeResultC");
-                buttonToggle(); 
+                buttonToggle();
             };
         });
     });
@@ -458,8 +462,7 @@ function bossCardOne() {
     buttonA.innerText = "Slowly walk towards it and draw your sword ready to attack";
     buttonB.innerText = "Rush towards it, sword drawn, right underneath it's foot";
     buttonC.innerText = "Stop where you stand"
-
-        arrBtns.forEach(button  => {
+    arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             if (button === buttonA) {
                 displayText("bossCardOneResultA");
@@ -469,7 +472,7 @@ function bossCardOne() {
                 buttonToggle();
             } else if (button === buttonC) {
                 displayText("bossCardOneResultC");
-                buttonToggle(); 
+                buttonToggle();
             };
         });
     });
@@ -482,8 +485,7 @@ function bossCardOneSecondary() {
     buttonA.innerText = "Attempt to climb it's leg";
     buttonB.innerText = "Wait for it to step a little closer to you";
     buttonC.innerText = "Hold by the rock, drawing it's fire breath";
-
-            arrBtns.forEach(button  => {
+    arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             if (button === buttonA) {
                 bossDisplayText("bossCardOneSecondaryResultA");
@@ -504,7 +506,6 @@ function bossCardTwo() {
     buttonA.innerText = "Hide from the blast";
     buttonB.innerText = "Parry the spell";
     buttonC.innerText = "Stand your ground";
-
     arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             if (button === buttonA) {
@@ -528,7 +529,6 @@ function bossCardTwoSecondary() {
     buttonA.innerText = "Interrupt the spell";
     buttonB.innerText = "Hide from the spell";
     buttonC.innerText = "Charge the wizard";
-
     arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             if (button === buttonA) {
@@ -540,16 +540,5 @@ function bossCardTwoSecondary() {
             };
         });
     });
-}
-   
+};
 
-/* * variables for selecting random cards to view
- * x is used for combat cards
- * y is used for encounter cards
- * z is used for boss cards */  
-var x = 0;
-var y = 0;
-var z = 0;
-const usedCombatIndex = x;
-const usedEncounterIndex = y;
-const usedBossIndex = z;
