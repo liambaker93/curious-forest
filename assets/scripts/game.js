@@ -174,7 +174,6 @@ function buttonToggle() {
 };
 
 function showContinue() {
-    checkHealth();
     buttonContinue.classList.remove("hidden");
     buttonContinue.addEventListener("click", nextLevel);
 };
