@@ -202,6 +202,18 @@ bossCardTwoSecondaryData = [
 
 
 function displayText(argument){
+// Game start function
+    if(argument === "gameStartResultA"){
+        imageHeader.innerHTML = gameStartData[0].imageHeader;
+        mainText.innerHTML =  gameStartData[0].mainText;
+    } else if (argument === "gameStartResultB") {
+        imageHeader.innerHTML = gameStartData[1].imageHeader;
+        mainText.innerHTML = gameStartData[1].mainText;
+        healthAdjust(-2);
+    } else if (argument === "gameStartResultC") {
+        imageHeader.innerHTML = gameStartData[2].imageHeader;
+        mainText.innerHTML = gameStartData[2].mainText;
+    };
 // Combat card section. These ifs provide the data for each combatCard function
     if(argument === "combatCardOneResultA"){
         imageHeader.innerHTML = combatCardOneData[0].imageHeader;
@@ -336,7 +348,7 @@ function displayText(argument){
         healthAdjust(0);
     };
     buttonToggle();
-    showContinue();
+    showContinue(nextLevel);
 };
 // Use this function for the second boss card, to set up the end of the game.
 function bossDisplayText(argument) {
@@ -366,8 +378,10 @@ function bossDisplayText(argument) {
         mainText.innerHTML = bossCardTwoSecondaryData[2].mainText;
         healthAdjust(0);
     };
-    arrBtns.forEach(button => {
-        button.addEventListener("click", gameWin)
-    });
+    if (health > 0) {
+        showContinue(gameWin);
+} else if (health = 0) {
+        showContinue(gameOver);
+};
 };
 

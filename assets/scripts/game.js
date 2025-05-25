@@ -55,28 +55,19 @@ function gameStart() {
       imageHeader.innerHTML = 
     "<img src='assets/images/fantasy-pub.png' alt='A fantasy pub open with people sat drinking and a barmaid serving.'>";
       mainText.innerHTML = "<p>You walk up to a pub and see two tables full of people laughing, sharing stories. One man sits on a stool in front of the bar and watches you wander towards the bar. What do you do?</p>"; 
-      
-      buttonToggle();
-      
+          
       buttonA.innerText = "Accept the drink";
       buttonB.innerText = "Throw the drink in his face";
       buttonC.innerText = "Turn and leave the pub";
 
       arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
-            buttonToggle();
-            showContinue();
             if (button === buttonA) {
-                 imageHeader.innerHTML = gameStartData[0].imageHeader;
-                 mainText.innerHTML =  gameStartData[0].mainText;
+                displayText("gameStartResultA");
             } else if (button === buttonB) {
-                healthAdjust(-2);
-                checkHealth();
-                imageHeader.innerHTML = gameStartData[1].imageHeader;
-                mainText.innerHTML = gameStartData[1].mainText;
+                displayText("gameStartResultB");
             } else if (button === buttonC) {
-                imageHeader.innerHTML = gameStartData[2].imageHeader;
-                mainText.innerHTML = gameStartData[2].mainText;
+                displayText("gameStartResultC");
             };
         });
     });
@@ -99,28 +90,31 @@ function nextLevel() {
     checkHealth();
     hideContinue();
     buttonToggle();
-    if (x === 1 && gameCardIndex < gameCards.length) {
+    console.log(level = x);
+    if (x === 1) {
+        gameStart();
+    } else if (x === 2 && gameCardIndex < gameCards.length) {
         gameCards[gameCardIndex]();
         gameCardIndex++;
-    } else if (x === 2 && encounterCardIndex < encounterCards.length) {
+    } else if (x === 3 && encounterCardIndex < encounterCards.length) {
        encounterCards[encounterCardIndex]();
        encounterCardIndex++;
-    } else if (x === 3 && gameCardIndex < gameCards.length) {
+    } else if (x === 4 && gameCardIndex < gameCards.length) {
         gameCards[gameCardIndex]();
         gameCardIndex++;
-    } else if (x === 4 && encounterCardIndex < encounterCards.length) {
+    } else if (x === 5 && encounterCardIndex < encounterCards.length) {
         encounterCards[encounterCardIndex]();
         encounterCardIndex++;
-    } else if (x === 5 && gameCardIndex < gameCards.length) {
+    } else if (x === 6 && gameCardIndex < gameCards.length) {
         gameCards[gameCardIndex]();
         gameCardIndex++;
-    } else if (x > 5 && bossCardRun === false && bossCardIndex < bossCards.length) {
+    } else if (x >= 7 && bossCardRun === false && bossCardIndex < bossCards.length) {
         bossCards[bossCardIndex]();
-    } else if (x > 5 && bossCardRun === true) {
+    } else if (x >= 7 && bossCardRun === true) {
         if (mainText.textContent.includes("balrog")) {
         bossCardOneSecondary();
         } else if (mainText.textContent.includes("wizard")) {
-            bossCardTwoSecondary();
+        bossCardTwoSecondary();
         }
     } else {
         console.log("End of cards");
@@ -141,7 +135,7 @@ function gameOver() {
             button.classList.add("hidden")
         };
     });
-    mainText.innerHTML = "<p>Well, it seems like the adventure has closed, rather unceremoniously... Return Adventurer! Maybe you'll get lucky next time...</p>"
+    mainText.innerHTML = "<p>Unfortunately you have been bested...this time! Return to the pub and try your luck again!</p>"
     imageHeader.classList.add("hidden");
     buttonContinue.classList.remove("hidden");
     buttonContinue.innerText = "Return to the pub";
@@ -173,9 +167,9 @@ function buttonToggle() {
     buttonC.classList.toggle("hidden");
 };
 
-function showContinue() {
+function showContinue(level) {
     buttonContinue.classList.remove("hidden");
-    buttonContinue.addEventListener("click", nextLevel);
+    buttonContinue.addEventListener("click", level);
 };
 
 function hideContinue() {
