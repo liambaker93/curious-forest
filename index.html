@@ -17,20 +17,21 @@
     <title>Curious Forest</title>
   </head>
   <body class="bg-black container">
-    <div>
-      <h1 class="main-header">Curious Forest<span class="health-bar">   | 
-        <i id="heart-one" class="full fa-solid fa-heart hidden"></i>
+    <div class="row d-flex">
+      <h1 class="main-header col">Curious Forest</h1>
+      <h1 class="health-bar col"><i id="heart-one" class="full fa-solid fa-heart hidden"></i>
         <i id="heart-two" class="full fa-solid fa-heart hidden"></i>
         <i id="heart-three" class="full fa-solid fa-heart hidden"></i>
-      </span></h1>   
-    </div>
-    <div id="image-header" class="main-image col-12">
+      </h1> 
+    
+    <div id="image-header" class="main-image">
       <img
         src="assets/images/fantasy-village.jpg"
         alt="A fantasy style village with a stone road going through and an open tavern along the pathway."
       />
     </div>
-    <div> 
+    </div>
+    <div>
     <!--Form for name input       
     <form id="input-name" class="hidden">
       <label for="name">Name: </label>
@@ -38,15 +39,15 @@
       <button type="submit">Submit</button>
     </form>
     -->
-    <div class="container">
+    <div class="container text-center">
       <div id="main-text" class="text-description">
         <p>Welcome to the Adventure!</p>
-        <button onclick="gameStart()" id="adventure-start" class="adventure-start">Start Adventure</button>
+        <button type="button" onclick="gameStart()" id="adventure-start" class="adventure-start">Start Adventure</button>
       </div>
-      <div class="buttons col-12">
-        <button id="button-a" class="hidden">Button A</button>
-        <button id="button-b" class="hidden">Button B</button>
-        <button id="button-c" class="hidden">Button C</button>
+      <div class="buttons row">
+        <button id="button-a" class="hidden col">Button A</button>
+        <button id="button-b" class="hidden col">Button B</button>
+        <button id="button-c" class="hidden col">Button C</button>
         <button id="button-continue" class="hidden">Continue Adventure</button>
       </div>
     </div>

@@ -51,6 +51,18 @@ I aim for this to also not involve AI art at some point. Gemini has been very us
 
 ### Desktop Wireframes
 
+Beginning the wireframing I knew I wanted a very simplistic page, with just an image, starting text and the 'Start Adventure' button. 
+
+I wanted the image to take up most of the page to draw the user's attention to the centre of the page.
+
+![Game launch page](./readme-files/assets/wireframes/desktop-start-page.PNG)
+
+When the user clicks the start adventure button, I wanted the page to change to display a new image, new text and new button options.
+
+
+
+![Level page](./readme-files/assets/wireframes/desktop-game-page.PNG)
+
 ### Mobile Wireframes
 
 ## Styling

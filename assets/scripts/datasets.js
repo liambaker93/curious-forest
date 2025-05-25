@@ -367,7 +367,7 @@ function bossDisplayText(argument) {
         healthAdjust(0);
     };
     arrBtns.forEach(button => {
-        button.addEventListener("click", gameWin())
+        button.addEventListener("click", gameWin)
     });
-}
+};
 
