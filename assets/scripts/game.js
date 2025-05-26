@@ -1,8 +1,9 @@
 // Various game function consts
+document.addEventListener("DOMContentLoaded", function() {
+
 
 const imageHeader = document.getElementById("image-header");
 const mainText = document.getElementById("main-text");
-const adventureStart = document.getElementById("adventure-start");
 
 const buttonA = document.getElementById("button-a");
 const buttonB = document.getElementById("button-b");
@@ -13,16 +14,13 @@ const arrBtns = [buttonA, buttonB, buttonC];
 
 // These arrays are used to shuffle which cards will be displayed creating a randomness to the game everytime the player clicks start.
 
-const gameCards = [combatCardOne, combatCardTwo, combatCardThree, combatCardFour, combatCardFive];
-shuffleCards(gameCards);
+shuffleCards(combatCardArr);
 let gameCardIndex = 0;
 
-const bossCards = [bossCardOne, bossCardTwo];
-shuffleCards(bossCards);
+shuffleCards(bossCardArr);
 let bossCardIndex = 0;
 
-const encounterCards = [encounterCardOne, encounterCardTwo, encounterCardThree];
-shuffleCards(encounterCards);
+shuffleCards(encounterCardArr);
 let encounterCardIndex = 0;
 
 // max and min health points can be used to vary difficulty in later development, assigning them now means that they have been worked into the code already.
@@ -47,7 +45,54 @@ function healthAdjust(adjust) {
     health = Math.min(health, maxHealth); //Stops the health going over the maximum health points selected
     health = Math.max(health, minHealth); // Stops the health going below 0
 
-}
+};
+
+// Next level function used after all result cards
+
+function nextLevel() {
+    ++x;
+    checkHealth();
+    hideContinue();
+    buttonToggle();
+    console.log(level = x);
+    if (x === 1) {
+        gameStart();
+    } else if (x === 2) {
+        combatCard(combatCardArr[gameCardIndex][0]);
+        gameCardIndex++;
+    } else if (x === 3 && encounterCardIndex < encounterCardArr.length) {
+       combatCard(encounterCardArr[encounterCardIndex][0]);
+       encounterCardIndex++;
+    } else if (x === 4 && gameCardIndex < combatCardArr.length) {
+        combatCard(combatCardArr[gameCardIndex][0]);
+        gameCardIndex++;
+    } else if (x === 5 && encounterCardIndex < encounterCardArr.length) {
+        combatCard(encounterCardArr[encounterCardIndex][0]);
+        encounterCardIndex++;
+    } else if (x === 6 && gameCardIndex < gameCards.length) {
+        combatCard(combatCardArr[gameCardIndex][0]);
+        gameCardIndex++;
+    } else if (x >= 7 && bossCardRun === false && bossCardIndex < bossCardArr.length) {
+        bossCardRun = true;
+        combatCard(bossCardArr[bossCardIndex][0]);
+    } else if (x >= 7 && bossCardRun === true) {
+        if (mainText.textContent.includes("balrog")) {
+        bossDisplayText(bossCardOneSecondaryData[0]);
+        } else if (mainText.textContent.includes("wizard")) {
+        bossDisplayText(bossCardTwoSecondaryData[0])
+        }
+    } else {
+        console.log("End of cards");
+        buttonToggle();
+        mainText.innerHTML = "<p>Well, it seems like the adventure has closed, rather unceremoniously... Return Adventurer! Maybe you'll get lucky next time...</p>"
+        imageHeader.classList.add("hidden");
+        buttonContinue.classList.remove("hidden");
+        buttonContinue.innerText = "Return to the pub";
+        buttonContinue.addEventListener("click", function() {
+            window.location.reload();
+        });
+    }; 
+};
 
 // This function will be the first one used when the user opts to start a new game //
 function gameStart() {
@@ -63,7 +108,7 @@ function gameStart() {
       arrBtns.forEach(button  => {
         button.addEventListener("click", function() {
             if (button === buttonA) {
-                displayText("gameStartResultA");
+            displayText("gameStartResultA");                
             } else if (button === buttonB) {
                 displayText("gameStartResultB");
             } else if (button === buttonC) {
@@ -83,51 +128,35 @@ function shuffleCards(array) {
     }
 }
 
-// Next level function used after all result cards
+let currentCombatCard = null;
 
-function nextLevel() {
-    ++x;
-    checkHealth();
+function combatCard(displayCardData){
+    currentCombatCard = displayCardData;
     hideContinue();
-    buttonToggle();
-    console.log(level = x);
-    if (x === 1) {
-        gameStart();
-    } else if (x === 2 && gameCardIndex < gameCards.length) {
-        gameCards[gameCardIndex]();
-        gameCardIndex++;
-    } else if (x === 3 && encounterCardIndex < encounterCards.length) {
-       encounterCards[encounterCardIndex]();
-       encounterCardIndex++;
-    } else if (x === 4 && gameCardIndex < gameCards.length) {
-        gameCards[gameCardIndex]();
-        gameCardIndex++;
-    } else if (x === 5 && encounterCardIndex < encounterCards.length) {
-        encounterCards[encounterCardIndex]();
-        encounterCardIndex++;
-    } else if (x === 6 && gameCardIndex < gameCards.length) {
-        gameCards[gameCardIndex]();
-        gameCardIndex++;
-    } else if (x >= 7 && bossCardRun === false && bossCardIndex < bossCards.length) {
-        bossCards[bossCardIndex]();
-    } else if (x >= 7 && bossCardRun === true) {
-        if (mainText.textContent.includes("balrog")) {
-        bossCardOneSecondary();
-        } else if (mainText.textContent.includes("wizard")) {
-        bossCardTwoSecondary();
-        }
-    } else {
-        console.log("End of cards");
-        buttonToggle();
-        mainText.innerHTML = "<p>Well, it seems like the adventure has closed, rather unceremoniously... Return Adventurer! Maybe you'll get lucky next time...</p>"
-        imageHeader.classList.add("hidden");
-        buttonContinue.classList.remove("hidden");
-        buttonContinue.innerText = "Return to the pub";
-        buttonContinue.addEventListener("click", function() {
-            window.location.reload();
-        });
-    }; 
+    imageHeader.innerHTML = displayCardData.imageHeader;
+    mainText.innerHTML = displayCardData.mainText;
+    buttonA.innerText = displayCardData.buttonAText;
+    buttonB.innerText = displayCardData.buttonBText;
+    buttonC.innerText = displayCardData.buttonCText;
+
+
+arrBtns.forEach(button  => {
+    button.addEventListener("click", function() {
+        if (button === buttonA) {
+            console.log("displayCardData:", currentCombatCard);
+                displayText(currentCombatCard.buttonDisplayTextA);
+                buttonToggle();
+        } else if (button === buttonB) {
+                displayText(currentCombatCard.buttonDisplayTextB);
+                buttonToggle();
+        } else if (button === buttonC) {
+                displayText(currentCombatCard.buttonDisplayTextC);
+                buttonToggle();
+        };
+    });
+});
 };
+
 // This function runs if your health reaches 0. Currently a copy of the code that runs when there are no more cards to show the player.
 function gameOver() {
     arrBtns.forEach(button => { //This if will run through the buttons to check if they need to be hidden or not
@@ -256,282 +285,187 @@ function inputName(e) {
     mainText.innerHTML = "<p>Input your name to get started, and when you click submit, the adventure will begin...</p>";
 }
 */
-// Combat card  function section
-
-function combatCardOne() {
-    hideContinue();
-    imageHeader.innerHTML = "<img src='assets/images/combat-card-one.png' alt='A beast emerging from the hedgeline'>";
-    mainText.innerHTML = "<p>A beast emerges from the hedges and snarls at you, teeth bared and saliva dripping from it's mouth. What do you do?</p>";
-    buttonA.innerText = "Draw your sword and take a swing";
-    buttonB.innerText = "Draw your sword ready to defend";
-    buttonC.innerText = "Slowly back away";
-    arrBtns.forEach(button  => {
-    button.addEventListener("click", function() {                
-        if (button === buttonA) {
-            displayText("combatCardOneResultA");
-            buttonToggle();
-        } else if (button === buttonB) {
-            displayText("combatCardOneResultB");
-            buttonToggle();
-        } else if (button === buttonC) {
-            displayText("combatCardOneResultC");
-            buttonToggle();
+function displayText(argument){
+// Game start function
+    if(argument === "gameStartResultA"){
+        imageHeader.innerHTML = gameStartData[0].imageHeader;
+        mainText.innerHTML =  gameStartData[0].mainText;
+    } else if (argument === "gameStartResultB") {
+        imageHeader.innerHTML = gameStartData[1].imageHeader;
+        mainText.innerHTML = gameStartData[1].mainText;
+        healthAdjust(-2);
+    } else if (argument === "gameStartResultC") {
+        imageHeader.innerHTML = gameStartData[2].imageHeader;
+        mainText.innerHTML = gameStartData[2].mainText;
+    };
+// Combat card section. These ifs provide the data for each combatCard function
+    if(argument === "combatCardOneResultA"){
+        imageHeader.innerHTML = combatCardOneData[1].imageHeader;
+        mainText.innerHTML = combatCardOneData[1].mainText;
+        healthAdjust(-2);
+            } else if(argument === "combatCardOneResultB"){
+        imageHeader.innerHTML = combatCardOneData[2].imageHeader;
+        mainText.innerHTML = combatCardOneData[2].mainText;
+        healthAdjust(-1);
+            } else if(argument === "combatCardOneResultC"){
+        imageHeader.innerHTML = combatCardOneData[3].imageHeader;
+        mainText.innerHTML = combatCardOneData[3].mainText;
+        healthAdjust(0);
+            }; 
+    if (argument === "combatCardTwoResultA") {
+        imageHeader.innerHTML = combatCardTwoData[1].imageHeader;
+        mainText.innerHTML = combatCardTwoData[1].mainText;
+        healthAdjust(0);
+    }       else if (argument === "combatCardTwoResultB") {
+        imageHeader.innerHTML = combatCardTwoData[2].imageHeader;
+        mainText.innerHTML = combatCardTwoData[2].mainText;
+        healthAdjust(-1);
+    }       else if (argument === "combatCardTwoResultC") {
+        imageHeader.innerHTML = combatCardTwoData[3].imageHeader;
+        mainText.innerHTML = combatCardTwoData[3].mainText;
+        healthAdjust(0);
+        };  
+    if (argument === "combatCardThreeResultA") {
+        imageHeader.innerHTML = combatCardThreeData[1].imageHeader;
+        mainText.innerHTML = combatCardThreeData[1].mainText;
+        healthAdjust(0);
+    }       else if (argument === "combatCardThreeResultB") {
+        imageHeader.innerHTML = combatCardThreeData[2].imageHeader;
+        mainText.innerHTML = combatCardThreeData[2].mainText;
+        healthAdjust(-1);
+    }       else if (argument === "combatCardThreeResultC") {
+        imageHeader.innerHTML = combatCardThreeData[3].imageHeader;
+        mainText.innerHTML = combatCardThreeData[3].mainText;
+        healthAdjust(0);
         };
-    });
+    if (argument === "combatCardFourResultA") {
+        imageHeader.innerHTML = combatCardFourData[1].imageHeader;
+        mainText.innerHTML = combatCardFourData[1].mainText;
+        healthAdjust(2);
+    } else if (argument === "combatCardFourResultB") {
+        imageHeader.innerHTML = combatCardFourData[2].imageHeader;
+        mainText.innerHTML = combatCardFourData[2].mainText;
+        healthAdjust(0);
+    } else if (argument === "combatCardFourResultC") {
+        imageHeader.innerHTML = combatCardFourData[3].imageHeader;
+        mainText.innerHTML = combatCardFourData[3].mainText;
+        healthAdjust(-2);
+    };
+        if (argument === "combatCardFiveResultA") {
+        imageHeader.innerHTML = combatCardFiveData[1].imageHeader;
+        mainText.innerHTML = combatCardFiveData[1].mainText;
+        healthAdjust(-1); 
+    } else if (argument === "combatCardFiveResultB") {
+        imageHeader.innerHTML = combatCardFiveData[2].imageHeader;
+        mainText.innerHTML = combatCardFiveData[2].mainText;
+        healthAdjust(0);
+    } else if (argument === "combatCardFiveResultC") {
+        imageHeader.innerHTML = combatCardFiveData[3].imageHeader;
+        mainText.innerHTML = combatCardFiveData[3].mainText;
+        healthAdjust(1);
+    };
+// Encounter cards section. These ifs provide the data for each encounterCard function
+    if (argument === "encounterCardOneResultA") {
+        imageHeader.innerHTML = encounterCardOneData[1].imageHeader;
+        mainText.innerHTML = encounterCardOneData[1].mainText;
+        healthAdjust(1);
+    }   else if (argument === "encounterCardOneResultB") {
+        imageHeader.innerHTML = encounterCardOneData[2].imageHeader;
+        mainText.innerHTML = encounterCardOneData[2].mainText;
+        healthAdjust(2);
+    }   else if (argument === "encounterCardOneResultC") {
+        imageHeader.innerHTML = encounterCardOneData[3].imageHeader;
+        mainText.innerHTML = encounterCardOneData[3].mainText;
+        healthAdjust(0);
+    };
+    if (argument === "encounterCardTwoResultA") {
+        imageHeader.innerHTML = encounterCardTwoData[1].imageHeader;
+        mainText.innerHTML = encounterCardTwoData[1].mainText;
+        healthAdjust(2);
+    }   else if (argument === "encounterCardTwoResultB") {
+        imageHeader.innerHTML = encounterCardTwoData[2].imageHeader;
+        mainText.innerHTML = encounterCardTwoData[2].mainText;
+        healthAdjust(-2);
+    }   else if (argument === "encounterCardTwoResultC") {
+        imageHeader.innerHTML = encounterCardTwoData[3].imageHeader;
+        mainText.innerHTML = encounterCardTwoData[3].mainText;
+        healthAdjust(0);
+    };
+    if (argument === "encounterCardThreeResultA") {
+        imageHeader.innerHTML = encounterCardThreeData[1].imageHeader;
+        mainText.innerHTML = encounterCardThreeData[1].mainText;
+        healthAdjust(0);
+    } else if (argument === "encounterCardThreeResultB") {
+        imageHeader.innerHTML = encounterCardThreeData[2].imageHeader;
+        mainText.innerHTML = encounterCardThreeData[2].mainText;
+        healthAdjust(0);
+    } else if ( argument === "encounterCardThreeResultC") {
+        imageHeader.innerHTML = encounterCardThreeData[3].imageHeader;
+        mainText.innerHTML = encounterCardThreeData[3].mainText;
+        healthAdjust(0);
+    };
+// Boss cards section. These ifs provide the data for each bossCard function
+    if (argument === "bossCardOneResultA") {
+        imageHeader.innerHTML = bossCardOneData[1].imageHeader;
+        mainText.innerHTML = bossCardOneData[1].mainText;
+        healthAdjust(-3);
+    } else if (argument === "bossCardOneResultB") {
+        imageHeader.innerHTML = bossCardOneData[2].imageHeader;
+        mainText.innerHTML = bossCardOneData[2].mainText;
+        healthAdjust(0);
+    } else if (argument === "bossCardOneResultC") {
+        imageHeader.innerHTML = bossCardOneData[3].imageHeader;
+        mainText.innerHTML = bossCardOneData[3].mainText;
+        healthAdjust(0);
+    };
+    if (argument === "bossCardTwoResultA") {
+        imageHeader.innerHTML = bossCardTwoData[1].imageHeader;
+        mainText.innerHTML = bossCardTwoData[1].mainText;
+        healthAdjust(0);
+    } else if (argument === "bossCardTwoResultB") {
+        imageHeader.innerHTML = bossCardTwoData[2].imageHeader;
+        mainText.innerHTML = bossCardTwoData[2].mainText;
+        healthAdjust(0);
+    } else if (argument === "bossCardTwoResultC") {
+        imageHeader.innerHTML = bossCardTwoData[3].imageHeader;
+        mainText.innerHTML = bossCardTwoData[3].mainText;
+        healthAdjust(0);
+    };
+    buttonToggle();
+    showContinue(nextLevel);
+};
+// Use this function for the second boss card, to set up the end of the game.
+function bossDisplayText(argument) {
+    if (argument === "bossCardOneSecondaryResultA") {
+        imageHeader.innerHTML = bossCardOneSecondaryData[1].imageHeader;
+        mainText.innerHTML = bossCardOneSecondaryData[1].mainText;
+        healthAdjust(-4);
+    } else if (argument === "bossCardOneSecondaryResultB") {
+        imageHeader.innerHTML = bossCardOneSecondaryData[2].imageHeader;
+        mainText.innerHTML = bossCardOneSecondaryData[2].mainText;
+        healthAdjust(0);
+    } else if (argument === "bossCardOneSecondaryResultC") {
+        imageHeader.innerHTML = bossCardOneSecondaryData[3].imageHeader;
+        mainText.innerHTML = bossCardOneSecondaryData[3].mainText;
+        healthAdjust(-6);
+    };
+    if (argument === "bossCardTwoSecondaryResultA") {
+        imageHeader.innerHTML = bossCardTwoSecondaryData[1].imageHeader;
+        mainText.innerHTML = bossCardTwoSecondaryData[1].mainText;
+        healthAdjust(0);
+    } else if (argument === "bossCardTwoSecondaryResultB") {
+        imageHeader.innerHTML = bossCardTwoSecondaryData[2].imageHeader;
+        mainText.innerHTML = bossCardTwoSecondaryData[2].mainText;
+        healthAdjust(0);
+    } else if (argument === "bossCardTwoSecondaryResultC") {
+        imageHeader.innerHTML = bossCardTwoSecondaryData[3].imageHeader;
+        mainText.innerHTML = bossCardTwoSecondaryData[3].mainText;
+        healthAdjust(0);
+    };
+    if (health > 0) {
+        showContinue(gameWin);
+} else if (health = 0) {
+        showContinue(gameOver);
+};
+};
 });
-
-};
-
-function combatCardTwo() {
-    hideContinue();
-    imageHeader.innerHTML = "<img src='assets/images/combat-card-two.png' alt='A group of bandits sat around a campfire, their backs to you'></img>";
-    mainText.innerHTML = "<p>You walk into a monastery that has been long since abandoned. Walking through it you see nothing but ruins and torn tapestry. Out the other end you spy a campfire surrounded by four bandits. What do you do?</p>";
-    buttonA.innerText = "Sneak around them";
-    buttonB.innerText = "Run through the group";
-    buttonC.innerText = "Walk back the way you came";
-    arrBtns.forEach(button  => {
-        button.addEventListener("click", function() {
-            if (button === buttonA) {
-                displayText("combatCardTwoResultA");
-                buttonToggle();
-            } else if (button === buttonB) {
-                displayText("combatCardTwoResultB");
-                buttonToggle();
-            } else if (button === buttonC) {
-                displayText("combatCardTwoResultC");
-                buttonToggle();
-            };
-        });
-    });
-};
-
-function combatCardThree() {
-    hideContinue();
-    imageHeader.innerHTML = "<img src='assets/images/combat-card-three.png' alt='An angry fox stands over the corpse of a dog, growling at you'>";
-    mainText.innerHTML =  "<p>You step deeper into the forest and hear a mix of growling and whining and then suddenly a whimper. Upon investigating, you find an aggressive looking fox stood over the body of a dead dog. What do you do?</p>";
-    buttonA.innerText = "Take an aggressive stance";
-    buttonB.innerText = "Drop to all fours and mimic the fox";
-    buttonC.innerText = "Keep facing it and walk around it to get past";
-    arrBtns.forEach(button  => {
-        button.addEventListener("click", function() {
-            if (button === buttonA) {
-                displayText("combatCardThreeResultA");
-                buttonToggle();
-            } else if (button === buttonB) {
-                displayText("combatCardThreeResultB");
-                buttonToggle();
-            } else if (button === buttonC) {
-                displayText("combatCardThreeResultC");
-                buttonToggle();
-            };
-        });
-    });
-};
-
-function combatCardFour() {
-    hideContinue();
-    imageHeader.innerHTML = "<img src='assets/images/combat-card-four.png' alt='An archer standing in a tree holding a bow and arrow'>";
-    mainText.innerHTML = "<p>Walking through the forest, you walk upon an archer hiding in a treetop, pointing his arrow straight at you.</p>";
-    buttonA.innerText = "You ask him for directions";
-    buttonB.innerText = "Threaten him";
-    buttonC.innerText = "Declare yourself powerful";
-    arrBtns.forEach(button  => {
-        button.addEventListener("click", function() {
-            if (button === buttonA) {
-                displayText("combatCardFourResultA");
-                buttonToggle();
-            } else if (button === buttonB) {
-                displayText("combatCardFourResultB");
-                buttonToggle();
-            } else if (button === buttonC) {
-                displayText("combatCardFourResultC");
-                buttonToggle();
-            };
-        });
-    });
-};
-
-function combatCardFive() {
-    hideContinue();
-    imageHeader.innerHTML = "<img src='assets/images/combat-card-five.png' alt='A bear standing in a lake'>";
-    mainText.innerHTML = "<p>You follow the sound of a lake and find a bear calmly drinking from it. You break a tree branch on the ground and it darts it's head around to stare directly at you. What do you do?</p>";
-    buttonA.innerText = "Draw your sword and threaten it";
-    buttonB.innerText = "Stare at it and stand your ground";
-    buttonC.innerText = "Pet the bear";
-    arrBtns.forEach(button  => {
-        button.addEventListener("click", function() {
-            if (button === buttonA) {
-                displayText("combatCardFiveResultA");
-                buttonToggle();
-            } else if (button === buttonB) {
-                displayText("combatCardFiveResultB");
-                buttonToggle();
-            } else if (button === buttonC) {
-                displayText("combatCardFiveResultC");
-                buttonToggle();
-            };
-        });
-    });
-}
-
-// encounter card functions
-
-function encounterCardOne() {
-    hideContinue();
-    imageHeader.innerHTML = "<img src='assets/images/encounter-card-one.png' alt='A merchant pulling a cart through a forest'>";
-    mainText.innerHTML = "<p>Wandering through the forest, you stumble upon a merchant. He's pulling his wares and stops you, looking you up and down. 'Adventurer, what can I offer you?'</p>";
-    buttonA.innerText = "Have a health potion?";
-    buttonB.innerText = "Carrying any superior health potions?";
-    buttonC.innerText = "I'm alright thank you, I don't need anything.";
-    arrBtns.forEach(button  => {
-        button.addEventListener("click", function() {
-            if (button === buttonA) {
-                displayText("encounterCardOneResultA");
-                buttonToggle();
-            } else if (button === buttonB) {
-                displayText("encounterCardOneResultB");
-                buttonToggle();
-            } else if (button === buttonC) {
-                displayText("encounterCardOneResultC");
-                buttonToggle();
-            };
-        });
-    });
-};
-
-function encounterCardTwo() {
-    hideContinue();
-    imageHeader.innerHTML = "<img src='assets/images/encounter-card-two.png' alt='A gnome sat on a mushroom'>";
-    mainText.innerHTML = "<p>You walk over a log and step into a field of mushrooms, all glowing different colours. You hear a snigger as a gnome reaches up and leaps up atop one. 'You look weary. One of these mushrooms will help you with that, I'm afraid I just can't remember which one...'What do you do?</p>";
-    buttonA.innerText = "Try a purple mushroom";
-    buttonB.innerText = "Try the red mushroom";
-    buttonC.innerText = "Decline the offer";
-    arrBtns.forEach(button  => {
-        button.addEventListener("click", function() {
-            if (button === buttonA) {
-                displayText("encounterCardTwoResultA");
-                buttonToggle();
-            } else if (button === buttonB) {
-                displayText("encounterCardTwoResultB");
-                buttonToggle();
-            } else if (button === buttonC) {
-                displayText("encounterCardTwoResultC");
-                buttonToggle();
-            };
-        });
-    });
-};
-
-function encounterCardThree() {
-    hideContinue();
-    imageHeader.innerHTML = "<img src='assets/images/encounter-card-three.png' alt='A squirrel sitting on a branch holding an acorn'>";
-    mainText.innerHTML = "<p>You walk underneath a set of trees with perfect, interlocking branches. On top of the one of the branches is a squirrel, holding an acorn tightly. Slowly it scampers down the tree to the trunk. What do you do?</p>";
-    buttonA.innerText = "Reach out to the squirrel";
-    buttonB.innerText = "Watch and wait";
-    buttonC.innerText = "Step towards the squirrel";
-    arrBtns.forEach(button  => {
-        button.addEventListener("click", function() {
-            if (button === buttonA) {
-                displayText("encounterCardThreeResultA");
-                buttonToggle();
-            } else if (button === buttonB) {
-                displayText("encounterCardThreeResultB");
-                buttonToggle();
-            } else if (button === buttonC) {
-                displayText("encounterCardThreeResultC");
-                buttonToggle();
-            };
-        });
-    });
-}
-
-// Boss card functions. These functions act differently, using two levels within themselves
-
-function bossCardOne() {
-    bossCardRun = true;
-    hideContinue();
-    imageHeader.innerHTML = "<img src='assets/images/boss-card-one.png' alt='A balrog stands behind a large rock in a cave'>";
-    mainText.innerHTML = "<p>You walk down through the cave, and feel warmth striking it's way down the stone corridors. You see streaks of fire erupt from behind a rock, and see a Balrog sneaking around it towards you. What do you do?</p>";
-    buttonA.innerText = "Slowly walk towards it and draw your sword ready to attack";
-    buttonB.innerText = "Rush towards it, sword drawn, right underneath it's foot";
-    buttonC.innerText = "Stop where you stand"
-    arrBtns.forEach(button  => {
-        button.addEventListener("click", function() {
-            if (button === buttonA) {
-                displayText("bossCardOneResultA");
-                buttonToggle();
-            } else if (button === buttonB) {
-                displayText("bossCardOneResultB");
-                buttonToggle();
-            } else if (button === buttonC) {
-                displayText("bossCardOneResultC");
-                buttonToggle();
-            };
-        });
-    });
-}
-
-function bossCardOneSecondary() {
-    hideContinue();
-    imageHeader.innerHTML = "<img src='assets/images/boss-card-one-second.png' alt='The balrog stands firm surrounded by ruins'>";
-    mainText.innerHTML = "<p>The balrog prepares to fight again, smacking itself against the walls of the cave, causing stone to crack and fall to the ground</p>";
-    buttonA.innerText = "Attempt to climb it's leg";
-    buttonB.innerText = "Wait for it to step a little closer to you";
-    buttonC.innerText = "Hold by the rock, drawing it's fire breath";
-    arrBtns.forEach(button  => {
-        button.addEventListener("click", function() {
-            if (button === buttonA) {
-                bossDisplayText("bossCardOneSecondaryResultA");
-            } else if (button === buttonB) {
-                bossDisplayText("bossCardOneSecondaryResultB");
-            } else if (button === buttonC) {
-                bossDisplayText("bossCardOneSecondaryResultC");
-            };
-        });
-    });
-}
-
-function bossCardTwo() {
-    bossCardRun = true;
-    hideContinue();
-    imageHeader.innerHTML = "<img src='assets/images/boss-card-two.png' alt='A wizard floats above a clifftop'>";
-    mainText.innerHTML = "<p>You follow the sun and walk out of the forest to the edge of a cliff, and there waiting for you is a wizard, preparing a spell. 'So you're the one who's been messing around with MY forest? This should teach you..'</p>";
-    buttonA.innerText = "Hide from the blast";
-    buttonB.innerText = "Parry the spell";
-    buttonC.innerText = "Stand your ground";
-    arrBtns.forEach(button  => {
-        button.addEventListener("click", function() {
-            if (button === buttonA) {
-                displayText("bossCardTwoResultA");
-                buttonToggle();
-            } else if (button === buttonB) {
-                displayText("bossCardTwoResultB");
-                buttonToggle();
-            } else if (button === buttonC) {
-                displayText("bossCardTwoResultC");
-                buttonToggle();
-            };
-        });
-    });
-};
-
-function bossCardTwoSecondary() {
-    hideContinue();
-    imageHeader.innerHTML = "<img src='assets/images/boss-card-two-secondary.png' alt='A wizard knelt on the ground, preparing a spell'>";
-    mainText.innerHTML = "<p>The wizard takes a moment to recover on the ground, closing his eyes slowly and preparing a spell between his hands. You see magik swirling around his palms and you feel a power emanate from him</p>";
-    buttonA.innerText = "Interrupt the spell";
-    buttonB.innerText = "Hide from the spell";
-    buttonC.innerText = "Charge the wizard";
-    arrBtns.forEach(button  => {
-        button.addEventListener("click", function() {
-            if (button === buttonA) {
-                bossDisplayText("bossCardTwoSecondaryResultA");
-            } else if (button === buttonB) {
-                bossDisplayText("bossCardTwoSecondaryResultB");
-            } else if (button === buttonC) {
-                bossDisplayText("bossCardTwoSecondaryResultC");
-            };
-        });
-    });
-};
-
