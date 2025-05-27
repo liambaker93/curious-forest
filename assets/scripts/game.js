@@ -16,6 +16,7 @@ let gameCardIndex = 0;
 
 shuffleCards(bossCardArr);
 let bossCardIndex = 0;
+let bossCardSecIndex = 0;
 
 shuffleCards(encounterCardArr);
 let encounterCardIndex = 0;
@@ -38,14 +39,19 @@ var x = 0;
 // healthAdjust is used throughout the levels to adjust the health of the player depending on their actions.
 
 function healthAdjust(healthAdjustValue) {
-    health = health + healthAdjustValue;
+    health = health + healthAdjustValue; // The healthAdjustValue is called after a user clicks one of the selections.
 
     health = Math.min(health, maxHealth); //Stops the health going over the maximum health points selected
     health = Math.max(health, minHealth); // Stops the health going below 0
 
 };
 
-// Next level function used after all result cards
+// The nextLevel function uses x as a turn counter to implement cards throughout the game. 
+// Using the shuffled cards and pulling those indexes from the relevant Arrays.
+// This info is then displayed to the user.
+// All of the data is stored and pulled from the datasets.js file to aid readability.
+// If extra levels are to be added, then adding the data into the relevant array will automatically
+// add them into the level selection within the nextLevel function.
 
 function nextLevel() {
     ++x;
@@ -53,31 +59,28 @@ function nextLevel() {
     hideContinue();
     console.log("level", x);
     if (x === 1) {
-        combatCard(gameStartData[0]);
+        gameCard(gameStartData[0]);
     } else if (x === 2) {
-        combatCard(combatCardArr[gameCardIndex][0]);
+        gameCard(combatCardArr[gameCardIndex][0]);
         gameCardIndex++;
     } else if (x === 3 && encounterCardIndex < encounterCardArr.length) {
-       combatCard(encounterCardArr[encounterCardIndex][0]);
+       gameCard(encounterCardArr[encounterCardIndex][0]);
        encounterCardIndex++;
     } else if (x === 4 && gameCardIndex < combatCardArr.length) {
-        combatCard(combatCardArr[gameCardIndex][0]);
+        gameCard(combatCardArr[gameCardIndex][0]);
         gameCardIndex++;
     } else if (x === 5 && encounterCardIndex < encounterCardArr.length) {
-        combatCard(encounterCardArr[encounterCardIndex][0]);
+        gameCard(encounterCardArr[encounterCardIndex][0]);
         encounterCardIndex++;
     } else if (x === 6 && gameCardIndex < combatCardArr.length) {
-        combatCard(combatCardArr[gameCardIndex][0]);
+        gameCard(combatCardArr[gameCardIndex][0]);
         gameCardIndex++;
     } else if (x === 7 && bossCardRun === false && bossCardIndex < bossCardArr.length) {
         bossCardRun = true;
-        combatCard(bossCardArr[bossCardIndex][0]);
-    } else if (x === 8 && bossCardRun === true) {
-        if (currentCombatCard == bossCardArr[0][0]) {
-        combatCard(bossCardSecArr[0][0]);
-        } else if (currentCombatCard == bossCardArr[1][0]) {
-        combatCard(bossCardSecArr[1][0]);
-        }
+        gameCard(bossCardArr[bossCardIndex][bossCardSecIndex]);
+    } else if (x === 8 && bossCardRun === true) { // The boss cards run on two seperate cards to add difficulty. The logic needs to be able to read which boss card has initially been pulled.
+        bossCardSecIndex + 3;
+        gameCard(bossCardArr[bossCardIndex][bossCardSecIndex]);
     } else {
         console.log("End of cards");
         buttonToggle();
@@ -92,21 +95,23 @@ function nextLevel() {
 };
 
 // Shuffle function for picking which cards will be used
-
-function shuffleCards(array) {
-    for (let n = array.length - 1; n > 0; n--) {
+// Through googling via gemini found the Fisher-Yates shuffle method, and managed to implement it and verify with Gemini. Further links and info in the readme
+function shuffleCards(array) { //The array parameter is used to cycle through each type of card displayed to the user.
+    for (let n = array.length - 1; n > 0; n--) { 
         const j = Math.floor(Math.random() * (n + 1));
         [array[n], array[j]] = [array[j], array[n]];
     }
-}
+};
 
-let currentCombatCard = null;
+// Game card function which handles how the game cards are displayed to the user. 
 
-function combatCard(displayCardData){
-    currentCombatCard = displayCardData;
+let currentGameCard = null; // This sets up an object to then be passed through as a parameter into the gameCard function.
+
+function gameCard(displayCardData){  //This parameter lets me specify which card I want to display to the user
+    currentGameCard = displayCardData; //The displayCardData object is the card selected, this then equals the currentGameCard object to allow me to use it within the global button event listener.
     buttonToggle();
     hideContinue();
-    healthAdjustValue = 0;
+    healthAdjustValue = 0; // Resets the healthAdjustValue to 0 to avoid any possible repetitions of adjustments from prior button clicks.
     imageHeader.innerHTML = displayCardData.imageHeader;
     mainText.innerHTML = displayCardData.mainText;
     buttonA.innerText = displayCardData.buttonAText;
@@ -117,11 +122,11 @@ function combatCard(displayCardData){
 arrBtns.forEach(button  => {
     button.addEventListener("click", function() {
             if (button === buttonA) {
-                displayText(currentCombatCard.buttonDisplayTextA);
+                displayText(currentGameCard.buttonDisplayTextA);
         } else if (button === buttonB) {
-                displayText(currentCombatCard.buttonDisplayTextB);
+                displayText(currentGameCard.buttonDisplayTextB);
         } else if (button === buttonC) {
-                displayText(currentCombatCard.buttonDisplayTextC);
+                displayText(currentGameCard.buttonDisplayTextC);
         };
     });
 });

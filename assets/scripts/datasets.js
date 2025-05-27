@@ -29,7 +29,6 @@ gameStartData = [
     },
 ];
 
-
 let combatCardOneData = [
 {
     imageHeader: "<img src='assets/images/combat-card-one.png' alt='A beast emerging from the hedgeline'>",
@@ -156,7 +155,6 @@ let combatCardFiveData = [
     }
 ];
 
-
 let encounterCardOneData = [
     {
         imageHeader: "<img src='assets/images/encounter-card-one.png' alt='A merchant pulling a cart through a forest'>",
@@ -232,7 +230,6 @@ let encounterCardThreeData = [
     },
 ];
 
-
 let bossCardOneData = [
     {
         imageHeader: "<img src='assets/images/boss-card-one.png' alt='A balrog stands behind a large rock in a cave'></img>",
@@ -255,7 +252,29 @@ let bossCardOneData = [
     {
         imageHeader:"<img src='assets/images/boss-card-one-result-c.png' alt='The balrog's mouth wide open, swirling with flames'>",
         mainText:"<p>The balrog leans down to greet you entering it's cave, swirling fire around it's mouth preparing for whatever attack you may have planned</p>",
-    }
+    },
+    {
+        imageHeader: "<img src='assets/images/boss-card-one-second.png' alt='The balrog stands firm surrounded by ruins'>",
+        mainText: "<p>The balrog prepares to fight again, smacking itself against the walls of the cave, causing stone to crack and fall to the ground</p>",
+        buttonAText: "Attempt to climb it's leg",
+        buttonBText: "Wait for it to step a little closer to you",
+        buttonCText: "Hold by the rock, drawing it's fire breath",
+        buttonDisplayTextA: "bossCardOneSecondaryResultA",
+        buttonDisplayTextB: "bossCardOneSecondaryResultB",
+        buttonDisplayTextC: "bossCardOneSecondaryResultC",
+    },
+    {
+        imageHeader:"<img src='assets/images/boss-card-one-result-d.png' alt='The player hanging off the horn of the Balrog'>",
+        mainText:"<p>You try to climb the leg of the balrog, but don't expect it to be as difficult as you thought. The balrog reaches it's hand over to you and grabs you, forcing you onto it's left horn. You hand there as a prize for the Balrog to retreat with.<p>",
+    },
+    {
+        imageHeader:"<img src='assets/images/boss-card-one-result-e.png' alt='The balrog's face on the ground, mouth open.'>",
+        mainText:"<p>You swipe at both it's legs, cutting tendons in the ankles, dropping it to it's knees. The balrog drops it's head and you drive your sword through the roof of it's mouth slaying the beast.</p>",
+    },
+    {
+        imageHeader:"<img src='assets/images/boss-card-one-result-f.png' alt='The player and balrog lay on the ground'>",
+        mainText:"<p>You stand by the rock in the middle of the cave, and wait for it to breathe fire at you, running around the rock as it leads it's fire behind you. You trick it to keep the flames going, and they reach it's back, burning it's scales off. The flames reach you but you manage to stab your sword through to it's flesh, drawing blood as it collapses to the ground. You stagger forward and collapse with it, dying a hero.</p>",
+    },
 ];
 
 let bossCardOneSecondaryData = [
@@ -305,8 +324,29 @@ let bossCardTwoData = [
     {
         imageHeader:"<img src='assets/images/boss-card-two-result-c.png' alt='Wizard's spell hits a man in the arm'>",
         mainText:"<p>You debate how to handle the wizard, and decide to pull out your sword. However you took too long, and the Wizard's electric shock hits your arm and engulfs your arm</p>",
-    }
-
+    },
+    {
+        imageHeader: "<img src='assets/images/boss-card-two-secondary.png' alt='A wizard knelt on the ground, preparing a spell'>",
+        mainText: "<p>The wizard takes a moment to recover on the ground, closing his eyes slowly and preparing a spell between his hands. You see magik swirling around his palms and you feel a power emanate from him</p>",
+        buttonAText: "Interrupt the spell",
+        buttonBText: "Hide from the spell",
+        buttonCText: "Charge the wizard",
+        buttonDisplayTextA: "bossCardTwoSecondaryResultA",
+        buttonDisplayTextB: "bossCardTwoSecondaryResultB",
+        buttonDisplayTextC: "bossCardTwoSecondaryResultC",
+    },
+    {
+        imageHeader:"<img src='assets/images/boss-card-two-result-d.png' alt='Wizard dead on a broken tree'>",
+        mainText:"<p>You run towards the wizard, when you get close you drag your hand through the dirt and throw the rocky dust at his hands and interrupt the spell. He's distracted and the spell back fires, exploding between his hands and throwing him up in the air. He lands on a fallen tree and is impaled on one of the stuck up branches</p>",
+    },
+    {
+        imageHeader:"<img src='assets/images/boss-card-two-result-e.png' alt='The wizard standing above a dead body'>",
+        mainText:"<p>You drop your sword and try to hide from the spell. The wizard causes a volcanic earthquake beneath your feet. He pulls you down into the cracking earth, throwing you up and slamming you back down to the ground</p>",
+    },
+    {
+        imageHeader:"<img src='assets/images/boss-card-two-result-f.png' alt='A wizard and a man falling down a cavern'>",
+        mainText:"<p>You drop your sword and charge at the wizard. He notices you rushing towards him and works to hurry his magik. When you reach him, you grapple his hands and the power he has built up implodes between both sets of hands and throws you both in the air, cutting into both of you. The power throws you back to the cliff edge and you both fly over and down to a ravine below.</p>",
+    },
 ];
 
 let bossCardTwoSecondaryData = [
@@ -337,7 +377,7 @@ let bossCardTwoSecondaryData = [
 let combatCardArr = [combatCardOneData, combatCardTwoData, combatCardThreeData, combatCardFourData, combatCardFiveData];
 let encounterCardArr = [encounterCardOneData, encounterCardTwoData, encounterCardThreeData];
 let bossCardArr = [bossCardOneData, bossCardTwoData];
-let bossCardSecArr =[bossCardOneSecondaryData, bossCardTwoSecondaryData];
+let bossCardSecArr = [bossCardOneSecondaryData, bossCardTwoSecondaryData];
 
 function displayText(argument){
 // Game start function
@@ -399,7 +439,7 @@ function displayText(argument){
         mainText.innerHTML = combatCardFourData[3].mainText;
         healthAdjustValue = -2;
     };
-        if (argument === "combatCardFiveResultA") {
+    if (argument === "combatCardFiveResultA") {
         imageHeader.innerHTML = combatCardFiveData[1].imageHeader;
         mainText.innerHTML = combatCardFiveData[1].mainText;
         healthAdjustValue = -1;
@@ -469,26 +509,26 @@ function displayText(argument){
         mainText.innerHTML = bossCardTwoData[3].mainText;
     };
         if (argument === "bossCardOneSecondaryResultA") {
-        imageHeader.innerHTML = bossCardOneSecondaryData[1].imageHeader;
-        mainText.innerHTML = bossCardOneSecondaryData[1].mainText;
+        imageHeader.innerHTML = bossCardOneData[5].imageHeader;
+        mainText.innerHTML = bossCardOneData[5].mainText;
         healthAdjustValue = -4;
     } else if (argument === "bossCardOneSecondaryResultB") {
-        imageHeader.innerHTML = bossCardOneSecondaryData[2].imageHeader;
-        mainText.innerHTML = bossCardOneSecondaryData[2].mainText;
+        imageHeader.innerHTML = bossCardOneData[6].imageHeader;
+        mainText.innerHTML = bossCardOneData[6].mainText;
     } else if (argument === "bossCardOneSecondaryResultC") {
-        imageHeader.innerHTML = bossCardOneSecondaryData[3].imageHeader;
-        mainText.innerHTML = bossCardOneSecondaryData[3].mainText;
+        imageHeader.innerHTML = bossCardOneData[7].imageHeader;
+        mainText.innerHTML = bossCardOneData[7].mainText;
         healthAdjustValue = -6;
     };
     if (argument === "bossCardTwoSecondaryResultA") {
-        imageHeader.innerHTML = bossCardTwoSecondaryData[1].imageHeader;
-        mainText.innerHTML = bossCardTwoSecondaryData[1].mainText;
+        imageHeader.innerHTML = bossCardTwoData[5].imageHeader;
+        mainText.innerHTML = bossCardTwoData[5].mainText;
     } else if (argument === "bossCardTwoSecondaryResultB") {
-        imageHeader.innerHTML = bossCardTwoSecondaryData[2].imageHeader;
-        mainText.innerHTML = bossCardTwoSecondaryData[2].mainText;
+        imageHeader.innerHTML = bossCardTwoData[6].imageHeader;
+        mainText.innerHTML = bossCardTwoData[6].mainText;
     } else if (argument === "bossCardTwoSecondaryResultC") {
-        imageHeader.innerHTML = bossCardTwoSecondaryData[3].imageHeader;
-        mainText.innerHTML = bossCardTwoSecondaryData[3].mainText;
+        imageHeader.innerHTML = bossCardTwoData[7].imageHeader;
+        mainText.innerHTML = bossCardTwoData[7].mainText;
     };
     healthAdjust(healthAdjustValue);
 
