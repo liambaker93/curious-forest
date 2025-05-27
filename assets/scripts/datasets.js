@@ -337,13 +337,13 @@ let bossCardTwoSecondaryData = [
 let combatCardArr = [combatCardOneData, combatCardTwoData, combatCardThreeData, combatCardFourData, combatCardFiveData];
 let encounterCardArr = [encounterCardOneData, encounterCardTwoData, encounterCardThreeData];
 let bossCardArr = [bossCardOneData, bossCardTwoData];
+let bossCardSecArr =[bossCardOneSecondaryData, bossCardTwoSecondaryData];
 
 function displayText(argument){
 // Game start function
     if(argument === "gameStartResultA"){
         imageHeader.innerHTML = gameStartData[1].imageHeader;
         mainText.innerHTML =  gameStartData[1].mainText;
-        healthAdjustValue = 0;
     } else if (argument === "gameStartResultB") {
         imageHeader.innerHTML = gameStartData[2].imageHeader;
         mainText.innerHTML = gameStartData[2].mainText;
@@ -351,7 +351,6 @@ function displayText(argument){
     } else if (argument === "gameStartResultC") {
         imageHeader.innerHTML = gameStartData[3].imageHeader;
         mainText.innerHTML = gameStartData[3].mainText;
-        healthAdjustValue = 0;
     };
 // Combat card section. These ifs provide the data for each combatCard function
     if(argument === "combatCardOneResultA"){
@@ -365,12 +364,10 @@ function displayText(argument){
             } else if(argument === "combatCardOneResultC"){
         imageHeader.innerHTML = combatCardOneData[3].imageHeader;
         mainText.innerHTML = combatCardOneData[3].mainText;
-        healthAdjustValue = 0;
             }; 
     if (argument === "combatCardTwoResultA") {
         imageHeader.innerHTML = combatCardTwoData[1].imageHeader;
         mainText.innerHTML = combatCardTwoData[1].mainText;
-        healthAdjustValue = 0;
     }       else if (argument === "combatCardTwoResultB") {
         imageHeader.innerHTML = combatCardTwoData[2].imageHeader;
         mainText.innerHTML = combatCardTwoData[2].mainText;
@@ -378,12 +375,10 @@ function displayText(argument){
     }       else if (argument === "combatCardTwoResultC") {
         imageHeader.innerHTML = combatCardTwoData[3].imageHeader;
         mainText.innerHTML = combatCardTwoData[3].mainText;
-        healthAdjustValue = 0;
         };  
     if (argument === "combatCardThreeResultA") {
         imageHeader.innerHTML = combatCardThreeData[1].imageHeader;
         mainText.innerHTML = combatCardThreeData[1].mainText;
-        healthAdjustValue = 0;
     }       else if (argument === "combatCardThreeResultB") {
         imageHeader.innerHTML = combatCardThreeData[2].imageHeader;
         mainText.innerHTML = combatCardThreeData[2].mainText;
@@ -391,7 +386,6 @@ function displayText(argument){
     }       else if (argument === "combatCardThreeResultC") {
         imageHeader.innerHTML = combatCardThreeData[3].imageHeader;
         mainText.innerHTML = combatCardThreeData[3].mainText;
-        healthAdjustValue = 0;
         };
     if (argument === "combatCardFourResultA") {
         imageHeader.innerHTML = combatCardFourData[1].imageHeader;
@@ -400,7 +394,6 @@ function displayText(argument){
     } else if (argument === "combatCardFourResultB") {
         imageHeader.innerHTML = combatCardFourData[2].imageHeader;
         mainText.innerHTML = combatCardFourData[2].mainText;
-        healthAdjustValue = 0;
     } else if (argument === "combatCardFourResultC") {
         imageHeader.innerHTML = combatCardFourData[3].imageHeader;
         mainText.innerHTML = combatCardFourData[3].mainText;
@@ -413,7 +406,6 @@ function displayText(argument){
     } else if (argument === "combatCardFiveResultB") {
         imageHeader.innerHTML = combatCardFiveData[2].imageHeader;
         mainText.innerHTML = combatCardFiveData[2].mainText;
-        healthAdjustValue = 0;
     } else if (argument === "combatCardFiveResultC") {
         imageHeader.innerHTML = combatCardFiveData[3].imageHeader;
         mainText.innerHTML = combatCardFiveData[3].mainText;
@@ -431,7 +423,6 @@ function displayText(argument){
     }   else if (argument === "encounterCardOneResultC") {
         imageHeader.innerHTML = encounterCardOneData[3].imageHeader;
         mainText.innerHTML = encounterCardOneData[3].mainText;
-        healthAdjustValue = 0;
     };
     if (argument === "encounterCardTwoResultA") {
         imageHeader.innerHTML = encounterCardTwoData[1].imageHeader;
@@ -444,20 +435,16 @@ function displayText(argument){
     }   else if (argument === "encounterCardTwoResultC") {
         imageHeader.innerHTML = encounterCardTwoData[3].imageHeader;
         mainText.innerHTML = encounterCardTwoData[3].mainText;
-        healthAdjustValue = 0;
     };
     if (argument === "encounterCardThreeResultA") {
         imageHeader.innerHTML = encounterCardThreeData[1].imageHeader;
         mainText.innerHTML = encounterCardThreeData[1].mainText;
-        healthAdjustValue = 0;
     } else if (argument === "encounterCardThreeResultB") {
         imageHeader.innerHTML = encounterCardThreeData[2].imageHeader;
         mainText.innerHTML = encounterCardThreeData[2].mainText;
-        healthAdjustValue = 0;
     } else if ( argument === "encounterCardThreeResultC") {
         imageHeader.innerHTML = encounterCardThreeData[3].imageHeader;
         mainText.innerHTML = encounterCardThreeData[3].mainText;
-        healthAdjustValue = 0;
     };
 // Boss cards section. These ifs provide the data for each bossCard function
     if (argument === "bossCardOneResultA") {
@@ -467,24 +454,19 @@ function displayText(argument){
     } else if (argument === "bossCardOneResultB") {
         imageHeader.innerHTML = bossCardOneData[2].imageHeader;
         mainText.innerHTML = bossCardOneData[2].mainText;
-        healthAdjustValue = 0;
     } else if (argument === "bossCardOneResultC") {
         imageHeader.innerHTML = bossCardOneData[3].imageHeader;
         mainText.innerHTML = bossCardOneData[3].mainText;
-        healthAdjustValue = 0;
     };
     if (argument === "bossCardTwoResultA") {
         imageHeader.innerHTML = bossCardTwoData[1].imageHeader;
         mainText.innerHTML = bossCardTwoData[1].mainText;
-        healthAdjustValue = 0;
     } else if (argument === "bossCardTwoResultB") {
         imageHeader.innerHTML = bossCardTwoData[2].imageHeader;
         mainText.innerHTML = bossCardTwoData[2].mainText;
-        healthAdjustValue = 0;
     } else if (argument === "bossCardTwoResultC") {
         imageHeader.innerHTML = bossCardTwoData[3].imageHeader;
         mainText.innerHTML = bossCardTwoData[3].mainText;
-        healthAdjustValue = 0;
     };
         if (argument === "bossCardOneSecondaryResultA") {
         imageHeader.innerHTML = bossCardOneSecondaryData[1].imageHeader;
@@ -493,7 +475,6 @@ function displayText(argument){
     } else if (argument === "bossCardOneSecondaryResultB") {
         imageHeader.innerHTML = bossCardOneSecondaryData[2].imageHeader;
         mainText.innerHTML = bossCardOneSecondaryData[2].mainText;
-        healthAdjustValue = 0;
     } else if (argument === "bossCardOneSecondaryResultC") {
         imageHeader.innerHTML = bossCardOneSecondaryData[3].imageHeader;
         mainText.innerHTML = bossCardOneSecondaryData[3].mainText;
@@ -502,15 +483,12 @@ function displayText(argument){
     if (argument === "bossCardTwoSecondaryResultA") {
         imageHeader.innerHTML = bossCardTwoSecondaryData[1].imageHeader;
         mainText.innerHTML = bossCardTwoSecondaryData[1].mainText;
-        healthAdjustValue = 0;
     } else if (argument === "bossCardTwoSecondaryResultB") {
         imageHeader.innerHTML = bossCardTwoSecondaryData[2].imageHeader;
         mainText.innerHTML = bossCardTwoSecondaryData[2].mainText;
-        healthAdjustValue = 0;
     } else if (argument === "bossCardTwoSecondaryResultC") {
         imageHeader.innerHTML = bossCardTwoSecondaryData[3].imageHeader;
         mainText.innerHTML = bossCardTwoSecondaryData[3].mainText;
-        healthAdjustValue = 0;
     };
     healthAdjust(healthAdjustValue);
 

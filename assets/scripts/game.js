@@ -22,7 +22,7 @@ let encounterCardIndex = 0;
 
 // max and min health points can be used to vary difficulty in later development, assigning them now means that they have been worked into the code already.
 
-let health = 6;
+var health = 6;
 let healthAdjustValue = 0;
 let maxHealth = 6;
 let minHealth = 0;
@@ -69,14 +69,14 @@ function nextLevel() {
     } else if (x === 6 && gameCardIndex < combatCardArr.length) {
         combatCard(combatCardArr[gameCardIndex][0]);
         gameCardIndex++;
-    } else if (x >= 7 && bossCardRun === false && bossCardIndex < bossCardArr.length) {
+    } else if (x === 7 && bossCardRun === false && bossCardIndex < bossCardArr.length) {
         bossCardRun = true;
         combatCard(bossCardArr[bossCardIndex][0]);
-    } else if (x >= 7 && bossCardRun === true) {
-        if (currentCombatCard === bossCardOneData) {
-        combatCard(bossCardOneSecondaryData[0]);
-        } else if (currentCombatCard === bossCardTwoData) {
-        combatCard(bossCardTwoSecondaryData[0])
+    } else if (x === 8 && bossCardRun === true) {
+        if (currentCombatCard == bossCardArr[0][0]) {
+        combatCard(bossCardSecArr[0][0]);
+        } else if (currentCombatCard == bossCardArr[1][0]) {
+        combatCard(bossCardSecArr[1][0]);
         }
     } else {
         console.log("End of cards");
@@ -112,7 +112,7 @@ function combatCard(displayCardData){
     buttonA.innerText = displayCardData.buttonAText;
     buttonB.innerText = displayCardData.buttonBText;
     buttonC.innerText = displayCardData.buttonCText;
-
+};
 
 arrBtns.forEach(button  => {
     button.addEventListener("click", function() {
@@ -125,7 +125,6 @@ arrBtns.forEach(button  => {
         };
     });
 });
-};
 
 // This function runs if your health reaches 0. Currently a copy of the code that runs when there are no more cards to show the player.
 function gameOver() {
