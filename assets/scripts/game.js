@@ -7,6 +7,8 @@ const buttonB = document.getElementById("button-b");
 const buttonC = document.getElementById("button-c");
 const buttonContinue = document.getElementById("button-continue");
 
+const instructionsPrompt = document.getElementById("instructions-prompt");
+
 const arrBtns = [buttonA, buttonB, buttonC];
 
 // These arrays are used to shuffle which cards will be displayed creating a randomness to the game everytime the player clicks start.
@@ -32,6 +34,29 @@ let minHealth = 0;
 
 let bossCardRun = false;
 
+// instructionsRead is used to check if the player has read the instructions on the homepage
+
+let instructionsRead = false
+
+// This section handles if the instructions have been read or not
+
+function readInstructions() {
+    instructionsRead = true
+}
+
+function instructionsFormValidate() {
+    instructionsPrompt.click();
+    let instructionsVerify = document.forms["instructions-read"]["instructions-check"].value;
+    if (instructionsVerify == "") {
+        alert("Please read the instructions and submit your response");
+        return false;
+    } else if (instructionsVerify == "Yes" && instructionsRead === false) {
+        alert("Please go read the instructions- don't just say yes!")
+    } else if (instructionsVerify == "Yes" && instructionsRead === true) {
+        nextLevel();
+    }
+}
+
 // x is used to cycle through levels, the above randomisers are used to pick which level is displayed to the player.
 
 var x = 0;
@@ -52,6 +77,15 @@ function healthAdjust(healthAdjustValue) {
 // All of the data is stored and pulled from the datasets.js file to aid readability.
 // If extra levels are to be added, then adding the data into the relevant array will automatically
 // add them into the level selection within the nextLevel function.
+
+// function gameStart() {
+//     if (instructionsRead === false) {
+//         instructionsPrompt.click();
+//     } else if (instructionsRead === true) {
+//         instructionsPrompt.remove();
+//         nextLevel();
+//     }
+// };
 
 function nextLevel() {
     ++x;
@@ -185,6 +219,7 @@ function showContinue(level) {
 function hideContinue() {
     buttonContinue.classList.add("hidden");
 };
+
 
 // This section handles the health of the player.
 

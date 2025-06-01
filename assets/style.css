@@ -42,6 +42,11 @@ img {
     box-sizing: content-box;
 }
 
+.modal-style {
+    background-color: black !important;
+    color: white;
+}
+
  @media screen and (max-width: 576px) {
     img {
         height: 75%;

@@ -32,17 +32,13 @@
     </div>
     </div>
     <div>
-    <!--Form for name input       
-    <form id="input-name" class="hidden">
-      <label for="name">Name: </label>
-      <input type="text" name="playerName" id="playerName" required>
-      <button type="submit">Submit</button>
-    </form>
-    -->
     <div class="container text-center">
       <div id="main-text" class="text-description">
         <p>Welcome to the Adventure!</p>
-        <button type="button" onclick="nextLevel()" id="adventure-start" class="adventure-start">Start Adventure</button>
+        <button type="button" class="adventure-start instructions" onclick="readInstructions()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Load instructions
+</button>
+        <button type="button" id="adventure-start" class="adventure-start" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Start Adventure</button>
       </div>
       <div class="buttons row">
         <button id="button-a" class="hidden col">Button A</button>
@@ -52,12 +48,62 @@
       </div>
     </div>
     </div>
-
-
+    <!-- Instructions Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content modal-style">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Curious Forest Instructions</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>The game is easy!</p>
+        <p>
+          <ul class="modal-style">
+            <li>An image will load with a text prompt and three buttons.</li>
+            <li>Each button will result in an action, which could result in you losing or gaining health points.</li>
+            <li>You select your choice, and the game will move on. It will adjust your health accordingly and you will proceed to the next level.</li>
+            <li>After a series of levels, you will face a final Boss. Beat that and you've beaten the game!</li>
+          </ul>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button"  data-bs-dismiss="modal">Back to the pub</button>
+        <button type="button" onclick="instructionsFormValidate()" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Start Adventure</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Prompt modal for if the user hasn't read the instructions-->
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-style">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Have you read the instructions?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body modal-style">
+        <form id="instructions-read">
+          <label for="instructions-form" class="form-label"></label>
+          <input type="text" id="instructions-form" class="form-control" name="instructions-check" aria-describedby="instructionsReadBlock" required>
+          <div id="instructionsReadBlock" class="form-text modal-style">
+            All you need to do is type 'yes' in if you've read the instructions and you can play the game
+            </div>
+          </form>
+        </div>
+      <div class="modal-footer">
+        <button class="adventure-start" data-bs-target="#staticBackdrop" data-bs-toggle="modal">Read the instructions</button>
+        <button type="submit" form="instructions-read">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<button id="instructions-prompt" class="hidden" onclick="readInstructions()" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"></button>
     <!--Javascript link-->
     <script src="assets/scripts/datasets.js"></script>
     <script src="assets/scripts/game.js"></script>
-    <!--Bootstrap script--><script
+    <!--Bootstrap script-->
+    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
       crossorigin="anonymous"
