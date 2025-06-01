@@ -65,11 +65,39 @@ When the user clicks the start adventure button, I wanted the page to change to 
 
 ### Mobile Wireframes
 
+![Level Page](./readme-files/assets/wireframes/phone-game-page.PNG)
+
+The phone layout I wanted to be readable with minimal scrolling. So wanted the image to fit within the viewport of the device, and then have the buttons below it.
+
 ## Styling
 
-### Fonts
+For this project, I wanted to keep the site simple and plain in terms of styles.
 
-### Colors
+I incorporated Bootstrap mainly to help with the layout of the site and to keep the images and the buttons uniform and neat.
+
+The main piece of styling that evolved throughout the project was how to display the Hearts on the top of the page to the player. I used Font Awesome to find the hearts I wanted and then built them into the page. They then needed to only display when the game actually starts, and appear along the top of the image parallel to the game title. 
+
+This is how the full health bar displays to the player. Each heart represents two points of health, as the game state begins with the player having 6 points of health. Instead of having 6 hearts, Font Awesome had a cracked heart element which I used to display the interim health points.
+
+![Full health bar](./readme-files/assets/styling/health-bar.PNG)
+
+This is how 5 points of health looks to the player.
+
+![Cracked heart element](./readme-files/assets/styling/health-crack.PNG)
+
+Initially I had styled the hearts to be hidden from the player when they had lost a heart's worth of health. However, while testing the game amongst some friends, one had commented that actually it may be better to make the heart faded rather than gone entirely. 
+
+I took this on board, and adjusted it from being hidden, to creating a new CSS class to turn the opacity down. 
+
+![Health bar with hidden elements](./readme-files/assets/styling/health-change.PNG)
+
+I used JS to then add this class on to the hearts when the health conditions have been met, which looks more obvious to the player what has happened to their health, and also was actually quite useful when it came to testing the scripting as I felt it gave me a better indication as to what was happening.
+
+![Health bar faded CSS class](./readme-files/assets/styling/health-change-class.PNG)
+
+![Transparent health bar](./readme-files/assets/styling/health-change-transparent.PNG)
+
+
 
 ## Testing
 
@@ -96,3 +124,5 @@ When the user clicks the start adventure button, I wanted the page to change to 
 ### Design Tools
 
 ### Images
+
+All of the images for this project were generated using Google Gemini.
