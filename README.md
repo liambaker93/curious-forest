@@ -1,8 +1,10 @@
 # Milestone 2 project - Curious Forest
 
+![Website shown on different screens](./readme-files/assets/testing/responsive-design-layout.PNG)
+
 Welcome to the README for the Curious Forest choose your own adventure game site.
 
-Visit the deployed site: (insert link)
+Visit the deployed site: [Curious Forest](https://liambaker93.github.io/curious-forest/)
 
 JavaScript was an interesting language to start getting involved with and learning, so I wanted to do a project that would give me plenty of opportunities to gain further understandings of what JS is capable of and how to use it efficiently. 
 
@@ -13,8 +15,6 @@ JavaScript was an interesting language to start getting involved with and learni
     - [Desktop Wireframes](#desktop-wireframes)
     - [Mobile Wireframes](#mobile-wireframes)
 4. [Styling](#styling)
-    - [Fonts](#fonts)
-    - [Colors](#colors)
 5. [Testing](#Testing)
     - [Code Validation](#code-validation)
     - [Bugs Found](#bugs-found)

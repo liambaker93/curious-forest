@@ -7,7 +7,6 @@ const buttonB = document.getElementById("button-b");
 const buttonC = document.getElementById("button-c");
 const buttonContinue = document.getElementById("button-continue");
 
-const instructionsPrompt = document.getElementById("instructions-prompt");
 const instructionsText = document.getElementById("instructionsReadBlock");
 
 const pubReturnButton = document.getElementById("pub-return");
@@ -35,12 +34,12 @@ let minHealth = 0;
 
 // instructionsRead is used to check if the player has read the instructions on the homepage
 
-let instructionsRead = false
+let instructionsRead = false;
 
 // This section handles if the instructions have been read or not
 
 function readInstructions() {
-    instructionsRead = true
+    instructionsRead = true;
 }
 
 function instructionsFormValidate() {
@@ -72,10 +71,7 @@ function healthAdjust(healthAdjustValue) {
 
     health = Math.min(health, maxHealth); //Stops the health going over the maximum health points selected
     health = Math.max(health, minHealth); // Stops the health going below 0
-
-};
-
-
+}
 
 // Shuffle function for picking which cards will be used
 // Through googling via gemini found the Fisher-Yates shuffle method, and managed to implement it and verify with Gemini. Further links and info in the readme
@@ -84,7 +80,7 @@ function shuffleCards(array) { //The array parameter is used to cycle through ea
         const j = Math.floor(Math.random() * (n + 1));
         [array[n], array[j]] = [array[j], array[n]];
     }
-};
+}
 
 // Game card function which handles how the game cards are displayed to the user. 
 
@@ -100,7 +96,7 @@ function gameCard(displayCardData){  //This parameter lets me specify which card
     buttonA.innerText = displayCardData.buttonAText;
     buttonB.innerText = displayCardData.buttonBText;
     buttonC.innerText = displayCardData.buttonCText;
-};
+}
 
 arrBtns.forEach(button  => {
     button.addEventListener("click", function() {
@@ -110,7 +106,7 @@ arrBtns.forEach(button  => {
                 displayText(currentGameCard.buttonDisplayTextB);
         } else if (button === buttonC) {
                 displayText(currentGameCard.buttonDisplayTextC);
-        };
+        }
     });
 });
 
@@ -119,15 +115,15 @@ function gameEnd() {
         showContinue(gameWin);
     } else if (health === 0) {
         showContinue(gameOver);
-    };
-};
+    }
+}
 
 // This function runs if your health reaches 0. Currently a copy of the code that runs when there are no more cards to show the player.
 function gameOver() {
     arrBtns.forEach(button => { //This if will run through the buttons to check if they need to be hidden or not
         if (!button.classList.contains("hidden")) {
-            button.classList.add("hidden")
-        };
+            button.classList.add("hidden");
+        }
     });
     if (mainText.textContent.includes("balrog")) {
         imageHeader.innerHTML = "<img src='assets/images/game-over-balrog.png' alt='Player dead at the feet of a balrog'>";
@@ -138,7 +134,7 @@ function gameOver() {
     } else {
     mainText.innerHTML = "<p>Unfortunately you have been bested...this time! Return to the pub and try your luck again!</p>";
     imageHeader.innerHTML = "<img src='assets/images/game-over-generic.png' alt='The player dead on the floor of the forest'>";
-    };
+    }
     buttonContinue.classList.remove("hidden");
     buttonContinue.innerText = "Return to the pub";
     buttonContinue.addEventListener("click", function() {
@@ -150,8 +146,8 @@ function gameOver() {
 function gameWin() {
     arrBtns.forEach(button => { //This if will run through the buttons to check if they need to be hidden or not
         if (!button.classList.contains("hidden")) {
-            button.classList.add("hidden")
-        };
+            button.classList.add("hidden");
+        }
     });
     if (mainText.textContent.includes("balrog")) {
         mainText.innerHTML = "<p>Well done! You beat the adventure, and scored a prize. Dare you try your luck again?</p>";
@@ -159,12 +155,12 @@ function gameWin() {
     } else if (mainText.textContent.includes("wizard")) {
         mainText.innerHTML = "<p>Well done! You beat the adventure, and scored a prize. Dare you try your luck again?</p>";
         imageHeader.innerHTML = "<img src='assets/images/boss-card-two-win.png' alt='Armoured warrior standing in a forest'>";
-    }; 
+    }
     buttonContinue.innerText = "Return to the pub";
     buttonContinue.addEventListener("click", function() {
         window.location.reload();
 });
-};
+}
 
 // The nextLevel function uses x as a turn counter to implement cards throughout the game. 
 // Using the shuffled cards and pulling those indexes from the relevant Arrays.
@@ -201,22 +197,22 @@ function nextLevel() {
             gameCard(bossCardSecArr[0][0]);
         } else if (mainText.textContent.includes("wizard")) {
             gameCard(bossCardSecArr[1][0]);
-        };
+        }
     } else if (x > 8){
         gameEnd();
     }
     else {
         console.log("End of cards");
         buttonToggle();
-        mainText.innerHTML = "<p>Well, it seems like the adventure has closed, rather unceremoniously... Return Adventurer! Maybe you'll get lucky next time...</p>"
+        mainText.innerHTML = "<p>Well, it seems like the adventure has closed, rather unceremoniously... Return Adventurer! Maybe you'll get lucky next time...</p>";
         imageHeader.classList.add("hidden");
         buttonContinue.classList.remove("hidden");
         buttonContinue.innerText = "Return to the pub";
         buttonContinue.addEventListener("click", function() {
             window.location.reload();
         });
-    }; 
-};
+    }
+}
 
 // These functions removes the hidden class from the selection buttons
 
@@ -224,23 +220,23 @@ function buttonToggle() {
     buttonA.classList.toggle("hidden");
     buttonB.classList.toggle("hidden");
     buttonC.classList.toggle("hidden");
-};
+}
 
 function buttonHide() {
     buttonA.classList.add("hidden");
     buttonB.classList.add("hidden");
     buttonC.classList.add("hidden");
-};
+}
 
 function showContinue(level) {
     buttonHide();
     buttonContinue.classList.remove("hidden");
     buttonContinue.addEventListener("click", level);
-};
+}
 
 function hideContinue() {
     buttonContinue.classList.add("hidden");
-};
+}
 
 
 // This section handles the health of the player.
@@ -262,7 +258,7 @@ function resetHealth() {
             i.classList.add("fa-heart");
         }
     });
-};
+}
 
 function checkHealth() {
     resetHealth();
@@ -309,4 +305,4 @@ function checkHealth() {
         buttonContinue.addEventListener("click", gameOver);
     }
     console.log("health:", health);
-};
+}
