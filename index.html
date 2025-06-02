@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Gamepage Title-->
     <title>Curious Forest Game</title>
     <!--Favicon-->
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/curious-forest-logo-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/curious-forest-logo-32x32.png">
     <!--CSS Sheet link-->
-    <link href="assets/style.css" rel="stylesheet" />
+    <link href="assets/style.css" rel="stylesheet">
     <!--Fontawesome link-->
     <script src="https://kit.fontawesome.com/949380d262.js" crossorigin="anonymous"></script>
     <!--Bootstrap link-->
@@ -17,22 +17,20 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous">
   </head>
   <body class="bg-black container">
     <div class="row d-flex">
-      <h1 class="main-header col"><a href="index.html">Curious Forest</a></h1>
-      <h1 class="health-bar col"><i id="heart-one" class="full fa-solid fa-heart hidden"></i>
+      <h1 class="main-header col"><a href="index.html">Curious Forest</a>
+      <span class="health-bar col"><i id="heart-one" class="full fa-solid fa-heart hidden"></i>
         <i id="heart-two" class="full fa-solid fa-heart hidden"></i>
         <i id="heart-three" class="full fa-solid fa-heart hidden"></i>
-      </h1> 
-    
+        </span>
+      </h1>    
     <div id="image-header" class="main-image">
       <img
         src="assets/images/fantasy-village.jpg"
-        alt="A fantasy style village with a stone road going through and an open tavern along the pathway."
-      />
+        alt="A fantasy style village with a stone road going through and an open tavern along the pathway.">
     </div>
     </div>
     <div>
@@ -62,7 +60,6 @@
       </div>
       <div class="modal-body">
         <p>The game is easy!</p>
-        <p>
           <ul class="modal-style">
             <li>An image will load with a text prompt and three buttons.</li>
             <li>Each button will result in an action, which could result in you losing or gaining health points.</li>
@@ -70,7 +67,6 @@
             <li>After a series of levels, you will face a final Boss. Beat that and you've beaten the game!</li>
             <li>If you want to return to the beginning and restart, just click the game title, and that will take you back to the beginning.</li>
           </ul>
-        </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="adventure-start"  data-bs-dismiss="modal">Back to the pub</button>
