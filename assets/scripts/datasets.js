@@ -475,7 +475,7 @@ function displayText(argument){
         imageHeader.innerHTML = bossCardOneSecondaryData[2].imageHeader;
         mainText.innerHTML = bossCardOneSecondaryData[2].mainText;
     } else if (argument === "bossCardOneSecondaryResultC") {
-        imageHeader.innerHTML = bossCardOneSecondaryata[3].imageHeader;
+        imageHeader.innerHTML = bossCardOneSecondaryData[3].imageHeader;
         mainText.innerHTML = bossCardOneSecondaryData[3].mainText;
         healthAdjustValue = -6;
     };
