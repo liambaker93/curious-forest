@@ -276,7 +276,7 @@ let bossCardOneSecondaryData = [
     },
     {
         imageHeader:"<img src='assets/images/boss-card-one-result-f.png' alt='The player and balrog lay on the ground'>",
-        mainText:"<p>You stand by the rock in the middle of the cave, and wait for it to breathe fire at you, running around the rock as it leads it's fire behind you. You trick it to keep the flames going, and they reach it's back, burning it's scales off. The flames reach you but you manage to stab your sword through to it's flesh, drawing blood as it collapses to the ground. You stagger forward and collapse with it, dying a hero.</p>",
+        mainText:"<p>You stand by the rock in the middle of the cave, and wait for it to breathe fire at you, running around the rock as it leads it's fire behind you. You trick it to keep the flames going, and they reach it's back, burning it's scales off. The flames reach you but you manage to stab your sword through to it's flesh, drawing blood as it collapses to the ground. You stagger forward and collapse with the balrog, dying a hero.</p>",
     }
 ];
 
@@ -461,45 +461,40 @@ function displayText(argument){
     } else if (argument === "bossCardTwoResultB") {
         imageHeader.innerHTML = bossCardTwoData[2].imageHeader;
         mainText.innerHTML = bossCardTwoData[2].mainText;
+        healthAdjustValue = -3;
     } else if (argument === "bossCardTwoResultC") {
         imageHeader.innerHTML = bossCardTwoData[3].imageHeader;
         mainText.innerHTML = bossCardTwoData[3].mainText;
+        healthAdjustValue = -5;
     };
     if (argument === "bossCardOneSecondaryResultA") {
-        imageHeader.innerHTML = bossCardOneData[5].imageHeader;
-        mainText.innerHTML = bossCardOneData[5].mainText;
+        imageHeader.innerHTML = bossCardOneSecondaryData[1].imageHeader;
+        mainText.innerHTML = bossCardOneSecondaryData[1].mainText;
         healthAdjustValue = -4;
     } else if (argument === "bossCardOneSecondaryResultB") {
-        imageHeader.innerHTML = bossCardOneData[6].imageHeader;
-        mainText.innerHTML = bossCardOneData[6].mainText;
+        imageHeader.innerHTML = bossCardOneSecondaryData[2].imageHeader;
+        mainText.innerHTML = bossCardOneSecondaryData[2].mainText;
     } else if (argument === "bossCardOneSecondaryResultC") {
-        imageHeader.innerHTML = bossCardOneData[7].imageHeader;
-        mainText.innerHTML = bossCardOneData[7].mainText;
+        imageHeader.innerHTML = bossCardOneSecondaryata[3].imageHeader;
+        mainText.innerHTML = bossCardOneSecondaryData[3].mainText;
         healthAdjustValue = -6;
     };
     if (argument === "bossCardTwoSecondaryResultA") {
-        imageHeader.innerHTML = bossCardTwoData[5].imageHeader;
-        mainText.innerHTML = bossCardTwoData[5].mainText;
+        imageHeader.innerHTML = bossCardTwoSecondaryData[1].imageHeader;
+        mainText.innerHTML = bossCardTwoSecondaryData[1].mainText;
     } else if (argument === "bossCardTwoSecondaryResultB") {
-        imageHeader.innerHTML = bossCardTwoData[6].imageHeader;
-        mainText.innerHTML = bossCardTwoData[6].mainText;
+        imageHeader.innerHTML = bossCardTwoSecondaryData[2].imageHeader;
+        mainText.innerHTML = bossCardTwoSecondaryData[2].mainText;
+        healthAdjustValue = -5;
     } else if (argument === "bossCardTwoSecondaryResultC") {
-        imageHeader.innerHTML = bossCardTwoData[7].imageHeader;
-        mainText.innerHTML = bossCardTwoData[7].mainText;
+        imageHeader.innerHTML = bossCardTwoSecondaryData[3].imageHeader;
+        mainText.innerHTML = bossCardTwoSecondaryData[3].mainText;
+        healthAdjustValue = -6;
     };
     healthAdjust(healthAdjustValue);
     checkHealth();
-    if (bossCardRun === false) {
-        showContinue(nextLevel);
-    } else if (bossCardRun === true) {
-        if (health > 0) {
-            showContinue(gameWin);
-        } else if (health = 0) {
-            showContinue(gameOver);
-        }
-    }
+    showContinue(nextLevel);
 };
-
 
 
 

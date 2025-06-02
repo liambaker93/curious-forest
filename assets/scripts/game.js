@@ -33,10 +33,6 @@ let healthAdjustValue = 0;
 let maxHealth = 6;
 let minHealth = 0;
 
-// bossCardRun is used to show the player is in the boss stage, as the boss stage carries two seperate 'levels', the game needs to know that the boss has been activated.
-
-let bossCardRun = false;
-
 // instructionsRead is used to check if the player has read the instructions on the homepage
 
 let instructionsRead = false
@@ -48,7 +44,6 @@ function readInstructions() {
 }
 
 function instructionsFormValidate() {
-    //instructionsPrompt.click();
     let instructionsVerify = document.forms["instructions-read"]["instructions-check"].value;
     if (instructionsVerify.toLowerCase() == "") {
         instructionsText.innerText = "Please read the instructions first- then type yes!";
@@ -67,6 +62,8 @@ function instructionsFormValidate() {
 // x is used to cycle through levels, the above randomisers are used to pick which level is displayed to the player.
 
 var x = 0;
+let maxLevel = 9;
+x = Math.min(x, maxLevel);
 
 // healthAdjust is used throughout the levels to adjust the health of the player depending on their actions.
 
@@ -78,55 +75,7 @@ function healthAdjust(healthAdjustValue) {
 
 };
 
-// The nextLevel function uses x as a turn counter to implement cards throughout the game. 
-// Using the shuffled cards and pulling those indexes from the relevant Arrays.
-// This info is then displayed to the user.
-// All of the data is stored and pulled from the datasets.js file to aid readability.
-// If extra levels are to be added, then adding the data into the relevant array will automatically
-// add them into the level selection within the nextLevel function.
 
-function nextLevel() {
-    ++x;
-    hideContinue();
-    console.log("level", x);
-    if (x === 1) {
-        gameCard(gameStartData[0]);
-    } else if (x === 2) {
-        gameCard(combatCardArr[gameCardIndex][0]);
-        gameCardIndex++;
-    } else if (x === 3 && encounterCardIndex < encounterCardArr.length) {
-       gameCard(encounterCardArr[encounterCardIndex][0]);
-       encounterCardIndex++;
-    } else if (x === 4 && gameCardIndex < combatCardArr.length) {
-        gameCard(combatCardArr[gameCardIndex][0]);
-        gameCardIndex++;
-    } else if (x === 5 && encounterCardIndex < encounterCardArr.length) {
-        gameCard(encounterCardArr[encounterCardIndex][0]);
-        encounterCardIndex++;
-    } else if (x === 6 && gameCardIndex < combatCardArr.length) {
-        gameCard(combatCardArr[gameCardIndex][0]);
-        gameCardIndex++;
-    } else if (x === 7 && bossCardRun === false && bossCardIndex < bossCardArr.length) {
-        gameCard(bossCardArr[bossCardIndex][bossCardSecIndex]);
-    } else if (x === 8) {
-        if (mainText.textContent.includes("balrog")) {
-            gameCard(bossCardSecArr[0][0]);
-        } else if (mainText.textContent.includes("wizard")) {
-            gameCard(bossCardSecArr[1][0]);
-        }
-        bossCardRun = true;
-    } else {
-        console.log("End of cards");
-        buttonToggle();
-        mainText.innerHTML = "<p>Well, it seems like the adventure has closed, rather unceremoniously... Return Adventurer! Maybe you'll get lucky next time...</p>"
-        imageHeader.classList.add("hidden");
-        buttonContinue.classList.remove("hidden");
-        buttonContinue.innerText = "Return to the pub";
-        buttonContinue.addEventListener("click", function() {
-            window.location.reload();
-        });
-    }; 
-};
 
 // Shuffle function for picking which cards will be used
 // Through googling via gemini found the Fisher-Yates shuffle method, and managed to implement it and verify with Gemini. Further links and info in the readme
@@ -165,6 +114,14 @@ arrBtns.forEach(button  => {
     });
 });
 
+function gameEnd() {
+    if (health > 0) {
+        showContinue(gameWin);
+    } else if (health === 0) {
+        showContinue(gameOver);
+    };
+};
+
 // This function runs if your health reaches 0. Currently a copy of the code that runs when there are no more cards to show the player.
 function gameOver() {
     arrBtns.forEach(button => { //This if will run through the buttons to check if they need to be hidden or not
@@ -172,12 +129,21 @@ function gameOver() {
             button.classList.add("hidden")
         };
     });
-    mainText.innerHTML = "<p>Unfortunately you have been bested...this time! Return to the pub and try your luck again!</p>"
-    imageHeader.classList.add("hidden");
+    if (mainText.textContent.includes("balrog")) {
+        imageHeader.innerHTML = "<img src='assets/images/game-over-balrog.png' alt='Player dead at the feet of a balrog'>";
+        mainText.innerHTML = "<p>Unfortunately the Balrog has bested you. Return to the pub and try again- better luck next time!</p>";
+    } else if (mainText.textContent.includes("wizard")) {
+        imageHeader.innerHTML = "<img src='assets/images/game-over-wizard.png' alt='Player dead at the feet of a wizard'>";
+        mainText.innerHTML = "<p>It seems the Wizard won this duel. You can always return to the pub and have another go..Good luck.</p>";
+    } else {
+    mainText.innerHTML = "<p>Unfortunately you have been bested...this time! Return to the pub and try your luck again!</p>";
+    imageHeader.innerHTML = "<img src='assets/images/game-over-generic.png' alt='The player dead on the floor of the forest'>";
+    };
     buttonContinue.classList.remove("hidden");
     buttonContinue.innerText = "Return to the pub";
     buttonContinue.addEventListener("click", function() {
         window.location.reload();
+    
 });
 }
 
@@ -187,14 +153,70 @@ function gameWin() {
             button.classList.add("hidden")
         };
     });
-    mainText.innerHTML = "<p>Well done! You beat the adventure, and scored a prize. Dare you try your luck again?</p>"
-    imageHeader.classList.add("hidden");
-    buttonContinue.classList.remove("hidden");
+    if (mainText.textContent.includes("balrog")) {
+        mainText.innerHTML = "<p>Well done! You beat the adventure, and scored a prize. Dare you try your luck again?</p>";
+        imageHeader.innerHTML = "<img src='assets/images/boss-card-one-win.png' alt='Warrior stood atop a balrog'>";
+    } else if (mainText.textContent.includes("wizard")) {
+        mainText.innerHTML = "<p>Well done! You beat the adventure, and scored a prize. Dare you try your luck again?</p>";
+        imageHeader.innerHTML = "<img src='assets/images/boss-card-two-win.png' alt='Armoured warrior standing in a forest'>";
+    }; 
     buttonContinue.innerText = "Return to the pub";
     buttonContinue.addEventListener("click", function() {
         window.location.reload();
 });
-}
+};
+
+// The nextLevel function uses x as a turn counter to implement cards throughout the game. 
+// Using the shuffled cards and pulling those indexes from the relevant Arrays.
+// This info is then displayed to the user.
+// All of the data is stored and pulled from the datasets.js file to aid readability.
+// If extra levels are to be added, then adding the data into the relevant array will automatically
+// add them into the level selection within the nextLevel function.
+
+function nextLevel() {
+    ++x;
+    hideContinue();
+    console.log("level", x);
+    if (x === 1) {
+        gameCard(gameStartData[0]);
+    } else if (x === 2) {
+        gameCard(combatCardArr[gameCardIndex][0]);
+        gameCardIndex++;
+    } else if (x === 3 && encounterCardIndex < encounterCardArr.length) {
+       gameCard(encounterCardArr[encounterCardIndex][0]);
+       encounterCardIndex++;
+    } else if (x === 4 && gameCardIndex < combatCardArr.length) {
+        gameCard(combatCardArr[gameCardIndex][0]);
+        gameCardIndex++;
+    } else if (x === 5 && encounterCardIndex < encounterCardArr.length) {
+        gameCard(encounterCardArr[encounterCardIndex][0]);
+        encounterCardIndex++;
+    } else if (x === 6 && gameCardIndex < combatCardArr.length) {
+        gameCard(combatCardArr[gameCardIndex][0]);
+        gameCardIndex++;
+    } else if (x === 7 && bossCardIndex < bossCardArr.length) {
+        gameCard(bossCardArr[bossCardIndex][bossCardSecIndex]);
+    } else if (x === 8) {
+        if (mainText.textContent.includes("balrog")) {
+            gameCard(bossCardSecArr[0][0]);
+        } else if (mainText.textContent.includes("wizard")) {
+            gameCard(bossCardSecArr[1][0]);
+        };
+    } else if (x > 8){
+        gameEnd();
+    }
+    else {
+        console.log("End of cards");
+        buttonToggle();
+        mainText.innerHTML = "<p>Well, it seems like the adventure has closed, rather unceremoniously... Return Adventurer! Maybe you'll get lucky next time...</p>"
+        imageHeader.classList.add("hidden");
+        buttonContinue.classList.remove("hidden");
+        buttonContinue.innerText = "Return to the pub";
+        buttonContinue.addEventListener("click", function() {
+            window.location.reload();
+        });
+    }; 
+};
 
 // These functions removes the hidden class from the selection buttons
 
