@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Gamepage Title-->
+    <title>Curious Forest Game</title>
+    <!--Favicon-->
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/curious-forest-logo-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/curious-forest-logo-32x32.png">
     <!--CSS Sheet link-->
     <link href="assets/style.css" rel="stylesheet" />
     <!--Fontawesome link-->
@@ -14,11 +19,10 @@
       integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
       crossorigin="anonymous"
     />
-    <title>Curious Forest</title>
   </head>
   <body class="bg-black container">
     <div class="row d-flex">
-      <h1 class="main-header col">Curious Forest</h1>
+      <h1 class="main-header col"><a href="index.html">Curious Forest</a></h1>
       <h1 class="health-bar col"><i id="heart-one" class="full fa-solid fa-heart hidden"></i>
         <i id="heart-two" class="full fa-solid fa-heart hidden"></i>
         <i id="heart-three" class="full fa-solid fa-heart hidden"></i>
@@ -41,9 +45,9 @@
         <button type="button" id="adventure-start" class="adventure-start" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Start Adventure</button>
       </div>
       <div class="buttons row">
-        <button id="button-a" class="hidden col">Button A</button>
-        <button id="button-b" class="hidden col">Button B</button>
-        <button id="button-c" class="hidden col">Button C</button>
+        <button id="button-a" class="hidden col-12 col-lg">Button A</button>
+        <button id="button-b" class="hidden col-12 col-lg">Button B</button>
+        <button id="button-c" class="hidden col-12 col-lg">Button C</button>
         <button id="button-continue" class="hidden">Continue Adventure</button>
       </div>
     </div>
@@ -64,7 +68,7 @@
             <li>Each button will result in an action, which could result in you losing or gaining health points.</li>
             <li>You select your choice, and the game will move on. It will adjust your health accordingly and you will proceed to the next level.</li>
             <li>After a series of levels, you will face a final Boss. Beat that and you've beaten the game!</li>
-            <li>If you want to return to the beginning and restart, just click the icon next to the game title, and that will take you back to the beginning.</li>
+            <li>If you want to return to the beginning and restart, just click the game title, and that will take you back to the beginning.</li>
           </ul>
         </p>
       </div>

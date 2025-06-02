@@ -24,6 +24,12 @@ img {
     border-color: antiquewhite;
 }
 
+a {
+    text-decoration: none !important;
+    padding-bottom: 0;
+    color: white !important;
+}
+
 .health-bar {
    text-align: end;
 }
@@ -49,7 +55,7 @@ img {
 
  @media screen and (max-width: 576px) {
     img {
-        height: 75%;
+        height: 100%;
         padding-bottom: 0;
     }
 }
