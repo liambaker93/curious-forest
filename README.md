@@ -179,6 +179,8 @@ And thanks to Jess, our course leader, for helping to keep me on track throughou
 
 [While this page specifically didn't directly help me solve any problems, Stack Overflow was a really useful tool in seeing how other people had encountered similar problems which enabled me to adapt the solutions to fit how what I needed from them](https://stackoverflow.com/questions/21212426/bootstrap-modal-form-closing-before-validation)
 
+[Am I Responsive was used to display the website on different screens](https://ui.dev/amiresponsive?url=https://liambaker93.github.io/curious-forest/)
+
 I also made use of AI tools like Google's Gemini to help me understand different concepts of JavaScript, utilising the sources it provides to then go to the forum/tutorial pages that it lifted from to figure out more of an understanding of where I was going wrong or maybe misunderstanding something.
 
 ### Images
