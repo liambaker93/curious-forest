@@ -64,12 +64,13 @@
             <li>Each button will result in an action, which could result in you losing or gaining health points.</li>
             <li>You select your choice, and the game will move on. It will adjust your health accordingly and you will proceed to the next level.</li>
             <li>After a series of levels, you will face a final Boss. Beat that and you've beaten the game!</li>
+            <li>If you want to return to the beginning and restart, just click the icon next to the game title, and that will take you back to the beginning.</li>
           </ul>
         </p>
       </div>
       <div class="modal-footer">
-        <button type="button"  data-bs-dismiss="modal">Back to the pub</button>
-        <button type="button" onclick="instructionsFormValidate()" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Start Adventure</button>
+        <button type="button" class="adventure-start"  data-bs-dismiss="modal">Back to the pub</button>
+        <button type="button" class="adventure-start" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" aria-label="Close">Start Adventure</button>
       </div>
     </div>
   </div>
@@ -80,7 +81,6 @@
     <div class="modal-content modal-style">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Have you read the instructions?</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body modal-style">
         <form id="instructions-read">
@@ -92,8 +92,9 @@
           </form>
         </div>
       <div class="modal-footer">
-        <button class="adventure-start" data-bs-target="#staticBackdrop" data-bs-toggle="modal">Read the instructions</button>
-        <button type="submit" form="instructions-read">Submit</button>
+        <button type="button" id="pub-return" class="adventure-start" data-bs-dismiss="modal">Back to the pub</button>
+        <button class="adventure-start" data-bs-target="#staticBackdrop" data-bs-toggle="modal" onclick="readInstructions()">Read the instructions</button>
+        <button type="button" class="adventure-start" form="instructions-read" onclick="instructionsFormValidate()">Submit</button>
       </div>
     </div>
   </div>

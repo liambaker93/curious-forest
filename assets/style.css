@@ -44,7 +44,7 @@ img {
 
 .modal-style {
     background-color: black !important;
-    color: white;
+    color: white !important;
 }
 
  @media screen and (max-width: 576px) {

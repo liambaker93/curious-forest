@@ -8,6 +8,9 @@ const buttonC = document.getElementById("button-c");
 const buttonContinue = document.getElementById("button-continue");
 
 const instructionsPrompt = document.getElementById("instructions-prompt");
+const instructionsText = document.getElementById("instructionsReadBlock");
+
+const pubReturnButton = document.getElementById("pub-return");
 
 const arrBtns = [buttonA, buttonB, buttonC];
 
@@ -45,14 +48,17 @@ function readInstructions() {
 }
 
 function instructionsFormValidate() {
-    instructionsPrompt.click();
+    //instructionsPrompt.click();
     let instructionsVerify = document.forms["instructions-read"]["instructions-check"].value;
-    if (instructionsVerify == "") {
-        alert("Please read the instructions and submit your response");
+    if (instructionsVerify.toLowerCase() == "") {
+        instructionsText.innerText = "Please read the instructions first- then type yes!";
         return false;
-    } else if (instructionsVerify == "Yes" && instructionsRead === false) {
-        alert("Please go read the instructions- don't just say yes!")
-    } else if (instructionsVerify == "Yes" && instructionsRead === true) {
+    } else if (instructionsVerify.toLowerCase() == "yes" && instructionsRead === false) {
+        instructionsText.innerText = "Please go read the instructions- don't just say yes!";
+    } else if (instructionsVerify.toLowerCase() !== "yes") {
+        instructionsText.innerText = "Type Yes, don't type anything else!";
+    } else if (instructionsVerify.toLowerCase() == "yes" && instructionsRead === true) {
+        pubReturnButton.click();
         nextLevel();
     }
 }
