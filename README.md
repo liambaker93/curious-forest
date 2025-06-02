@@ -103,6 +103,24 @@ I used JS to then add this class on to the hearts when the health conditions hav
 
 ### Code Validation
 
+#### HTML Validation
+
+The HTML validation came up with a few warnings about redundant closing tags which I cleared and then I had used < p > tags on either side of the list within the instructions modal, which it deemed irrelevant so I also deleted those. 
+
+One warning it came up with was about a closing H1 tag. I had initially used two H1 tags for both the title of the game and the health icons. I then cleaned this up, used a span within the H1 to house the health and then styled with CSS to push the health to where I wanted them to go.
+
+![HTML Validation with H1 warning](./readme-files/assets/testing/html-validation.PNG)
+
+After fixing it I had no errors show on the validation.
+
+![HTML Validation without any warnings](./readme-files/assets/testing/html-validation-complete.PNG)
+
+#### CSS Validation
+
+The CSS validated first time with no issues present
+
+![CSS Validation](./readme-files/assets/testing/css-validation.PNG)
+
 ### Bugs Found
 
 ### Script Tests
