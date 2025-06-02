@@ -1,6 +1,6 @@
-# Milestone 2 project - Insert name here
+# Milestone 2 project - Curious Forest
 
-Welcome to the README for the (project name) choose your own adventure game site.
+Welcome to the README for the Curious Forest choose your own adventure game site.
 
 Visit the deployed site: (insert link)
 
@@ -41,11 +41,9 @@ I aim for this to also not involve AI art at some point. Gemini has been very us
 
 ## User Stories
 
-- "I like to play games, and what the option to have a different experience each time I play."
+- "I like to play games, and want the option to have a different experience each time I play."
 
 - "I don't play many games, so want an easy to understand game that doesn't require many rules to get into."
-
-- "I like to have varying difficulties when I play games, so I can feel like i'm getting better at it."
 
 ## Wireframes
 
@@ -101,6 +99,8 @@ I used JS to then add this class on to the hearts when the health conditions hav
 
 ## Testing
 
+Go to [TESTING.md](./readme-files/TESTING.md) for all the testing I completed.
+
 ### Code Validation
 
 #### HTML Validation
@@ -123,23 +123,63 @@ The CSS validated first time with no issues present
 
 ### Bugs Found
 
-### Script Tests
+| No | Bug | Solution
+| -- | ---- | ------ |
+| 1 | The health was adjusting after the following level card had been displayed | This was due to the checkHealth function being run at the start of the nextLevel function as opposed to directly after the buttons have been pressed leading to the displayText function. I moved the checkHealth function to be called at the end of displayText  and before the next level has been generated which then fixed the issue. |
+| 2 | The modal for submitting the user reads the instructions wasn't closing after starting the game | This was an easy fix, I added a button to that modal that would close the Modal when clicked. Then within my JS function handling the form validation, if the validation worked and the game can be started, I programmatically have that button clicked to close the modal. |
+| 3 | The health wasn't adjusting by the amount I had scripted it to at certain instances. | This was due to the event listeners for the buttons being housed within the main level function. So what I had understood through searching online was that retaining the listeners inside the function would then loop their use each time causing unpredictable results. Moving that outside of the function and into the global scope then meant that they were acting more independently each time which fixed the issue. |
 
 ## Deployment & Local Development
 
 ### Deployment
 
+The site has been deployed using GitHub Pages - [Curious Forest]
+
+To deploy the site using GitHub Pages:
+
+1. Login or signup to [GitHub](https://github.com/)
+2. Follow the link to the repository for this project: [liambaker93/curious-forest](https://github.com/liambaker93/curious-forest)
+3. Click the settings button
+4. Select pages from the navigation menu on the left side
+5. Using the source dropdown, select main branch and press Save.
+6. The site is now being deployed, note that it may take a few minutes before the site goes live.
+
 ### Local Development
 
 #### How to Fork
 
+To fork the repository:
+
+1. Login or signup to [GitHub](https://github.com/)
+2. Follow the link to the repository for this project: [liambaker93/curious-forest](https://github.com/liambaker93/curious-forest)
+3. Click the Fork button above the about section.
+
 #### How to Clone
+
+To clone the repository:
+
+1. Login or signup to [GitHub](https://github.com/)
+2. Follow the link to the repository for this project: [liambaker93/curious-forest](https://github.com/liambaker93/curious-forest)
+3. Click the green code button under the title bar
+4. Select whether you want to clone using HTML, SSH or GitHub CLI and click the copy button next to the URL
+5. Open the terminal in your code editor and change the current directory to the location you'll use for the cloned directory
+6. Type 'git clone' into the terminal, paste the link and press enter.
 
 ## References
 
+Thanks again to my mentor Jubril who was able to really push me along with my understanding of quite a few priniciples of JavaScript which I took through to the rest of the project.
+
+And thanks to Jess, our course leader, for helping to keep me on track throughout the project and ensure I'm sticking to specific requirements !
+
 ### Education Tools
 
-### Design Tools
+[Bootstrap was key in keeping the site responsive across device sizes as well as making it look neat. Especially useful for putting the Modals together.](https://getbootstrap.com/docs/5.3/components/modal/)
+
+[w3schools was helpful for me to try and understand a lot of the rudimentary JS syntax and logic ideas. Specifically useful for understanding the form validation](https://www.w3schools.com/js/js_validation.asp)
+
+[While this page specifically didn't directly help me solve any problems, Stack Overflow was a really useful tool in seeing how other people had encountered similar problems which enabled me to adapt the solutions to fit how what I needed from them](https://stackoverflow.com/questions/21212426/bootstrap-modal-form-closing-before-validation)
+
+I also made use of AI tools like Google's Gemini to help me understand different concepts of JavaScript, utilising the sources it provides to then go to the forum/tutorial pages that it lifted from to figure out more of an understanding of where I was going wrong or maybe misunderstanding something.
 
 ### Images
 
