@@ -18,6 +18,11 @@ img {
     display: none !important;
 }
 
+.main-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .adventure-start {
     background-color: black;
     color: lightgreen;
