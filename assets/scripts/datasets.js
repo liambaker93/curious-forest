@@ -7,7 +7,7 @@
 gameStartData = [
     {
         imageHeader: "<img src='assets/images/fantasy-pub.png' alt='A fantasy pub open with people sat drinking and a barmaid serving.'>",
-        mainText: "<p>You walk up to a pub and see two tables full of people laughing, sharing stories. One man sits on a stool in front of the bar and watches you wander towards the bar. What do you do?</p>",
+        mainText: "<p>You walk up to a pub and see two tables full of people laughing, sharing stories. One man sits on a stool in front of the bar and watches you wander towards the bar. He stretches his hand out holding a full pint of beer. What do you do?</p>",
         buttonAText: "Accept the drink",
         buttonBText: "Throw the drink in his face",
         buttonCText: "Turn and leave the pub",
@@ -17,11 +17,11 @@ gameStartData = [
     },
     {
         imageHeader: "<img src='assets/images/result-card-one.png' alt='A man standing by a bar is handing you a full pint of beer'>",
-        mainText: "<p>He hands the drink over to you and tells you a tale of an evening where he brawled a bar full of drunkards just to save one newcomer from ending the night thrown out into a haybale. He sways and falls backwards onto his stool, passing out before finishing the story. You drink the beer and feel a spring in your step.<p>",
+        mainText: "<p>He hands the drink over to you and tells you of a forest nearby that has been known to entrap adventurers like you. You take a sip of the beer and feel a spring in your step.<p>",
     },
     {
         imageHeader: "<img src='assets/images/result-card-two.png' alt='A man covered in beer, standing ready to fight against a bar'>",
-        mainText: "<p>You pour the beer over him. He quickly turns from intrigued to annoyed at your arrival and bares his fists ready to fight, and swings his arm straight into your jaw, knocking you back on to the ground</p>",
+        mainText: "<p>You pour the beer over him. He quickly turns from intrigued to annoyed at your arrival and bares his fists ready to fight, swinging his arm straight into your jaw, knocking you back on to the ground. 'Go try your luck in the forest if you think you're a big man!'</p>",
     },
     {
         imageHeader: "<img src='assets/images/result-card-three.png' alt='The outisde of a pub with the interior and streetlamps on'>",
@@ -32,7 +32,7 @@ gameStartData = [
 let combatCardOneData = [
 {
     imageHeader: "<img src='assets/images/combat-card-one.png' alt='A beast emerging from the hedgeline'>",
-    mainText: "<p>A beast emerges from the hedges and snarls at you, teeth bared and saliva dripping from it's mouth. What do you do?</p>",
+    mainText: "<p>A beast emerges from some hedges nearby and snarls at you, teeth bared and saliva dripping from it's mouth. What do you do?</p>",
     buttonAText: "Draw your sword and take a swing",
     buttonBText: "Draw your sword ready to defend",
     buttonCText: "Slowly back away",
@@ -57,7 +57,7 @@ let combatCardOneData = [
 let combatCardTwoData = [
     {
         imageHeader: "<img src='assets/images/combat-card-two.png' alt='A group of bandits sat around a campfire, their backs to you'></img>",
-        mainText: "<p>You walk into a monastery that has been long since abandoned. Walking through it you see nothing but ruins and torn tapestry. Out the other end you spy a campfire surrounded by four bandits. What do you do?</p>",
+        mainText: "<p>You find some stone ruins that appear to be the layout of an old monastary. The floor plan leading to what could've been a shrine, and some embedded grass areas maybe from underneath pews. You smell smoke from behind some of the stone walls and go investigate. Out the other end you spy a campfire surrounded by four bandits. What do you do?</p>",
         buttonAText: "Sneak around them",
         buttonBText: "Run through the group",
         buttonCText: "Walk back the way you came",
@@ -67,15 +67,15 @@ let combatCardTwoData = [
     },
     {
         imageHeader: "<img src='assets/images/combat-card-two-result-a.png' alt='The bandits sit around a campfire, paying no attention to the viewer.'>",
-        mainText: "<p>They continue sitting and talking around the campfire, none the wiser to your slinking steps beyond them</p>",
+        mainText: "<p>They continue sitting and talking around the campfire, none the wiser to your slinking steps beyond them.</p>",
     },
     {
         imageHeader: "<img src='assets/images/combat-card-two-result-b.png' alt='A bandit holds himself against a pillar with a drawn sword coming towards the viewer'>",
-        mainText: "<p>You bolt it towards the campfire, they hear you coming and just as you're about to run straight through the fire, one of the nudges you off course. You stumble past the fire, your right foot landing in the burning ash, and you limp away into the darkness</p>"
+        mainText: "<p>You bolt it towards the campfire. They hear you coming and just as you're about to run straight through the fire, one of them nudges you off course. You stumble past the fire, your right foot landing in the burning ash, and you limp away into the darkness.</p>"
     },
     {
         imageHeader: "<img src='assets/images/combat-card-two-result-c.png' alt='The outside enclave of an abandoned monastary, covered in moss'>",
-        mainText: "<p>You count the number of bandits on your fingers and decide that actually this isn't a fight worth having, and leave the monastery the way you came in</p>",
+        mainText: "<p>You count the number of bandits on your fingers and decide that actually this isn't a fight worth having, and leave the ruins the way you came.</p>",
     }
 ];
 
@@ -233,7 +233,7 @@ let encounterCardThreeData = [
 let bossCardOneData = [
     {
         imageHeader: "<img src='assets/images/boss-card-one.png' alt='A balrog stands behind a large rock in a cave'></img>",
-        mainText: "<p>You walk down through the cave, and feel warmth striking it's way down the stone corridors. You see streaks of fire erupt from behind a rock, and see a Balrog sneaking around it towards you. What do you do?</p>",
+        mainText: "<p>You find an open cave with moss covering the entrance. You walk down through the cave, and feel warmth striking it's way down the stone corridors. You see streaks of fire erupt from behind a rock, and see a Balrog sneaking around it towards you. What do you do?</p>",
         buttonAText: "Slowly walk towards it and draw your sword ready to attack",
         buttonBText: "Rush towards it, sword drawn, right underneath it's foot",
         buttonCText: "Stop where you stand",
@@ -252,28 +252,6 @@ let bossCardOneData = [
     {
         imageHeader:"<img src='assets/images/boss-card-one-result-c.png' alt='The balrog's mouth wide open, swirling with flames'>",
         mainText:"<p>The balrog leans down to greet you entering it's cave, swirling fire around it's mouth preparing for whatever attack you may have planned</p>",
-    },
-    {
-        imageHeader: "<img src='assets/images/boss-card-one-second.png' alt='The balrog stands firm surrounded by ruins'>",
-        mainText: "<p>The balrog prepares to fight again, smacking itself against the walls of the cave, causing stone to crack and fall to the ground</p>",
-        buttonAText: "Attempt to climb it's leg",
-        buttonBText: "Wait for it to step a little closer to you",
-        buttonCText: "Hold by the rock, drawing it's fire breath",
-        buttonDisplayTextA: "bossCardOneSecondaryResultA",
-        buttonDisplayTextB: "bossCardOneSecondaryResultB",
-        buttonDisplayTextC: "bossCardOneSecondaryResultC",
-    },
-    {
-        imageHeader:"<img src='assets/images/boss-card-one-result-d.png' alt='The player hanging off the horn of the Balrog'>",
-        mainText:"<p>You try to climb the leg of the balrog, but don't expect it to be as difficult as you thought. The balrog reaches it's hand over to you and grabs you, forcing you onto it's left horn. You hand there as a prize for the Balrog to retreat with.<p>",
-    },
-    {
-        imageHeader:"<img src='assets/images/boss-card-one-result-e.png' alt='The balrog's face on the ground, mouth open.'>",
-        mainText:"<p>You swipe at both it's legs, cutting tendons in the ankles, dropping it to it's knees. The balrog drops it's head and you drive your sword through the roof of it's mouth slaying the beast.</p>",
-    },
-    {
-        imageHeader:"<img src='assets/images/boss-card-one-result-f.png' alt='The player and balrog lay on the ground'>",
-        mainText:"<p>You stand by the rock in the middle of the cave, and wait for it to breathe fire at you, running around the rock as it leads it's fire behind you. You trick it to keep the flames going, and they reach it's back, burning it's scales off. The flames reach you but you manage to stab your sword through to it's flesh, drawing blood as it collapses to the ground. You stagger forward and collapse with it, dying a hero.</p>",
     },
 ];
 
@@ -325,28 +303,6 @@ let bossCardTwoData = [
         imageHeader:"<img src='assets/images/boss-card-two-result-c.png' alt='Wizard's spell hits a man in the arm'>",
         mainText:"<p>You debate how to handle the wizard, and decide to pull out your sword. However you took too long, and the Wizard's electric shock hits your arm and engulfs your arm</p>",
     },
-    {
-        imageHeader: "<img src='assets/images/boss-card-two-secondary.png' alt='A wizard knelt on the ground, preparing a spell'>",
-        mainText: "<p>The wizard takes a moment to recover on the ground, closing his eyes slowly and preparing a spell between his hands. You see magik swirling around his palms and you feel a power emanate from him</p>",
-        buttonAText: "Interrupt the spell",
-        buttonBText: "Hide from the spell",
-        buttonCText: "Charge the wizard",
-        buttonDisplayTextA: "bossCardTwoSecondaryResultA",
-        buttonDisplayTextB: "bossCardTwoSecondaryResultB",
-        buttonDisplayTextC: "bossCardTwoSecondaryResultC",
-    },
-    {
-        imageHeader:"<img src='assets/images/boss-card-two-result-d.png' alt='Wizard dead on a broken tree'>",
-        mainText:"<p>You run towards the wizard, when you get close you drag your hand through the dirt and throw the rocky dust at his hands and interrupt the spell. He's distracted and the spell back fires, exploding between his hands and throwing him up in the air. He lands on a fallen tree and is impaled on one of the stuck up branches</p>",
-    },
-    {
-        imageHeader:"<img src='assets/images/boss-card-two-result-e.png' alt='The wizard standing above a dead body'>",
-        mainText:"<p>You drop your sword and try to hide from the spell. The wizard causes a volcanic earthquake beneath your feet. He pulls you down into the cracking earth, throwing you up and slamming you back down to the ground</p>",
-    },
-    {
-        imageHeader:"<img src='assets/images/boss-card-two-result-f.png' alt='A wizard and a man falling down a cavern'>",
-        mainText:"<p>You drop your sword and charge at the wizard. He notices you rushing towards him and works to hurry his magik. When you reach him, you grapple his hands and the power he has built up implodes between both sets of hands and throws you both in the air, cutting into both of you. The power throws you back to the cliff edge and you both fly over and down to a ravine below.</p>",
-    },
 ];
 
 let bossCardTwoSecondaryData = [
@@ -387,7 +343,7 @@ function displayText(argument){
     } else if (argument === "gameStartResultB") {
         imageHeader.innerHTML = gameStartData[2].imageHeader;
         mainText.innerHTML = gameStartData[2].mainText;
-        healthAdjustValue = -2;
+        healthAdjustValue = -3;
     } else if (argument === "gameStartResultC") {
         imageHeader.innerHTML = gameStartData[3].imageHeader;
         mainText.innerHTML = gameStartData[3].mainText;
@@ -411,7 +367,7 @@ function displayText(argument){
     }       else if (argument === "combatCardTwoResultB") {
         imageHeader.innerHTML = combatCardTwoData[2].imageHeader;
         mainText.innerHTML = combatCardTwoData[2].mainText;
-        healthAdjustValue = -1;
+        healthAdjustValue = -2;
     }       else if (argument === "combatCardTwoResultC") {
         imageHeader.innerHTML = combatCardTwoData[3].imageHeader;
         mainText.innerHTML = combatCardTwoData[3].mainText;
@@ -422,7 +378,7 @@ function displayText(argument){
     }       else if (argument === "combatCardThreeResultB") {
         imageHeader.innerHTML = combatCardThreeData[2].imageHeader;
         mainText.innerHTML = combatCardThreeData[2].mainText;
-        healthAdjustValue = -1;
+        healthAdjustValue = -2;
     }       else if (argument === "combatCardThreeResultC") {
         imageHeader.innerHTML = combatCardThreeData[3].imageHeader;
         mainText.innerHTML = combatCardThreeData[3].mainText;
@@ -437,7 +393,7 @@ function displayText(argument){
     } else if (argument === "combatCardFourResultC") {
         imageHeader.innerHTML = combatCardFourData[3].imageHeader;
         mainText.innerHTML = combatCardFourData[3].mainText;
-        healthAdjustValue = -2;
+        healthAdjustValue = -3;
     };
     if (argument === "combatCardFiveResultA") {
         imageHeader.innerHTML = combatCardFiveData[1].imageHeader;
@@ -459,7 +415,7 @@ function displayText(argument){
     }   else if (argument === "encounterCardOneResultB") {
         imageHeader.innerHTML = encounterCardOneData[2].imageHeader;
         mainText.innerHTML = encounterCardOneData[2].mainText;
-        healthAdjustValue = 2;
+        healthAdjustValue = 3;
     }   else if (argument === "encounterCardOneResultC") {
         imageHeader.innerHTML = encounterCardOneData[3].imageHeader;
         mainText.innerHTML = encounterCardOneData[3].mainText;
@@ -467,11 +423,11 @@ function displayText(argument){
     if (argument === "encounterCardTwoResultA") {
         imageHeader.innerHTML = encounterCardTwoData[1].imageHeader;
         mainText.innerHTML = encounterCardTwoData[1].mainText;
-        healthAdjustValue = 2;
+        healthAdjustValue = 3;
     }   else if (argument === "encounterCardTwoResultB") {
         imageHeader.innerHTML = encounterCardTwoData[2].imageHeader;
         mainText.innerHTML = encounterCardTwoData[2].mainText;
-        healthAdjustValue = -2;
+        healthAdjustValue = -3;
     }   else if (argument === "encounterCardTwoResultC") {
         imageHeader.innerHTML = encounterCardTwoData[3].imageHeader;
         mainText.innerHTML = encounterCardTwoData[3].mainText;
@@ -479,6 +435,7 @@ function displayText(argument){
     if (argument === "encounterCardThreeResultA") {
         imageHeader.innerHTML = encounterCardThreeData[1].imageHeader;
         mainText.innerHTML = encounterCardThreeData[1].mainText;
+        healthAdjustValue = 2;
     } else if (argument === "encounterCardThreeResultB") {
         imageHeader.innerHTML = encounterCardThreeData[2].imageHeader;
         mainText.innerHTML = encounterCardThreeData[2].mainText;
@@ -490,7 +447,7 @@ function displayText(argument){
     if (argument === "bossCardOneResultA") {
         imageHeader.innerHTML = bossCardOneData[1].imageHeader;
         mainText.innerHTML = bossCardOneData[1].mainText;
-        healthAdjustValue = -3;
+        healthAdjustValue = -4;
     } else if (argument === "bossCardOneResultB") {
         imageHeader.innerHTML = bossCardOneData[2].imageHeader;
         mainText.innerHTML = bossCardOneData[2].mainText;
@@ -508,7 +465,7 @@ function displayText(argument){
         imageHeader.innerHTML = bossCardTwoData[3].imageHeader;
         mainText.innerHTML = bossCardTwoData[3].mainText;
     };
-        if (argument === "bossCardOneSecondaryResultA") {
+    if (argument === "bossCardOneSecondaryResultA") {
         imageHeader.innerHTML = bossCardOneData[5].imageHeader;
         mainText.innerHTML = bossCardOneData[5].mainText;
         healthAdjustValue = -4;
@@ -531,7 +488,7 @@ function displayText(argument){
         mainText.innerHTML = bossCardTwoData[7].mainText;
     };
     healthAdjust(healthAdjustValue);
-
+    checkHealth();
     if (bossCardRun === false) {
         showContinue(nextLevel);
     } else if (bossCardRun === true) {

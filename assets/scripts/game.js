@@ -60,6 +60,7 @@ function instructionsFormValidate() {
     } else if (instructionsVerify.toLowerCase() == "yes" && instructionsRead === true) {
         pubReturnButton.click();
         nextLevel();
+        checkHealth();
     }
 }
 
@@ -84,18 +85,8 @@ function healthAdjust(healthAdjustValue) {
 // If extra levels are to be added, then adding the data into the relevant array will automatically
 // add them into the level selection within the nextLevel function.
 
-// function gameStart() {
-//     if (instructionsRead === false) {
-//         instructionsPrompt.click();
-//     } else if (instructionsRead === true) {
-//         instructionsPrompt.remove();
-//         nextLevel();
-//     }
-// };
-
 function nextLevel() {
     ++x;
-    checkHealth();
     hideContinue();
     console.log("level", x);
     if (x === 1) {
@@ -116,11 +107,14 @@ function nextLevel() {
         gameCard(combatCardArr[gameCardIndex][0]);
         gameCardIndex++;
     } else if (x === 7 && bossCardRun === false && bossCardIndex < bossCardArr.length) {
+        gameCard(bossCardArr[bossCardIndex][bossCardSecIndex]);
+    } else if (x === 8) {
+        if (mainText.textContent.includes("balrog")) {
+            gameCard(bossCardSecArr[0][0]);
+        } else if (mainText.textContent.includes("wizard")) {
+            gameCard(bossCardSecArr[1][0]);
+        }
         bossCardRun = true;
-        gameCard(bossCardArr[bossCardIndex][bossCardSecIndex]);
-    } else if (x === 8 && bossCardRun === true) { // The boss cards run on two seperate cards to add difficulty. The logic needs to be able to read which boss card has initially been pulled.
-        bossCardSecIndex + 3;
-        gameCard(bossCardArr[bossCardIndex][bossCardSecIndex]);
     } else {
         console.log("End of cards");
         buttonToggle();
@@ -294,16 +288,3 @@ function checkHealth() {
     }
     console.log("health:", health);
 };
-
-/*
-function inputName(e) {
-    checkHealth();
-    let nameForm = document.getElementById("input-name");
-    //e.preventDefault();
-    //let inputName = e.target;
-    nameForm.classList.remove("hidden");
-    imageHeader.classList.add("hidden");
-    adventureStart.classList.add("hidden");
-    mainText.innerHTML = "<p>Input your name to get started, and when you click submit, the adventure will begin...</p>";
-}
-*/
